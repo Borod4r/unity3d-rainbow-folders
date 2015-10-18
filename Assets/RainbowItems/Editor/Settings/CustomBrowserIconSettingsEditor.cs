@@ -14,7 +14,7 @@
 
 using UnityEditor;
 
-namespace Borodar.RainbowItems.Editor
+namespace Borodar.RainbowItems.Editor.Settings
 {
     [CustomEditor(typeof (CustomBrowserIconSettings))]
     public class CustomBrowserIconSettingsEditor : UnityEditor.Editor

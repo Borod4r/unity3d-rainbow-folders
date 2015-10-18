@@ -14,6 +14,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using Borodar.RainbowItems.Editor.Settings;
 using UnityEditor;
 using UnityEngine;
 
@@ -41,19 +42,19 @@ namespace Borodar.RainbowItems.Editor
 
         public static void CreateAsset<T>() where T : ScriptableObject
         {
-            T asset = ScriptableObject.CreateInstance<T>();
+            var asset = ScriptableObject.CreateInstance<T>();
 
-            string path = AssetDatabase.GetAssetPath(Selection.activeObject);
+            var path = AssetDatabase.GetAssetPath(Selection.activeObject);
             if (path == string.Empty)
             {
                 path = "Assets";
             }
             else if (Path.GetExtension(path) != string.Empty)
             {
-                path = path.Replace(Path.GetFileName(AssetDatabase.GetAssetPath(Selection.activeObject)), string.Empty);
+                path = path.Replace(Path.GetFileName(path), string.Empty);
             }
 
-            string assetPathAndName = AssetDatabase.GenerateUniqueAssetPath(path + "/New " + typeof(T) + ".asset");
+            var assetPathAndName = AssetDatabase.GenerateUniqueAssetPath(path + "/New " + typeof(T) + ".asset");
 
             AssetDatabase.CreateAsset(asset, assetPathAndName);
             AssetDatabase.SaveAssets();

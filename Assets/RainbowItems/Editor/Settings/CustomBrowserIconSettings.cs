@@ -16,19 +16,19 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Borodar.RainbowItems.Editor
+namespace Borodar.RainbowItems.Editor.Settings
 {
     public class CustomBrowserIconSettings : ScriptableObject
     {
-        public List<Folder> folders;
+        public List<Folder> Folders;
 
-        public Sprite GetSmallSprite(string folderName, bool small = true)
+        public Sprite GetSprite(string folderName, bool small = true)
         {
-            var folder = folders.FirstOrDefault(x => x.folderName.Contains(folderName));
+            var folder = Folders.FirstOrDefault(x => x.FolderName.Contains(folderName));
 
             if (folder == null) { return null; }
 
-            return small ? folder.smallIcon : folder.largeIcon;
+            return small ? folder.SmallIcon : folder.LargeIcon;
         }
     }
 }

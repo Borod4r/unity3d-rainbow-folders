@@ -15,13 +15,13 @@
 using System;
 using UnityEngine;
 
-namespace Borodar.RainbowItems.Editor
+namespace Borodar.RainbowItems.Editor.Settings
 {
     [Serializable]
     public class Folder
     {
-        public string folderName;
-        public Sprite smallIcon;
-        public Sprite largeIcon;
+        public string FolderName;
+        public Sprite SmallIcon;
+        public Sprite LargeIcon;
     }
 }

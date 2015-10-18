@@ -13,6 +13,7 @@
  */
 
 using System.IO;
+using Borodar.RainbowItems.Editor.Settings;
 using UnityEditor;
 using UnityEngine;
 
@@ -36,7 +37,7 @@ namespace Borodar.RainbowItems.Editor
         private const string STREAMING_ASSETS_FOLDER_NAME = "StreamingAssets";
         #endregion
 
-        private static CustomBrowserIconSettings settings;
+        private static CustomBrowserIconSettings _settings;
 
         static CustomBrowserIcons()
         {
@@ -49,7 +50,7 @@ namespace Borodar.RainbowItems.Editor
 
             if (!AssetDatabase.IsValidFolder(path)) return;
 
-            bool isSmall = rect.width > rect.height;
+            var isSmall = rect.width > rect.height;
             if (isSmall)
             {
                 rect.width = rect.height;
@@ -59,14 +60,19 @@ namespace Borodar.RainbowItems.Editor
                 rect.height = rect.width;
             }
 
-            if (settings == null) { LoadSettings(); }
-            Sprite sprite = settings.GetSmallSprite(Path.GetFileName(path), isSmall);
-            if (sprite != null) { CustomEditorUtility.DrawTextureGUI(rect, sprite); }
+            _settings = _settings ?? LoadSettings();
+
+            var sprite = _settings.GetSprite(Path.GetFileName(path), isSmall);
+            if (sprite != null) CustomEditorUtility.DrawTextureGUI(rect, sprite);
         }
 
-        private static void LoadSettings()
+        //---------------------------------------------------------------------
+        // Helpers
+        //---------------------------------------------------------------------
+
+        private static CustomBrowserIconSettings LoadSettings()
         {
-            settings = Resources.Load<CustomBrowserIconSettings>("RainbowItemsSettings");
+            return  Resources.Load<CustomBrowserIconSettings>("RainbowItemsSettings");
         }
     }
 }
