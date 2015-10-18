@@ -13,6 +13,7 @@
  */
 
 using System.IO;
+using Borodar.RainbowItems.Editor.Settings;
 using UnityEditor;
 using UnityEngine;
 
@@ -28,6 +29,16 @@ namespace Borodar.RainbowItems.Editor
     {
         private const string ICONS_FOLDER_PATH = "Assets/RainbowItems/Editor/Sprites/";
 
+        #region reserved_folder_names
+        private const string EDITOR_FOLDER_NAME = "Editor";
+        private const string PLUGINS_FOLDER_NAME = "Plugins";
+        private const string RESOURCES_FOLDER_NAME = "Resources";
+        private const string GIZMOS_FOLDER_NAME = "Gizmos";
+        private const string STREAMING_ASSETS_FOLDER_NAME = "StreamingAssets";
+        #endregion
+
+        private static CustomBrowserIconSettings _settings;
+
         static CustomBrowserIcons()
         {
             EditorApplication.projectWindowItemOnGUI += ReplaceFolderIcon;
@@ -39,38 +50,29 @@ namespace Borodar.RainbowItems.Editor
 
             if (!AssetDatabase.IsValidFolder(path)) return;
 
-            string smallIconName, largeIconName;
-            switch (Path.GetFileName(path))
-            {
-                case "Scripts":
-                    smallIconName = "scripts_icon_16.png";
-                    largeIconName = "scripts_icon_64.png";
-                    break;
-                case "Scenes":
-                    smallIconName = "scenes_icon_16.png";
-                    largeIconName = "scenes_icon_64.png";
-                    break;
-                default:
-                    return;
-            }
-
-            string spritePath;
-            if (rect.width > rect.height)
+            var isSmall = rect.width > rect.height;
+            if (isSmall)
             {
                 rect.width = rect.height;
-                spritePath = ICONS_FOLDER_PATH + smallIconName;
             }
             else
             {
                 rect.height = rect.width;
-                spritePath = ICONS_FOLDER_PATH + largeIconName;
             }
 
+            _settings = _settings ?? LoadSettings();
 
-            var sprite = AssetDatabase.LoadAssetAtPath(spritePath, typeof(Sprite)) as Sprite;
-            CustomEditorUtility.DrawTextureGUI(rect, sprite);
+            var sprite = _settings.GetSprite(Path.GetFileName(path), isSmall);
+            if (sprite != null) CustomEditorUtility.DrawTextureGUI(rect, sprite);
         }
 
-    }
+        //---------------------------------------------------------------------
+        // Helpers
+        //---------------------------------------------------------------------
 
+        private static CustomBrowserIconSettings LoadSettings()
+        {
+            return  Resources.Load<CustomBrowserIconSettings>("RainbowItemsSettings");
+        }
+    }
 }

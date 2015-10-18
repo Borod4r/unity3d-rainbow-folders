@@ -13,6 +13,9 @@
  */
 
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using Borodar.RainbowItems.Editor.Settings;
+using UnityEditor;
 using UnityEngine;
 
 namespace Borodar.RainbowItems.Editor
@@ -31,5 +34,32 @@ namespace Borodar.RainbowItems.Editor
             GUI.DrawTextureWithTexCoords(actualPosition, sprite.texture, actualSpriteRect);
         }
 
+        [MenuItem("Rainbow Items/Create Settings File")]
+        public static void CreateSettingsAssetFile()
+        {
+            CreateAsset<CustomBrowserIconSettings>();
+        }
+
+        public static void CreateAsset<T>() where T : ScriptableObject
+        {
+            var asset = ScriptableObject.CreateInstance<T>();
+
+            var path = AssetDatabase.GetAssetPath(Selection.activeObject);
+            if (path == string.Empty)
+            {
+                path = "Assets";
+            }
+            else if (Path.GetExtension(path) != string.Empty)
+            {
+                path = path.Replace(Path.GetFileName(path), string.Empty);
+            }
+
+            var assetPathAndName = AssetDatabase.GenerateUniqueAssetPath(path + "/New " + typeof(T) + ".asset");
+
+            AssetDatabase.CreateAsset(asset, assetPathAndName);
+            AssetDatabase.SaveAssets();
+            EditorUtility.FocusProjectWindow();
+            Selection.activeObject = asset;
+        }
     }
 }
