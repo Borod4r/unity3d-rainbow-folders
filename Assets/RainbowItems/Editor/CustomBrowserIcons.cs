@@ -40,7 +40,6 @@ namespace Borodar.RainbowItems.Editor
 
         static CustomBrowserIcons()
         {
-            settings = Resources.Load<CustomBrowserIconSettings>("RainbowItemsSettings");
             EditorApplication.projectWindowItemOnGUI += ReplaceFolderIcon;
         }
 
@@ -60,8 +59,14 @@ namespace Borodar.RainbowItems.Editor
                 rect.height = rect.width;
             }
 
+            if (settings == null) { LoadSettings(); }
             Sprite sprite = settings.GetSmallSprite(Path.GetFileName(path), isSmall);
             if (sprite != null) { CustomEditorUtility.DrawTextureGUI(rect, sprite); }
+        }
+
+        private static void LoadSettings()
+        {
+            settings = Resources.Load<CustomBrowserIconSettings>("RainbowItemsSettings");
         }
     }
 }
