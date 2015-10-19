@@ -12,7 +12,6 @@
  * the License.
  */
 
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Borodar.RainbowItems.Editor.Settings;
 using UnityEditor;
@@ -22,18 +21,6 @@ namespace Borodar.RainbowItems.Editor
 {
     public class CustomEditorUtility
     {
-        [SuppressMessage("ReSharper", "InconsistentNaming")]
-        public static void DrawTextureGUI(Rect position, Sprite sprite)
-        {
-            var actualSpriteRect = new Rect(sprite.rect.x / sprite.texture.width, sprite.rect.y / sprite.texture.height, sprite.rect.width / sprite.texture.width, sprite.rect.height / sprite.texture.height);
-
-            var actualSize = position.size;
-            actualSize.y *= (sprite.rect.height / sprite.rect.width);
-
-            var actualPosition = new Rect(position.x, position.y + (position.size.y - actualSize.y) / 2, actualSize.x, actualSize.y);
-            GUI.DrawTextureWithTexCoords(actualPosition, sprite.texture, actualSpriteRect);
-        }
-
         [MenuItem("Rainbow Items/Create Settings File")]
         public static void CreateSettingsAssetFile()
         {

@@ -22,7 +22,7 @@ namespace Borodar.RainbowItems.Editor.Settings
     {
         public List<Folder> Folders;
 
-        public Sprite GetSprite(string folderName, bool small = true)
+        public Texture2D GetTextureByItemName(string folderName, bool small = true)
         {
             var folder = Folders.FirstOrDefault(x => x.FolderName.Equals(folderName));
 

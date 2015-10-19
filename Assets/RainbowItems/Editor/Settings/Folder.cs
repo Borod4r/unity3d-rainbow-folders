@@ -21,7 +21,7 @@ namespace Borodar.RainbowItems.Editor.Settings
     public class Folder
     {
         public string FolderName;
-        public Sprite SmallIcon;
-        public Sprite LargeIcon;
+        public Texture2D SmallIcon;
+        public Texture2D LargeIcon;
     }
 }

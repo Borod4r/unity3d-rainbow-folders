@@ -60,8 +60,8 @@ namespace Borodar.RainbowItems.Editor
 
             _settings = _settings ?? LoadSettings();
 
-            var sprite = _settings.GetSprite(Path.GetFileName(path), isSmall);
-            if (sprite != null) CustomEditorUtility.DrawTextureGUI(rect, sprite);
+            var texture = _settings.GetTextureByItemName(Path.GetFileName(path), isSmall);
+            if (texture != null) GUI.DrawTexture(rect, texture);
         }
 
         //---------------------------------------------------------------------
