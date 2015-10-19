@@ -27,8 +27,6 @@ namespace Borodar.RainbowItems.Editor
     [InitializeOnLoad]
     public class CustomBrowserIcons
     {
-        private const string ICONS_FOLDER_PATH = "Assets/RainbowItems/Editor/Sprites/";
-
         #region reserved_folder_names
         private const string EDITOR_FOLDER_NAME = "Editor";
         private const string PLUGINS_FOLDER_NAME = "Plugins";
