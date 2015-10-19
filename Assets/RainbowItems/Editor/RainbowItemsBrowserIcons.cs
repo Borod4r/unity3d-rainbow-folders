@@ -25,7 +25,7 @@ namespace Borodar.RainbowItems.Editor
     */
 
     [InitializeOnLoad]
-    public class CustomBrowserIcons
+    public class RainbowItemsBrowserIcons
     {
         #region reserved_folder_names
         private const string EDITOR_FOLDER_NAME = "Editor";
@@ -37,7 +37,7 @@ namespace Borodar.RainbowItems.Editor
 
         private static CustomBrowserIconSettings _settings;
 
-        static CustomBrowserIcons()
+        static RainbowItemsBrowserIcons()
         {
             EditorApplication.projectWindowItemOnGUI += ReplaceFolderIcon;
         }
