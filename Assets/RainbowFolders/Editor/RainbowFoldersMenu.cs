@@ -12,23 +12,19 @@
  * the License.
  */
 
+using Borodar.RainbowFolders.Editor.Settings;
+using UnityEditor;
 using UnityEngine;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Borodar.RainbowItems.Editor.Settings
+namespace Borodar.RainbowFolders.Editor
 {
-    public class CustomBrowserIconSettings : ScriptableObject
+    public class RainbowFoldersMenu
     {
-        public List<Folder> Folders;
-
-        public Sprite GetSprite(string folderName, bool small = true)
+        [MenuItem("Rainbow Folders/Show Settings")]
+        public static void OpenSettings()
         {
-            var folder = Folders.FirstOrDefault(x => x.FolderName.Equals(folderName));
-
-            if (folder == null) { return null; }
-
-            return small ? folder.SmallIcon : folder.LargeIcon;
+            var settings = RainbowFoldersSettings.Load();
+            Selection.activeObject = settings;
         }
     }
 }

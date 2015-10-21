@@ -13,11 +13,11 @@
  */
 
 using System.IO;
-using Borodar.RainbowItems.Editor.Settings;
+using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
 using UnityEngine;
 
-namespace Borodar.RainbowItems.Editor
+namespace Borodar.RainbowFolders.Editor
 {
     /* 
     * This script allows you to set custom icons for folders in project browser.
@@ -25,10 +25,8 @@ namespace Borodar.RainbowItems.Editor
     */
 
     [InitializeOnLoad]
-    public class CustomBrowserIcons
+    public class RainbowFoldersBrowserIcons
     {
-        private const string ICONS_FOLDER_PATH = "Assets/RainbowItems/Editor/Sprites/";
-
         #region reserved_folder_names
         private const string EDITOR_FOLDER_NAME = "Editor";
         private const string PLUGINS_FOLDER_NAME = "Plugins";
@@ -37,9 +35,9 @@ namespace Borodar.RainbowItems.Editor
         private const string STREAMING_ASSETS_FOLDER_NAME = "StreamingAssets";
         #endregion
 
-        private static CustomBrowserIconSettings _settings;
+        private static RainbowFoldersSettings _settings;
 
-        static CustomBrowserIcons()
+        static RainbowFoldersBrowserIcons()
         {
             EditorApplication.projectWindowItemOnGUI += ReplaceFolderIcon;
         }
@@ -60,19 +58,10 @@ namespace Borodar.RainbowItems.Editor
                 rect.height = rect.width;
             }
 
-            _settings = _settings ?? LoadSettings();
+            _settings = _settings ?? RainbowFoldersSettings.Load();
 
-            var sprite = _settings.GetSprite(Path.GetFileName(path), isSmall);
-            if (sprite != null) CustomEditorUtility.DrawTextureGUI(rect, sprite);
-        }
-
-        //---------------------------------------------------------------------
-        // Helpers
-        //---------------------------------------------------------------------
-
-        private static CustomBrowserIconSettings LoadSettings()
-        {
-            return  Resources.Load<CustomBrowserIconSettings>("RainbowItemsSettings");
+            var texture = _settings.GetTextureByFolderName(Path.GetFileName(path), isSmall);
+            if (texture != null) GUI.DrawTexture(rect, texture);
         }
     }
 }
