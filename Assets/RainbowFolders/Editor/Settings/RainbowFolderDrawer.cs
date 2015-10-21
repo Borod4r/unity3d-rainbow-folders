@@ -20,8 +20,9 @@ namespace Borodar.RainbowFolders.Editor.Settings
     [CustomPropertyDrawer(typeof(RainbowFolder))]
     public class RainbowFolderDrawer : PropertyDrawer
     {
-        private const float PADDING = 4f;
+        private const float PADDING = 8f;
         private const float LINE_HEIGHT = 16f;
+        private const float LABELS_WIDTH = 100f;
         private const float PREVIEW_SIZE_SMALL = 16f;
         private const float PREVIEW_SIZE_LARGE = 64f;
 
@@ -33,25 +34,40 @@ namespace Borodar.RainbowFolders.Editor.Settings
             var smallIcon = property.FindPropertyRelative("SmallIcon");
             var largeIcon = property.FindPropertyRelative("LargeIcon");
 
+            // Labels
+
             position.y += PADDING;
-            position.width -= PREVIEW_SIZE_LARGE + PADDING;
+            position.width = LABELS_WIDTH;
             position.height = LINE_HEIGHT;
-            EditorGUI.PropertyField(position, folderName);
-
+                        
+            EditorGUI.LabelField(position, "Folder Name");
             position.y += LINE_HEIGHT;
-            EditorGUI.PropertyField(position, smallIcon);
-            
+            EditorGUI.LabelField(position, "Small Icon");
             position.y += LINE_HEIGHT;
-            EditorGUI.PropertyField(position, largeIcon);
+            EditorGUI.LabelField(position, "Large Icon");
 
-            position.x = originalPosition.width - PREVIEW_SIZE_LARGE + 16f;
+            // Values
+
+            position.x += LABELS_WIDTH;
+            position.y = originalPosition.y + PADDING;
+            position.width = originalPosition.width - LABELS_WIDTH - PREVIEW_SIZE_LARGE - PADDING;
+
+            EditorGUI.PropertyField(position, folderName, GUIContent.none);
+            position.y += LINE_HEIGHT;
+            EditorGUI.PropertyField(position, smallIcon, GUIContent.none);
+            position.y += LINE_HEIGHT;
+            EditorGUI.PropertyField(position, largeIcon, GUIContent.none);
+
+            // Preview
+
+            position.x += position.width + PADDING;
             position.y = originalPosition.y;
             position.width = position.height = PREVIEW_SIZE_LARGE;
-            GUI.DrawTexture(position, (Texture2D) largeIcon.objectReferenceValue ?? GetDefaultFolderIcon());
+            GUI.DrawTexture(position, (Texture2D)largeIcon.objectReferenceValue ?? GetDefaultFolderIcon());
 
-            position.y += PREVIEW_SIZE_LARGE - PREVIEW_SIZE_SMALL - PADDING;
+            position.y += PREVIEW_SIZE_LARGE - PREVIEW_SIZE_SMALL - 4f;
             position.width = position.height = PREVIEW_SIZE_SMALL;
-            GUI.DrawTexture(position, (Texture2D) smallIcon.objectReferenceValue ?? GetDefaultFolderIcon());
+            GUI.DrawTexture(position, (Texture2D)smallIcon.objectReferenceValue ?? GetDefaultFolderIcon());
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
