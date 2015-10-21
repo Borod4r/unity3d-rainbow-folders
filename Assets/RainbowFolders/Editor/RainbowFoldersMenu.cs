@@ -12,27 +12,18 @@
  * the License.
  */
 
-using Borodar.RainbowItems.Editor.Settings;
+using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
 using UnityEngine;
 
-namespace Borodar.RainbowItems.Editor
+namespace Borodar.RainbowFolders.Editor
 {
-    public class RainbowItemsMenu
+    public class RainbowFoldersMenu
     {
-        [MenuItem("Rainbow Items/Show Settings")]
+        [MenuItem("Rainbow Folders/Show Settings")]
         public static void OpenSettings()
         {
-            const string resoruceName = "RainbowItemsSettings";
-            var settings = Resources.Load(resoruceName, typeof(RainbowFoldersSettings));
-
-            if (settings == null)
-            {
-
-                RainbowItemsEditorUtility.CreateAsset<RainbowFoldersSettings>(resoruceName, "Assets/Resources");
-                settings = Resources.Load(resoruceName, typeof(RainbowFoldersSettings));
-            }
-
+            var settings = RainbowFoldersSettings.Load();
             Selection.activeObject = settings;
         }
     }

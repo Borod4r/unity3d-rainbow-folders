@@ -17,9 +17,9 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace Borodar.RainbowItems.Editor
+namespace Borodar.RainbowFolders.Editor
 {
-    public class RainbowItemsEditorUtility
+    public class RainbowFoldersEditorUtility
     {
         public static void CreateAsset<T>(string baseName, string forcedPath = "") where T : ScriptableObject
         {

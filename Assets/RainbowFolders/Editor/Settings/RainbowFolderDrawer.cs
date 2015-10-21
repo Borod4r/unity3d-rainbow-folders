@@ -15,7 +15,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace Borodar.RainbowItems.Editor.Settings
+namespace Borodar.RainbowFolders.Editor.Settings
 {
     [CustomPropertyDrawer(typeof(RainbowFolder))]
     public class RainbowFolderDrawer : PropertyDrawer
@@ -29,7 +29,7 @@ namespace Borodar.RainbowItems.Editor.Settings
         {
             var originalPosition = position;
 
-            var folderName = property.FindPropertyRelative("FolderName");
+            var folderName = property.FindPropertyRelative("Name");
             var smallIcon = property.FindPropertyRelative("SmallIcon");
             var largeIcon = property.FindPropertyRelative("LargeIcon");
 

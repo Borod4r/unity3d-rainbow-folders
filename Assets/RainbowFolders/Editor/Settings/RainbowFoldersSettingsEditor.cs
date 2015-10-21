@@ -12,23 +12,17 @@
  * the License.
  */
 
-using UnityEngine;
-using System.Collections.Generic;
-using System.Linq;
+using UnityEditor;
 
-namespace Borodar.RainbowItems.Editor.Settings
+namespace Borodar.RainbowFolders.Editor.Settings
 {
-    public class RainbowFoldersSettings : ScriptableObject
+    [CustomEditor(typeof (RainbowFoldersSettings))]
+    public class RainbowFoldersSettingsEditor : UnityEditor.Editor
     {
-        public List<RainbowFolder> Folders;
-
-        public Texture2D GetTextureByItemName(string folderName, bool small = true)
+        public override void OnInspectorGUI()
         {
-            var folder = Folders.FirstOrDefault(x => x.FolderName.Equals(folderName));
-
-            if (folder == null) { return null; }
-
-            return small ? folder.SmallIcon : folder.LargeIcon;
+            EditorGUILayout.HelpBox("Please set your icons for folder names here", MessageType.Info);
+            DrawDefaultInspector();
         }
     }
 }
