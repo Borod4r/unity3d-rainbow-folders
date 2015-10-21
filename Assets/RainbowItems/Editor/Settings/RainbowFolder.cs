@@ -18,7 +18,7 @@ using UnityEngine;
 namespace Borodar.RainbowItems.Editor.Settings
 {
     [Serializable]
-    public class Folder
+    public class RainbowFolder
     {
         public string FolderName;
         public Texture2D SmallIcon;

@@ -16,8 +16,8 @@ using UnityEditor;
 
 namespace Borodar.RainbowItems.Editor.Settings
 {
-    [CustomEditor(typeof (CustomBrowserIconSettings))]
-    public class CustomBrowserIconSettingsEditor : UnityEditor.Editor
+    [CustomEditor(typeof (RainbowFoldersSettings))]
+    public class RainbowFoldersSettingsEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {

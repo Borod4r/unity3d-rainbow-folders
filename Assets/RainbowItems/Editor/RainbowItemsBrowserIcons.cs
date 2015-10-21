@@ -35,7 +35,7 @@ namespace Borodar.RainbowItems.Editor
         private const string STREAMING_ASSETS_FOLDER_NAME = "StreamingAssets";
         #endregion
 
-        private static CustomBrowserIconSettings _settings;
+        private static RainbowFoldersSettings _settings;
 
         static RainbowItemsBrowserIcons()
         {
@@ -68,9 +68,9 @@ namespace Borodar.RainbowItems.Editor
         // Helpers
         //---------------------------------------------------------------------
 
-        private static CustomBrowserIconSettings LoadSettings()
+        private static RainbowFoldersSettings LoadSettings()
         {
-            return  Resources.Load<CustomBrowserIconSettings>("RainbowItemsSettings");
+            return  Resources.Load<RainbowFoldersSettings>("RainbowItemsSettings");
         }
     }
 }

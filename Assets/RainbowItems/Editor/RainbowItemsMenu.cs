@@ -24,13 +24,13 @@ namespace Borodar.RainbowItems.Editor
         public static void OpenSettings()
         {
             const string resoruceName = "RainbowItemsSettings";
-            var settings = Resources.Load(resoruceName, typeof(CustomBrowserIconSettings));
+            var settings = Resources.Load(resoruceName, typeof(RainbowFoldersSettings));
 
             if (settings == null)
             {
 
-                RainbowItemsEditorUtility.CreateAsset<CustomBrowserIconSettings>(resoruceName, "Assets/Resources");
-                settings = Resources.Load("RainbowItemsSettings", typeof(CustomBrowserIconSettings));
+                RainbowItemsEditorUtility.CreateAsset<RainbowFoldersSettings>(resoruceName, "Assets/Resources");
+                settings = Resources.Load(resoruceName, typeof(RainbowFoldersSettings));
             }
 
             Selection.activeObject = settings;

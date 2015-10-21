@@ -18,9 +18,9 @@ using System.Linq;
 
 namespace Borodar.RainbowItems.Editor.Settings
 {
-    public class CustomBrowserIconSettings : ScriptableObject
+    public class RainbowFoldersSettings : ScriptableObject
     {
-        public List<Folder> Folders;
+        public List<RainbowFolder> Folders;
 
         public Texture2D GetTextureByItemName(string folderName, bool small = true)
         {
