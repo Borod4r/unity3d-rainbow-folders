@@ -48,11 +48,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
 
         private static bool IsNullOrEmpty(ICollection collection)
         {
-            if (collection != null)
-            {
-                return (collection.Count == 0);
-            }
-            return true;
+            return collection == null || (collection.Count == 0);
         }
     }
 }
