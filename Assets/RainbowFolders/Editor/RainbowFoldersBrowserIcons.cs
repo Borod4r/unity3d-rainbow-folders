@@ -35,6 +35,8 @@ namespace Borodar.RainbowFolders.Editor
         private const string STREAMING_ASSETS_FOLDER_NAME = "StreamingAssets";
         #endregion
 
+        private const float LargeIconSize = 64f;
+
         private static RainbowFoldersSettings _settings;
 
         static RainbowFoldersBrowserIcons()
@@ -61,7 +63,19 @@ namespace Borodar.RainbowFolders.Editor
             _settings = _settings ?? RainbowFoldersSettings.Load();
 
             var texture = _settings.GetTextureByFolderName(Path.GetFileName(path), isSmall);
-            if (texture != null) GUI.DrawTexture(rect, texture);
+
+            if (texture != null)
+            {
+                if (rect.width > LargeIconSize)
+                {
+                    float offset = (rect.width - LargeIconSize) / 2f;
+                    GUI.DrawTexture(new Rect(rect.x + offset, rect.y + offset, LargeIconSize, LargeIconSize), texture);
+                }
+                else
+                {
+                    GUI.DrawTexture(rect, texture);
+                }
+            }
         }
     }
 }
