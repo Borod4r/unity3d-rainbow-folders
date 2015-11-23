@@ -14,11 +14,10 @@
 
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
-using UnityEngine;
 
 namespace Borodar.RainbowFolders.Editor
 {
-    public class RainbowFoldersMenu
+    public static class RainbowFoldersMenu
     {
         [MenuItem("Rainbow Folders/Show Settings")]
         public static void OpenSettings()
