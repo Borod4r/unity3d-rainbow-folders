@@ -19,7 +19,7 @@ namespace Borodar.RainbowFolders.Editor
 {
     public static class RainbowFoldersMenu
     {
-        [MenuItem("Rainbow Folders/Show Settings")]
+        [MenuItem("Edit/Rainbow Folders Settings", false, 500)]
         public static void OpenSettings()
         {
             var settings = RainbowFoldersSettings.Load();
