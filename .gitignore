@@ -25,3 +25,7 @@ sysinfo.txt
 /Assets/-tk2d.asset.meta
 Assets/UnityVS/
 Assets/UnityVS.meta
+
+# Asset Store Tools
+/Assets/AssetStoreTools
+/Assets/AssetStoreTools.meta
