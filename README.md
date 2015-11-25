@@ -1,6 +1,6 @@
 # Unity3D Rainbow Folders
 
-Did you ever think about to highlight project folders that you use often? This simple but colorful asset allows you to do that!
+Have you ever thought about highlighting often used project folders? This simple but colorful asset allows you to do that!
 
 With "Rainbow Folders" you can set custom icon for any folder in unity project browser.
 
