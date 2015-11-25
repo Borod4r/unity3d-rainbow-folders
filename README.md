@@ -1,6 +1,8 @@
 # Unity3D Rainbow Folders
 
-This asset allows you to set custom icons for folders in unity project browser.
+Did you ever think about to highlight project folders that you use often? This simple but colorful asset allows you to do that!
+
+With "Rainbow Folders" you can set custom icon for any folder in unity project browser.
 
 ##### Unity Free Look
 ![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/preview_rainbow_folders.png)
