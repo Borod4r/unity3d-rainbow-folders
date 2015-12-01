@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Name: RainbowFoldersSettings
   m_EditorClassIdentifier: 
   Folders:
+  - Name: Prefabs
+    SmallIcon: {fileID: 2800000, guid: 483d693b3f9d5704b89409016b40bc74, type: 3}
+    LargeIcon: {fileID: 2800000, guid: fac7470563f79024ebc244b39080448d, type: 3}
   - Name: Scenes
     SmallIcon: {fileID: 2800000, guid: 51a760c36f8d6444993cc8dfa0d15e35, type: 3}
     LargeIcon: {fileID: 2800000, guid: 78b5c98022eb7de44ae0d92ff4bbed1c, type: 3}
