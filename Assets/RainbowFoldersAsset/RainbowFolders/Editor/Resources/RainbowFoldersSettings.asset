@@ -16,8 +16,8 @@ MonoBehaviour:
     SmallIcon: {fileID: 2800000, guid: 483d693b3f9d5704b89409016b40bc74, type: 3}
     LargeIcon: {fileID: 2800000, guid: fac7470563f79024ebc244b39080448d, type: 3}
   - Name: Scenes
-    SmallIcon: {fileID: 2800000, guid: 51a760c36f8d6444993cc8dfa0d15e35, type: 3}
-    LargeIcon: {fileID: 2800000, guid: 78b5c98022eb7de44ae0d92ff4bbed1c, type: 3}
+    SmallIcon: {fileID: 2800000, guid: 40ff06f7c381dcf4391ca8342d04260c, type: 3}
+    LargeIcon: {fileID: 2800000, guid: f9d86cd8e960f584a9aa5a8ee61c4115, type: 3}
   - Name: Scripts
     SmallIcon: {fileID: 2800000, guid: ed89c5b2588683046989a2a138f3b343, type: 3}
     LargeIcon: {fileID: 2800000, guid: 9fca1a811da70484494d9e10d46e0636, type: 3}
