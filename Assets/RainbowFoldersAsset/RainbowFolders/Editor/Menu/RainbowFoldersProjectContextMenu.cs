@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
 
 namespace Borodar.RainbowFolders.Editor
@@ -46,7 +47,13 @@ namespace Borodar.RainbowFolders.Editor
             if (AssetDatabase.IsValidFolder(path))
             {
                 Debug.Log("Colorizing " + path);
-                // TODO Colorize logic goes here
+                var iconsForFolder = FolderColorsContainer.Load().GetFolderByColor(FolderColors.Red);
+                RainbowFoldersSettings.Load().Folders.Add(new RainbowFolder
+                {
+                    Name = asset.name,
+                    SmallIcon = iconsForFolder.SmallIcon,
+                    LargeIcon = iconsForFolder.LargeIcon
+                });
             }
             else
             {

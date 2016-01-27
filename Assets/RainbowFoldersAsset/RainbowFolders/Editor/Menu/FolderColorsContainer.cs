@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Borodar.RainbowFolders.Editor
 {
     public class FolderColorsContainer : ScriptableObject
     {
-        public const string RESOURCE_NAME = "RainbowColorFoldersIconsStorage";
+        public const string RESOURCE_NAME = "Internal/RainbowColorFoldersIconsStorage";
 
         public List<RainbowColorFolder> ColorFolderIcons;
 
@@ -18,6 +19,11 @@ namespace Borodar.RainbowFolders.Editor
                 colorIcons = Resources.Load<FolderColorsContainer>(RESOURCE_NAME);
             }
             return colorIcons;
+        }
+
+        public RainbowColorFolder GetFolderByColor(FolderColors color)
+        {
+            return ColorFolderIcons.Single(x => x.Color == color);
         }
     }
 }
