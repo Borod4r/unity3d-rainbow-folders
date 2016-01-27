@@ -5,6 +5,7 @@ using UnityEditor;
 
 namespace Borodar.RainbowFolders.Editor
 {
+    [InitializeOnLoad]
     public static class RainbowFoldersProjectContextMenu
     {
         private const string COLORIZE_MENU = "Assets/Rainbow Folders/Colorize/";
@@ -19,6 +20,7 @@ namespace Borodar.RainbowFolders.Editor
 
         public static void ColorizeSelectedFolder()
         {
+            FolderColorsContainer.Load();
             var selectedObj = Selection.activeObject;
             if (selectedObj == null)
             {
@@ -44,6 +46,7 @@ namespace Borodar.RainbowFolders.Editor
             if (AssetDatabase.IsValidFolder(path))
             {
                 Debug.Log("Colorizing " + path);
+                // TODO Colorize logic goes here
             }
             else
             {
