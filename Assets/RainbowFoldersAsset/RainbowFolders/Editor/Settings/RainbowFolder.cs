@@ -20,8 +20,18 @@ namespace Borodar.RainbowFolders.Editor.Settings
     [Serializable]
     public class RainbowFolder
     {
-        public string Name;
+        public string Name; // Just for backward compatibility, should be removed in later versions
+
+        public string Key;
+        public KeyType Type;
+
         public Texture2D SmallIcon;
         public Texture2D LargeIcon;
+
+        public enum KeyType
+        {
+            Name,
+            Path
+        }
     }
 }
