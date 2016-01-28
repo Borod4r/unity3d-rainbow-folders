@@ -20,7 +20,8 @@ namespace Borodar.RainbowFolders.Editor.Settings
     [Serializable]
     public class RainbowFolder
     {
-        public string Name; // Just for backward compatibility, should be removed in later versions
+        [ObsoleteAttribute("Use RainbowFolder.Key and RainbowFolder.Type instead.", false)]
+        public string Name;
 
         public string Key;
         public KeyType Type;
