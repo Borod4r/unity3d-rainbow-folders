@@ -62,7 +62,7 @@ namespace Borodar.RainbowFolders.Editor
 
             _settings = _settings ?? RainbowFoldersSettings.Load();
 
-            var texture = _settings.GetTextureByFolderName(Path.GetFileName(path), isSmall);
+            var texture = _settings.GetCustomFolderIcon(path, isSmall);
 
             if (texture == null) return;
             if (rect.width > LARGE_ICON_SIZE)

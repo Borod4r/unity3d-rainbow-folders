@@ -12,10 +12,11 @@
  * the License.
  */
 
+using System;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 
 namespace Borodar.RainbowFolders.Editor.Settings
 {
@@ -36,19 +37,46 @@ namespace Borodar.RainbowFolders.Editor.Settings
             return settings;
         }
 
-        public Texture2D GetTextureByFolderName(string folderName, bool small = true)
+        public Texture2D GetCustomFolderIcon(string folderPath, bool small = true)
         {
-            if (IsNullOrEmpty(Folders)) return null;
-
-            var folder = Folders.FirstOrDefault(x => x.Name.Equals(folderName));
+            var folder = GetFolderByKey(Folders, folderPath);
             if (folder == null) return null;
 
             return small ? folder.SmallIcon : folder.LargeIcon;
         }
 
+        //---------------------------------------------------------------------
+        // Helpers
+        //---------------------------------------------------------------------
+
         private static bool IsNullOrEmpty(ICollection collection)
         {
             return collection == null || (collection.Count == 0);
+        }
+
+        private static RainbowFolder GetFolderByKey(List<RainbowFolder> folders, string folderPath)
+        {
+            if (IsNullOrEmpty(folders)) return null;
+
+            foreach (var folder in folders)
+            {
+                switch (folder.Type)
+                {
+                    case RainbowFolder.KeyType.Name:
+                        if (folder.Key == null) folder.Key = folder.Name; // Just for backward compatibility, should be removed in later versions
+
+                        var folderName = Path.GetFileName(folderPath);
+                        if (folder.Key.Equals(folderName)) return folder;
+                        break;
+                    case RainbowFolder.KeyType.Path:
+                        if (folder.Key.Equals(folderPath)) return folder;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+
+            return null;
         }
     }
 }
