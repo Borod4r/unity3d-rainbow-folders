@@ -42,7 +42,6 @@ namespace Borodar.RainbowFolders.Editor
 
         public static void Colorize(FolderColors color)
         {
-            FolderColorsContainer.Load();
             var selectedObj = Selection.activeObject;
             if (selectedObj == null)
             {
@@ -51,17 +50,13 @@ namespace Borodar.RainbowFolders.Editor
                 return;
             }
 
-            DefaultAsset asset;
-            try
-            {
-                asset = (DefaultAsset) Selection.activeObject;
-            }
-            catch (InvalidCastException)
+            if (!(selectedObj is DefaultAsset))
             {
                 Debug.LogWarning("Can only colorize folders");
                 return;
             }
 
+            var asset = (DefaultAsset) selectedObj;
             var path = AssetDatabase.GetAssetPath(asset);
             if (!AssetDatabase.IsValidFolder(path))
             {
