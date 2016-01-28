@@ -5,6 +5,7 @@ namespace Borodar.RainbowFolders.Editor
 {
     public enum FolderColors
     {
+        Default,
         Red,
         Vermilion,
         Orange,

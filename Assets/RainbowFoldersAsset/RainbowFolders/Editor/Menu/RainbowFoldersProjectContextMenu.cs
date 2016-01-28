@@ -12,6 +12,7 @@ namespace Borodar.RainbowFolders.Editor
     {
         private const string COLORIZE_MENU = "Assets/Rainbow Folders/Colorize/";
 
+        private const string DEFAULT = COLORIZE_MENU + "Revert to Default";
         private const string RED = COLORIZE_MENU + "Red";
         private const string VERMILION = COLORIZE_MENU + "Vermilion";
         private const string ORANGE = COLORIZE_MENU + "Orange";
@@ -25,7 +26,7 @@ namespace Borodar.RainbowFolders.Editor
         private const string VIOLET = COLORIZE_MENU + "Violet";
         private const string MAGENTA = COLORIZE_MENU + "Magenta";
 
-
+        [MenuItem(DEFAULT, false, 2000)] static void Default() { Colorize(FolderColors.Default); }
         [MenuItem(RED)] static void Red() { Colorize(FolderColors.Red);}
         [MenuItem(VERMILION)] static void Vermilion() { Colorize(FolderColors.Vermilion); }
         [MenuItem(ORANGE)] static void Orange() { Colorize(FolderColors.Orange); }
@@ -68,14 +69,20 @@ namespace Borodar.RainbowFolders.Editor
                 return;
             }
 
-            Debug.Log("Colorizing " + path);
             var iconsForFolder = FolderColorsContainer.Load().GetFolderByColor(color);
             var settings = RainbowFoldersSettings.Load();
 
+            if (color == FolderColors.Default)
+            {
+                settings.Folders.RemoveAll(x => x.Name == asset.name);
+                return;
+            }
+
             var folder = settings.Folders.SingleOrDefault(x => x.Name == asset.name);
+
+
             if (folder == null)
             {
-                // add new
                 settings.Folders.Add(new RainbowFolder
                 {
                     Name = asset.name,
@@ -85,7 +92,6 @@ namespace Borodar.RainbowFolders.Editor
             }
             else
             {
-                // modify existing
                 folder.SmallIcon = iconsForFolder.SmallIcon;
                 folder.LargeIcon = iconsForFolder.LargeIcon;
             }
