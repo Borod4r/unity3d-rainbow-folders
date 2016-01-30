@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 using System.Linq;
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
@@ -69,16 +67,17 @@ namespace Borodar.RainbowFolders.Editor
 
             if (color == FolderColors.Default)
             {
-                settings.Folders.RemoveAll(x => x.Name == asset.name);
+                settings.Folders.RemoveAll(x => x.Key == path);
                 return;
             }
 
-            var folder = settings.Folders.SingleOrDefault(x => x.Name == asset.name);
+            var folder = settings.Folders.SingleOrDefault(x => x.Key == path);
             if (folder == null)
             {
                 settings.Folders.Add(new RainbowFolder
                 {
-                    Name = asset.name,
+                    Type = RainbowFolder.KeyType.Path,
+                    Key = path,
                     SmallIcon = iconsForFolder.SmallIcon,
                     LargeIcon = iconsForFolder.LargeIcon
                 });
