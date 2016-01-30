@@ -71,6 +71,7 @@ namespace Borodar.RainbowFolders.Editor
                 return;
             }
 
+            Undo.RecordObject(settings, "Modify Rainbow Folder Settings");
             var folder = settings.Folders.SingleOrDefault(x => x.Key == path);
             if (folder == null)
             {
@@ -87,6 +88,8 @@ namespace Borodar.RainbowFolders.Editor
                 folder.SmallIcon = iconsForFolder.SmallIcon;
                 folder.LargeIcon = iconsForFolder.LargeIcon;
             }
+
+            EditorUtility.SetDirty(settings);
         }
     }
 }
