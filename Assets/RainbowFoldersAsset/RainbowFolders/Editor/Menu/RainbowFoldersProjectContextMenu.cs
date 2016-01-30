@@ -64,7 +64,7 @@ namespace Borodar.RainbowFolders.Editor
                 return;
             }
 
-            var iconsForFolder = FolderColorsContainer.Load().GetFolderByColor(color);
+            var iconsForFolder = FolderColorsStorage.GetInstance().GetFolderByColor(color);
             var settings = RainbowFoldersSettings.Load();
 
             if (color == FolderColors.Default)
@@ -74,8 +74,6 @@ namespace Borodar.RainbowFolders.Editor
             }
 
             var folder = settings.Folders.SingleOrDefault(x => x.Name == asset.name);
-
-
             if (folder == null)
             {
                 settings.Folders.Add(new RainbowFolder

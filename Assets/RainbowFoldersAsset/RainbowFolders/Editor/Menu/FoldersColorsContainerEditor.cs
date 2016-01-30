@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Borodar.RainbowFolders.Editor
 {
-    [CustomEditor(typeof(FolderColorsContainer))]
+    [CustomEditor(typeof(FolderColorsStorage))]
     public class FoldersColorsContainerEditor : UnityEditor.Editor
     {
         private const string PROP_NAME_FOLDERS = "ColorFolderIcons";
