@@ -70,9 +70,7 @@ namespace Borodar.RainbowFolders.Editor
                 return;
             }
 
-            Undo.RecordObject(settings, "Modify Rainbow Folder Settings");
-            settings.Folders.ColorizeFolder(path, FolderColorsStorage.GetInstance().GetFolderByColor(color));
-            EditorUtility.SetDirty(settings);
+            settings.ColorizeFolderByPath(path, FolderColorsStorage.GetInstance().GetFolderByColor(color));
         }
     }
 }

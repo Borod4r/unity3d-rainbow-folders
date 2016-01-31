@@ -1,15 +1,16 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Borodar.RainbowFolders.Editor.Settings;
+using UnityEditor;
 
 namespace Borodar.RainbowFolders.Editor
 {
     public static class RainbowFoldersExtensionMethods
     {
-        public static void ColorizeFolder(this List<RainbowFolder> folders, string path, RainbowColorFolder colorIcons)
+        public static void ColorizeFolderByPath(this RainbowFoldersSettings settings, string path, RainbowColorFolder colorIcons)
         {
+            Undo.RecordObject(settings, "Modify Rainbow Folder Settings");
+
+            var folders = settings.Folders;
             var folder = folders.SingleOrDefault(x => x.Key == path);
             if (folder == null)
             {
@@ -26,6 +27,8 @@ namespace Borodar.RainbowFolders.Editor
                 folder.SmallIcon = colorIcons.SmallIcon;
                 folder.LargeIcon = colorIcons.LargeIcon;
             }
+
+            EditorUtility.SetDirty(settings);
         }
     }
 }
