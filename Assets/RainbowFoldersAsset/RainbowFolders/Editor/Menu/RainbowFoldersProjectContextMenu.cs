@@ -62,7 +62,6 @@ namespace Borodar.RainbowFolders.Editor
                 return;
             }
 
-            var iconsForFolder = FolderColorsStorage.GetInstance().GetFolderByColor(color);
             var settings = RainbowFoldersSettings.Load();
 
             if (color == FolderColors.Default)
@@ -72,23 +71,7 @@ namespace Borodar.RainbowFolders.Editor
             }
 
             Undo.RecordObject(settings, "Modify Rainbow Folder Settings");
-            var folder = settings.Folders.SingleOrDefault(x => x.Key == path);
-            if (folder == null)
-            {
-                settings.Folders.Add(new RainbowFolder
-                {
-                    Type = RainbowFolder.KeyType.Path,
-                    Key = path,
-                    SmallIcon = iconsForFolder.SmallIcon,
-                    LargeIcon = iconsForFolder.LargeIcon
-                });
-            }
-            else
-            {
-                folder.SmallIcon = iconsForFolder.SmallIcon;
-                folder.LargeIcon = iconsForFolder.LargeIcon;
-            }
-
+            settings.Folders.ColorizeFolder(path, FolderColorsStorage.GetInstance().GetFolderByColor(color));
             EditorUtility.SetDirty(settings);
         }
     }
