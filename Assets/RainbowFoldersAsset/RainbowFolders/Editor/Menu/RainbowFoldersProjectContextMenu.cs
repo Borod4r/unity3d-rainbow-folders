@@ -57,6 +57,8 @@ namespace Borodar.RainbowFolders.Editor
 
         public static void Colorize(FolderColors color)
         {
+            WarnAboutTwoColumnLayout();
+
             var selectedObj = Selection.activeObject;
             if (selectedObj == null)
             {
@@ -87,6 +89,14 @@ namespace Borodar.RainbowFolders.Editor
             else
             {
                 settings.RemoveAllByPath(path);
+            }
+        }
+
+        private static void WarnAboutTwoColumnLayout()
+        {
+            if (RainbowFoldersEditorUtility.IsLastSelectedProjectViewInTwoColumnLayout())
+            {
+                Debug.LogWarning("Please remember to select the folder in the right column of the project view");
             }
         }
     }
