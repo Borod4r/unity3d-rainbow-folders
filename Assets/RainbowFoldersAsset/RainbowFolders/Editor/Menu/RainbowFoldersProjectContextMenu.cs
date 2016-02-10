@@ -38,6 +38,9 @@ namespace Borodar.RainbowFolders.Editor
         private const string VIOLET = COLORIZE_MENU + "Violet";
         private const string MAGENTA = COLORIZE_MENU + "Magenta";
 
+        private const string WARNING_MSG =
+            "Can only colorize folders. Please right click on the folder in the Project window";
+
         [MenuItem(DEFAULT, false, 2000)] static void Default() { Colorize(FolderColors.Default); }
         [MenuItem(RED)] static void Red() { Colorize(FolderColors.Red);}
         [MenuItem(VERMILION)] static void Vermilion() { Colorize(FolderColors.Vermilion); }
@@ -64,27 +67,27 @@ namespace Borodar.RainbowFolders.Editor
 
             if (!(selectedObj is DefaultAsset))
             {
-                Debug.LogWarning("Can only colorize folders");
+                Debug.LogWarning(WARNING_MSG);
                 return;
             }
 
-            var asset = (DefaultAsset) selectedObj;
-            var path = AssetDatabase.GetAssetPath(asset);
+            var path = AssetDatabase.GetAssetPath(selectedObj);
             if (!AssetDatabase.IsValidFolder(path))
             {
-                Debug.LogWarning("Can only colorize folders");
+                Debug.LogWarning(WARNING_MSG);
                 return;
             }
 
             var settings = RainbowFoldersSettings.Load();
 
-            if (color == FolderColors.Default)
+            if (color != FolderColors.Default)
             {
-                settings.Folders.RemoveAll(x => x.Key == path);
-                return;
+                settings.ColorizeFolderByPath(path, FolderColorsStorage.GetInstance().GetFolderByColor(color));
             }
-
-            settings.ColorizeFolderByPath(path, FolderColorsStorage.GetInstance().GetFolderByColor(color));
+            else
+            {
+                settings.RemoveAllByPath(path);
+            }
         }
     }
 }

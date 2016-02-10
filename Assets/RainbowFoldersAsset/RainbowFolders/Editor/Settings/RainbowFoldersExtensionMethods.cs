@@ -45,5 +45,10 @@ namespace Borodar.RainbowFolders.Editor
 
             EditorUtility.SetDirty(settings);
         }
+
+        public static void RemoveAllByPath(this RainbowFoldersSettings settings, string path)
+        {
+            settings.Folders.RemoveAll(x => x.Key == path);
+        }
     }
 }
