@@ -96,7 +96,7 @@ namespace Borodar.RainbowFolders.Editor
         {
             if (RainbowFoldersEditorUtility.IsLastSelectedProjectViewInTwoColumnLayout())
             {
-                Debug.LogWarning("Please remember to select the folder in the right column of the project view");
+                Debug.LogWarning("Please remember to perform colorizing on the folder in the right column of the project view");
             }
         }
     }
