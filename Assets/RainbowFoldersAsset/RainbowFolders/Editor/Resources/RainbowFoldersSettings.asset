@@ -30,7 +30,7 @@ MonoBehaviour:
   - Name: Extensions
     Key: Assets/RainbowFoldersAsset/RainbowFolders/Examples/Types/Extensions
     Type: 1
-    SmallIcon: {fileID: 2800000, guid: d839fddcd46a1aa4bbdc116d3122ab95, type: 3}
+    SmallIcon: {fileID: 2800000, guid: 0a498e8f7fbcbef4db91d2d411e3f70f, type: 3}
     LargeIcon: {fileID: 2800000, guid: b88339035f924f94eab1e64bac79149f, type: 3}
   - Name: Extensions
     Key: Assets/RainbowFoldersAsset/RainbowFolders/Examples/Types/Plugins
