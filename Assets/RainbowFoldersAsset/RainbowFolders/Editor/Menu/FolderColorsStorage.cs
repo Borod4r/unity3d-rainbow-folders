@@ -47,6 +47,10 @@ namespace Borodar.RainbowFolders.Editor
         {
             if (instance == null)
             {
+                LoadFromResources();
+            }
+            if (instance == null)
+            {
                 throw new NullReferenceException("Storage of colorful folder icons was not initialized correctly");
             }
 
