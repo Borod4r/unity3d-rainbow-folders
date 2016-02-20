@@ -1,7 +1,19 @@
-﻿using System;
+﻿/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+
 using UnityEngine;
-using System.Collections;
-using System.Linq;
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
 
@@ -12,6 +24,7 @@ namespace Borodar.RainbowFolders.Editor
     {
         private const string COLORIZE_MENU = "Assets/Rainbow Folders/Colorize/";
 
+        private const string DEFAULT = COLORIZE_MENU + "Revert to Default";
         private const string RED = COLORIZE_MENU + "Red";
         private const string VERMILION = COLORIZE_MENU + "Vermilion";
         private const string ORANGE = COLORIZE_MENU + "Orange";
@@ -25,7 +38,10 @@ namespace Borodar.RainbowFolders.Editor
         private const string VIOLET = COLORIZE_MENU + "Violet";
         private const string MAGENTA = COLORIZE_MENU + "Magenta";
 
+        private const string WARNING_MSG =
+            "Can only colorize folders. Please right click on the folder in the Project window";
 
+        [MenuItem(DEFAULT, false, 2000)] static void Default() { Colorize(FolderColors.Default); }
         [MenuItem(RED)] static void Red() { Colorize(FolderColors.Red);}
         [MenuItem(VERMILION)] static void Vermilion() { Colorize(FolderColors.Vermilion); }
         [MenuItem(ORANGE)] static void Orange() { Colorize(FolderColors.Orange); }
@@ -41,7 +57,8 @@ namespace Borodar.RainbowFolders.Editor
 
         public static void Colorize(FolderColors color)
         {
-            FolderColorsContainer.Load();
+            WarnAboutTwoColumnLayout();
+
             var selectedObj = Selection.activeObject;
             if (selectedObj == null)
             {
@@ -50,44 +67,36 @@ namespace Borodar.RainbowFolders.Editor
                 return;
             }
 
-            DefaultAsset asset;
-            try
+            if (!(selectedObj is DefaultAsset))
             {
-                asset = (DefaultAsset) Selection.activeObject;
-            }
-            catch (InvalidCastException)
-            {
-                Debug.LogWarning("Can only colorize folders");
+                Debug.LogWarning(WARNING_MSG);
                 return;
             }
 
-            var path = AssetDatabase.GetAssetPath(asset);
+            var path = AssetDatabase.GetAssetPath(selectedObj);
             if (!AssetDatabase.IsValidFolder(path))
             {
-                Debug.LogWarning("Can only colorize folders");
+                Debug.LogWarning(WARNING_MSG);
                 return;
             }
 
-            Debug.Log("Colorizing " + path);
-            var iconsForFolder = FolderColorsContainer.Load().GetFolderByColor(color);
             var settings = RainbowFoldersSettings.Load();
 
-            var folder = settings.Folders.SingleOrDefault(x => x.Name == asset.name);
-            if (folder == null)
+            if (color != FolderColors.Default)
             {
-                // add new
-                settings.Folders.Add(new RainbowFolder
-                {
-                    Name = asset.name,
-                    SmallIcon = iconsForFolder.SmallIcon,
-                    LargeIcon = iconsForFolder.LargeIcon
-                });
+                settings.ColorizeFolderByPath(path, FolderColorsStorage.GetInstance().GetFolderByColor(color));
             }
             else
             {
-                // modify existing
-                folder.SmallIcon = iconsForFolder.SmallIcon;
-                folder.LargeIcon = iconsForFolder.LargeIcon;
+                settings.RemoveAllByPath(path);
+            }
+        }
+
+        private static void WarnAboutTwoColumnLayout()
+        {
+            if (RainbowFoldersEditorUtility.IsLastSelectedProjectViewInTwoColumnLayout())
+            {
+                Debug.LogWarning("Please remember to perform colorizing on the folder in the right column of the project view");
             }
         }
     }

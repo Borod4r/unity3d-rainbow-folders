@@ -29,3 +29,6 @@ Assets/UnityVS.meta
 # Asset Store Tools
 /Assets/AssetStoreTools
 /Assets/AssetStoreTools.meta
+
+*.sublime-project
+*.sublime-workspace

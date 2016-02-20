@@ -14,6 +14,7 @@
 
 using System;
 using System.IO;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -21,6 +22,9 @@ namespace Borodar.RainbowFolders.Editor
 {
     public class RainbowFoldersEditorUtility
     {
+        /// <summary>
+        /// Creates .asset file of the specified <see cref="UnityEngine.ScriptableObject"/>
+        /// </summary>
         public static void CreateAsset<T>(string baseName, string forcedPath = "") where T : ScriptableObject
         {
             if (baseName.Contains("/"))
@@ -54,6 +58,31 @@ namespace Borodar.RainbowFolders.Editor
             AssetDatabase.SaveAssets();
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = asset;
+        }
+
+        public static bool IsLastSelectedProjectViewInTwoColumnLayout()
+        {
+            Type projectBrowserType = Type.GetType("UnityEditor.ProjectBrowser,UnityEditor");
+            if (projectBrowserType != null)
+            {
+                FieldInfo lastProjectBrowser = projectBrowserType.GetField("s_LastInteractedProjectBrowser", BindingFlags.Static | BindingFlags.Public);
+                if (lastProjectBrowser != null)
+                {
+                    object lastProjectBrowserInstance = lastProjectBrowser.GetValue(null);
+                    FieldInfo projectBrowserViewMode = projectBrowserType.GetField("m_ViewMode", BindingFlags.Instance | BindingFlags.NonPublic);
+                    if (projectBrowserViewMode != null)
+                    {
+                        // 0 - one column, 1 - two column
+                        int viewMode = (int)projectBrowserViewMode.GetValue(lastProjectBrowserInstance);
+                        if (viewMode == 1)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }

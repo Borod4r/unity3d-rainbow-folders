@@ -22,7 +22,7 @@ You can assign a custom icon to the folder using:
 * Folder **Name** - icon will be applied to all folders with the same name
 * or folder **Path** - icon will be applied to a single folder. The path format: `Assets/SomeFolder/YourFolder`
 
-Then you need to scpecify actually icons:
+Then you need to specify actually icons:
 * **Small Icon** - your custom icon for the left panel of the project browser (16x16 px)
 * **Large Icon**  - your custom icon for the right panel of the project browser (64x64 px)
 
