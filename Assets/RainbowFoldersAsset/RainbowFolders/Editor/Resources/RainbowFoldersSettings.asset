@@ -38,6 +38,11 @@ MonoBehaviour:
     SmallIcon: {fileID: 2800000, guid: 8f45cff1df9688244b1fa6e2da91e05f, type: 3}
     LargeIcon: {fileID: 2800000, guid: 15c3471930a7ff44aa9a30bc21a5ea06, type: 3}
   - Name: 
+    Key: Textures
+    Type: 0
+    SmallIcon: {fileID: 2800000, guid: 27bb0c12d809b1e4fb2851723d50cde6, type: 3}
+    LargeIcon: {fileID: 2800000, guid: f61940b61bdca1843bed2dbc93de9038, type: 3}
+  - Name: 
     Key: Editor
     Type: 0
     SmallIcon: {fileID: 2800000, guid: ec2951dbd8c22234c8fdf92529d860fd, type: 3}
