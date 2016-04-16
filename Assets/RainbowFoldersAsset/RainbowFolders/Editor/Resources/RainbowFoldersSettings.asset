@@ -63,6 +63,11 @@ MonoBehaviour:
     SmallIcon: {fileID: 2800000, guid: ec2951dbd8c22234c8fdf92529d860fd, type: 3}
     LargeIcon: {fileID: 2800000, guid: ad4412933c34d994a9a6daafb8202f4a, type: 3}
   - Name: 
+    Key: Resources
+    Type: 0
+    SmallIcon: {fileID: 2800000, guid: 97efd597cd18c564aadb45280476b23a, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 650a564eae901434e86dcb456fcc046a, type: 3}
+  - Name: 
     Key: RainbowFolders
     Type: 0
     SmallIcon: {fileID: 2800000, guid: 8d50cf779e5b4f54a831bdefc32b044c, type: 3}
