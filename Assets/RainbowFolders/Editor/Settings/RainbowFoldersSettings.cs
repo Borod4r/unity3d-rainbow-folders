@@ -63,8 +63,6 @@ namespace Borodar.RainbowFolders.Editor.Settings
                 switch (folder.Type)
                 {
                     case RainbowFolder.KeyType.Name:
-                        if (folder.Key == null) folder.Key = folder.Name; // Just for backward compatibility, should be removed in later versions
-
                         var folderName = Path.GetFileName(folderPath);
                         if (folder.Key.Equals(folderName)) return folder;
                         break;
