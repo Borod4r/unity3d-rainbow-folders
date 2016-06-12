@@ -12,7 +12,6 @@
  * the License.
  */
 
-
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,17 +36,9 @@ namespace Borodar.RainbowFolders.Editor
             {
                 if (instance == null)
                 {
-                    string assetNameWithExtension = string.Join(".", new []
+                    var colorStorageAssetPath = GetColorStorageAssetPath();
+                    if ((instance = EditorGUIUtility.Load(colorStorageAssetPath) as FolderColorsStorage) == null)
                     {
-                        FOLDER_COLOR_STORAGET_ASSET_NAME,
-                        RainbowFoldersSettings.SETTINGS_ASSET_EXTENSION
-                    });
-                    string settingsPath = Path.Combine(RainbowFoldersSettings.SETTINGS_FOLDER, assetNameWithExtension);
-
-                    if ((instance = EditorGUIUtility.Load(settingsPath) as FolderColorsStorage) == null)
-                    {
-                        instance = CreateInstance<FolderColorsStorage>();
-
                         if (!Directory.Exists(Path.Combine(Application.dataPath, RainbowFoldersSettings.SETTINGS_PATH)))
                         {
                             AssetDatabase.CreateFolder("Assets", RainbowFoldersSettings.SETTINGS_PATH);
@@ -55,10 +46,23 @@ namespace Borodar.RainbowFolders.Editor
 
                         RainbowFoldersEditorUtility.CreateAsset<RainbowFoldersSettings>(FOLDER_COLOR_STORAGET_ASSET_NAME, 
                             Path.Combine("Assets", RainbowFoldersSettings.SETTINGS_PATH));
+                        instance = EditorGUIUtility.Load(colorStorageAssetPath) as FolderColorsStorage;
                     }
                 }
                 return instance;
             }
+        }
+
+        // Path to load from 'Editor Default Resources' folder.
+        private static string GetColorStorageAssetPath()
+        {
+            string assetNameWithExtension = string.Join(".", new []
+                {
+                    FOLDER_COLOR_STORAGET_ASSET_NAME,
+                    RainbowFoldersSettings.SETTINGS_ASSET_EXTENSION
+                });
+            string settingsPath = Path.Combine(RainbowFoldersSettings.SETTINGS_FOLDER, assetNameWithExtension);
+            return settingsPath;
         }
         #endregion
 
