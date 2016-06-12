@@ -80,11 +80,11 @@ namespace Borodar.RainbowFolders.Editor
                 return;
             }
 
-            var settings = RainbowFoldersSettings.Load();
+            var settings = RainbowFoldersSettings.Instance;
 
             if (color != FolderColors.Default)
             {
-                settings.ColorizeFolderByPath(path, FolderColorsStorage.GetInstance().GetFolderByColor(color));
+                settings.ColorizeFolderByPath(path, FolderColorsStorage.Instance.GetFolderByColor(color));
             }
             else
             {
