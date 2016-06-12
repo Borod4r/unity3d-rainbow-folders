@@ -18,13 +18,17 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using Borodar.RainbowFolders.Editor.Settings;
+using System.IO;
 
 namespace Borodar.RainbowFolders.Editor
 {
     [InitializeOnLoad]
     public class FolderColorsStorage : ScriptableObject
     {
-        public const string RESOURCE_NAME = "Internal/RainbowColorFoldersIconsStorage";
+        public const string RESOURCE_NAME = "RainbowColorFoldersIconsStorage";
+
+        private static readonly string RESOURCE_PATH = Path.Combine(RainbowFoldersSettings.SETTINGS_FOLDER, "Internal");
 
         public List<RainbowColorFolder> ColorFolderIcons;
 
@@ -34,13 +38,18 @@ namespace Borodar.RainbowFolders.Editor
         {
             LoadFromResources();
             if (instance != null) return;
-            RainbowFoldersEditorUtility.CreateAsset<FolderColorsStorage>(RESOURCE_NAME, "Assets/Resources/Internal");
+//            RainbowFoldersEditorUtility.CreateAsset<FolderColorsStorage>(RESOURCE_NAME, "Assets/Resources/Internal");
             LoadFromResources();
         }
 
         private static void LoadFromResources()
         {
-            instance = Resources.Load<FolderColorsStorage>(RESOURCE_NAME);
+            string assetNameWithExtension = string.Join (".", new [] 
+            {
+                RESOURCE_NAME,
+                RainbowFoldersSettings.SETTINGS_ASSET_EXTENSION
+            });
+            instance = EditorGUIUtility.Load(Path.Combine(RESOURCE_PATH, assetNameWithExtension)) as FolderColorsStorage;
         }
 
         public static FolderColorsStorage GetInstance()

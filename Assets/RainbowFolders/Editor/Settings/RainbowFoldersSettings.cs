@@ -17,24 +17,40 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 
 namespace Borodar.RainbowFolders.Editor.Settings
 {
     public class RainbowFoldersSettings : ScriptableObject
     {
         public const string RESOURCE_NAME = "RainbowFoldersSettings";
+        public const string SETTINGS_ASSET_EXTENSION = "asset";
+
+        public const string SETTINGS_FOLDER = "RainbowFolders";
+        private static readonly string SETTINGS_PATH = Path.Combine("Editor Default Resources", SETTINGS_FOLDER);
 
         public List<RainbowFolder> Folders;
 
         public static RainbowFoldersSettings Load()
         {
-            var settings = Resources.Load<RainbowFoldersSettings>(RESOURCE_NAME);
+            string assetNameWithExtension = string.Join (".", new [] 
+            {
+                RESOURCE_NAME,
+                SETTINGS_ASSET_EXTENSION
+            });
+
+            var settings = LoadSettings(assetNameWithExtension);
             if (settings == null)
             {
-                RainbowFoldersEditorUtility.CreateAsset<RainbowFoldersSettings>(RESOURCE_NAME, "Assets/Resources");
-                settings = Resources.Load<RainbowFoldersSettings>(RESOURCE_NAME);
+                RainbowFoldersEditorUtility.CreateAsset<RainbowFoldersSettings>(RESOURCE_NAME, SETTINGS_PATH);
+                settings = LoadSettings(assetNameWithExtension);
             }
             return settings;
+        }
+
+        private static RainbowFoldersSettings LoadSettings(string assetNameWithExtension)
+        {
+            return EditorGUIUtility.Load(Path.Combine(SETTINGS_FOLDER, assetNameWithExtension)) as RainbowFoldersSettings;
         }
 
         public Texture2D GetCustomFolderIcon(string folderPath, bool small = true)
