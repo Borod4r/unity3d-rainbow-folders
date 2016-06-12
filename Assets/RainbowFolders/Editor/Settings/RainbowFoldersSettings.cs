@@ -45,14 +45,13 @@ namespace Borodar.RainbowFolders.Editor.Settings
 
                     if ((instance = EditorGUIUtility.Load(settingsPath) as RainbowFoldersSettings) == null)
                     {
-                        instance = CreateInstance<RainbowFoldersSettings>();
-
                         if (!Directory.Exists(Path.Combine(Application.dataPath, SETTINGS_PATH)))
                         {
                             AssetDatabase.CreateFolder("Assets", SETTINGS_PATH);
                         }
 
                         RainbowFoldersEditorUtility.CreateAsset<RainbowFoldersSettings>(SETTINGS_ASSET_NAME, Path.Combine("Assets", SETTINGS_PATH));
+                        instance = EditorGUIUtility.Load(settingsPath) as RainbowFoldersSettings;
                     }
                 }
                 return instance;
