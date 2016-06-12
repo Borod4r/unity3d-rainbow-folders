@@ -56,6 +56,10 @@ MonoBehaviour:
     Type: 0
     SmallIcon: {fileID: 2800000, guid: 97efd597cd18c564aadb45280476b23a, type: 3}
     LargeIcon: {fileID: 2800000, guid: 650a564eae901434e86dcb456fcc046a, type: 3}
+  - Key: Shaders
+    Type: 0
+    SmallIcon: {fileID: 2800000, guid: 015a543b4163bfa498964b0db1004815, type: 3}
+    LargeIcon: {fileID: 2800000, guid: fe053ca6ee802d5478277554f1b356d5, type: 3}
   - Key: RainbowFolders
     Type: 0
     SmallIcon: {fileID: 2800000, guid: 8d50cf779e5b4f54a831bdefc32b044c, type: 3}
