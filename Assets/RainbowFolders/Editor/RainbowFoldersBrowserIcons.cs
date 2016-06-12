@@ -60,7 +60,7 @@ namespace Borodar.RainbowFolders.Editor
                 rect.height = rect.width;
             }
 
-            _settings = _settings ?? RainbowFoldersSettings.Load();
+            _settings = _settings ?? RainbowFoldersSettings.Instance;
 
             var texture = _settings.GetCustomFolderIcon(path, isSmall);
 
