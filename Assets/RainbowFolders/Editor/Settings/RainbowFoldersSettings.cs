@@ -17,25 +17,47 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 
 namespace Borodar.RainbowFolders.Editor.Settings
 {
     public class RainbowFoldersSettings : ScriptableObject
     {
-        public const string RESOURCE_NAME = "RainbowFoldersSettings";
+        public const string SETTINGS_ASSET_EXTENSION = "asset";
+        public const string SETTINGS_ASSET_NAME = "RainbowFoldersSettings";
+        public const string SETTINGS_FOLDER = "RainbowFolders";
+
+        public static readonly string SETTINGS_PATH = Path.Combine("Editor Default Resources", SETTINGS_FOLDER);
 
         public List<RainbowFolder> Folders;
 
-        public static RainbowFoldersSettings Load()
+        #region instance
+        private static RainbowFoldersSettings instance;
+
+        public static RainbowFoldersSettings Instance
         {
-            var settings = Resources.Load<RainbowFoldersSettings>(RESOURCE_NAME);
-            if (settings == null)
+            get
             {
-                RainbowFoldersEditorUtility.CreateAsset<RainbowFoldersSettings>(RESOURCE_NAME, "Assets/Resources");
-                settings = Resources.Load<RainbowFoldersSettings>(RESOURCE_NAME);
+                if (instance == null)
+                {
+                    string assetNameWithExtension = string.Join (".", new [] { SETTINGS_ASSET_NAME, SETTINGS_ASSET_EXTENSION });
+                    string settingsPath = Path.Combine(SETTINGS_FOLDER, assetNameWithExtension);
+
+                    if ((instance = EditorGUIUtility.Load(settingsPath) as RainbowFoldersSettings) == null)
+                    {
+                        if (!Directory.Exists(Path.Combine(Application.dataPath, SETTINGS_PATH)))
+                        {
+                            AssetDatabase.CreateFolder("Assets", SETTINGS_PATH);
+                        }
+
+                        RainbowFoldersEditorUtility.CreateAsset<RainbowFoldersSettings>(SETTINGS_ASSET_NAME, Path.Combine("Assets", SETTINGS_PATH));
+                        instance = EditorGUIUtility.Load(settingsPath) as RainbowFoldersSettings;
+                    }
+                }
+                return instance;
             }
-            return settings;
         }
+        #endregion
 
         public Texture2D GetCustomFolderIcon(string folderPath, bool small = true)
         {
