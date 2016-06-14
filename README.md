@@ -32,7 +32,3 @@ You can also quickly colorize folders from context menu. To do so, right click o
 To reset the folder icon to default one, select **Rainbow Folders -> Colorize -> Revert to Default** from the same context menu.
 
 ![Rainbow folders inspector](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.2.1_03.png)
-
-**Please Note:**
-
-If you’re using “Two Column Layout” mode, then **perform colorizing on the folder in the right column** of the project view. Doing this from the left colum currently is not possible due to internal API limitations.
