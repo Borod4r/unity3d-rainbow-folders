@@ -48,6 +48,10 @@ MonoBehaviour:
     Type: 1
     SmallIcon: {fileID: 2800000, guid: 36e0a02c0316e0b40bd7ffc8eb437a7f, type: 3}
     LargeIcon: {fileID: 2800000, guid: ce20e3678b7748244854c06fcd7d7d00, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Types/Fonts
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: 163b4b589845fee47ac105cdfb911b77, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 87a78956e37a460439f1871712ce87fc, type: 3}
   - Key: Editor
     Type: 0
     SmallIcon: {fileID: 2800000, guid: ec2951dbd8c22234c8fdf92529d860fd, type: 3}
