@@ -67,34 +67,24 @@ namespace Borodar.RainbowFolders.Editor
                         var folder = AssetDatabase.LoadAssetAtPath<DefaultAsset>(assetPath);
                         ColorizeFolder(color, folder);
                     }
+                    else
+                    {
+                        Debug.LogWarning("Cannot colorize " + assetPath + " as it is not a folder");
+                    }
                 }
             );
         }
 
         private static void ColorizeFolder(FolderColors color, Object selectedObj)
         {
-            if (!(selectedObj is DefaultAsset))
-            {
-                Debug.LogWarning(WARNING_MSG);
-                return;
-            }
-
             var path = AssetDatabase.GetAssetPath(selectedObj);
-            if (!AssetDatabase.IsValidFolder(path))
-            {
-                Debug.LogWarning(WARNING_MSG);
-                return;
-            }
-
-            var settings = RainbowFoldersSettings.Instance;
-
             if (color != FolderColors.Default)
             {
-                settings.ColorizeFolderByPath(path, FolderColorsStorage.Instance.GetFolderByColor(color));
+                RainbowFoldersSettings.Instance.ColorizeFolderByPath(path, FolderColorsStorage.Instance.GetFolderByColor(color));
             }
             else
             {
-                settings.RemoveAllByPath(path);
+                RainbowFoldersSettings.Instance.RemoveAllByPath(path);
             }
         }
     }
