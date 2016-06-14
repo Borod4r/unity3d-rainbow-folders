@@ -16,6 +16,7 @@
 using UnityEngine;
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
+using System.Linq;
 
 namespace Borodar.RainbowFolders.Editor
 {
@@ -57,16 +58,21 @@ namespace Borodar.RainbowFolders.Editor
 
         public static void Colorize(FolderColors color)
         {
-            WarnAboutTwoColumnLayout();
+            Selection.assetGUIDs.ToList().ForEach(
+                assetGuid =>
+                {
+                    var assetPath = AssetDatabase.GUIDToAssetPath(assetGuid);
+                    if (AssetDatabase.IsValidFolder(assetPath))
+                    {
+                        var folder = AssetDatabase.LoadAssetAtPath<DefaultAsset>(assetPath);
+                        ColorizeFolder(color, folder);
+                    }
+                }
+            );
+        }
 
-            var selectedObj = Selection.activeObject;
-            if (selectedObj == null)
-            {
-                Debug.LogWarning("Cannot apply color from the left column of the project view." +
-                                 "Please right click the folder in the right column if you are using two-column layout");
-                return;
-            }
-
+        private static void ColorizeFolder(FolderColors color, Object selectedObj)
+        {
             if (!(selectedObj is DefaultAsset))
             {
                 Debug.LogWarning(WARNING_MSG);
@@ -89,14 +95,6 @@ namespace Borodar.RainbowFolders.Editor
             else
             {
                 settings.RemoveAllByPath(path);
-            }
-        }
-
-        private static void WarnAboutTwoColumnLayout()
-        {
-            if (RainbowFoldersEditorUtility.IsLastSelectedProjectViewInTwoColumnLayout())
-            {
-                Debug.LogWarning("Please remember to perform colorizing on the folder in the right column of the project view");
             }
         }
     }
