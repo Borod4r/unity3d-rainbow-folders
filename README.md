@@ -27,7 +27,7 @@ Your changes will be applied next time when the project browser will retrieve th
 
 ## Quick Colorize
 
-You can also quickly colorize folders from context menu. To do so, right click on the folder in project browser, then select Rainbow **Folders -> Colorize -> Color**. Changes will be aplied immediately.
+You can also quickly colorize folders from context menu. To do so, right click on the folder in project browser, then select Rainbow **Folders -> Colorize -> Color**. Changes will be applied immediately.
 
 To reset the folder icon to default one, select **Rainbow Folders -> Colorize -> Revert to Default** from the same context menu.
 
