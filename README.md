@@ -32,3 +32,7 @@ You can also quickly colorize folders from context menu. To do so, right click o
 To reset the folder icon to default one, select **Rainbow Folders -> Colorize -> Revert to Default** from the same context menu.
 
 ![Rainbow folders inspector](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.2.1_03.png)
+
+## Community
+
+We have create a special folder `Community Icons` for other users to be able to add their icons! Please fork the repo and submit the pull request after adding your icons to `Community Icons/User_{your_user_name_here}/`

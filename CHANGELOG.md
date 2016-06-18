@@ -13,6 +13,7 @@
 + Support for batch colorizing folders (select multiple folders and colorize from context menu)
 + Fixed not being able to colorize folders from left column view when in two-column layout
 + New icons (`Fonts`, `Models`)
++ New icons from community
 
 ---
 
