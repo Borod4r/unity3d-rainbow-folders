@@ -80,51 +80,99 @@ MonoBehaviour:
     Type: 0
     SmallIcon: {fileID: 2800000, guid: 8d50cf779e5b4f54a831bdefc32b044c, type: 3}
     LargeIcon: {fileID: 2800000, guid: 5c32cf9ad519d0c4aacb16805c45eab3, type: 3}
-  - Key: 01. Red
-    Type: 0
+  - Key: Assets/RainbowFolders/Examples/Tags/01. Red
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: 92b0bc9ddf47e7c439b816e4f3358617, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 3e9903716db29884db10c4761158194a, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Tags/02. Vermilion
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: 9af651017422eb342bb70580d772e446, type: 3}
+    LargeIcon: {fileID: 2800000, guid: fb4c037eb733ab444a6c2ba07227da11, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Tags/03. Orange
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: aa9fc7071d5eb1c429b697ac0a038a80, type: 3}
+    LargeIcon: {fileID: 2800000, guid: ef55849a2ae927d458e203080c8ee6ad, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Tags/04. Yellow-orange
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: e34b40e8541b43e489676304cd7843f6, type: 3}
+    LargeIcon: {fileID: 2800000, guid: dfb7e52f2da69994c8a075a6f1028f7f, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Tags/05. Yellow
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: c307d00979506dc42b55246945eca05b, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 14852ef2c0a992545b421612b34b7a8c, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Tags/06. Lime
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: 7f6371776b8d941479f39606318f5588, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 6bcb6e1c12881c34e8fe83ad6d5166d6, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Tags/07. Green
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: 9e571ae94ec295840a1977c7f4d8c9c9, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 3252a088bf949e04db52d745a29d4cee, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Tags/08. Cyan
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: 1fc61058e5717b24eab0060b7ff80a64, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 7b3237bbdd8514e49982b36ac8cefdf3, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Tags/09. Blue
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: 5eab31a003af25741a7dca4d2affaded, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 71714604046a7f1438ccf60800ba9eca, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Tags/10. Dark Blue
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: bd871a1c68938b848adc74c50bb04a4d, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 980ffdf13df9e86469913858907674fd, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Tags/11. Violet
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: f3e2d724e55ac464bab917fb41e5f3a5, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 2c15a1b0d7c0f7e4a96a4c07104da9db, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Tags/12. Magenta
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: 4604f75e19797b44880551dc47c0a657, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 0d0ce6157355db044aa688963c5eb699, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Colors/01. Red
+    Type: 1
     SmallIcon: {fileID: 2800000, guid: a65c70fcbe9ac0b4fbcbac4a0b67e64f, type: 3}
     LargeIcon: {fileID: 2800000, guid: 3d8f946e891cc8f4e81b1a296f8fb6be, type: 3}
-  - Key: 02. Vermilion
-    Type: 0
+  - Key: Assets/RainbowFolders/Examples/Colors/02. Vermilion
+    Type: 1
     SmallIcon: {fileID: 2800000, guid: 0b7e8970cd9b4d548883dc5b4f4997c0, type: 3}
     LargeIcon: {fileID: 2800000, guid: ca744735eea12d84b8369b456104295c, type: 3}
-  - Key: 03. Orange
-    Type: 0
+  - Key: Assets/RainbowFolders/Examples/Colors/03. Orange
+    Type: 1
     SmallIcon: {fileID: 2800000, guid: bc1d6bab13fce1c448e2b0870277ce43, type: 3}
     LargeIcon: {fileID: 2800000, guid: a257b7f6126c9e74f86c966b806ffbf7, type: 3}
-  - Key: 04. Yellow-orange
-    Type: 0
+  - Key: Assets/RainbowFolders/Examples/Colors/04. Yellow-orange
+    Type: 1
     SmallIcon: {fileID: 2800000, guid: e4d497fd8f72b5241b762a7ed649ee83, type: 3}
     LargeIcon: {fileID: 2800000, guid: 0532ea3a1890c8946b6d842beeab51b8, type: 3}
-  - Key: 05. Yellow
-    Type: 0
+  - Key: Assets/RainbowFolders/Examples/Colors/05. Yellow
+    Type: 1
     SmallIcon: {fileID: 2800000, guid: d7aa3931d4836f94ea17a3b67c2754b7, type: 3}
     LargeIcon: {fileID: 2800000, guid: 8033ba50d6a678f41bf129dd6a31ee12, type: 3}
-  - Key: 06. Lime
-    Type: 0
+  - Key: Assets/RainbowFolders/Examples/Colors/06. Lime
+    Type: 1
     SmallIcon: {fileID: 2800000, guid: 1395baad88220534f9a77e6e628f04c3, type: 3}
     LargeIcon: {fileID: 2800000, guid: 30971d38931ab5c4ea6ac4124bebfac4, type: 3}
-  - Key: 07. Green
-    Type: 0
+  - Key: Assets/RainbowFolders/Examples/Colors/07. Green
+    Type: 1
     SmallIcon: {fileID: 2800000, guid: 0379f5bc653a23045a15e41eb54d6db8, type: 3}
     LargeIcon: {fileID: 2800000, guid: 575f900c4ff32fa42a779d65da794c83, type: 3}
-  - Key: 08. Bondi Blue
-    Type: 0
+  - Key: Assets/RainbowFolders/Examples/Colors/08. Bondi Blue
+    Type: 1
     SmallIcon: {fileID: 2800000, guid: 6ecc649ba46fa2c448d60a663be30ffd, type: 3}
     LargeIcon: {fileID: 2800000, guid: 7ce51c638aeaa3840ab61c4a4af3885b, type: 3}
-  - Key: 09. Blue
-    Type: 0
+  - Key: Assets/RainbowFolders/Examples/Colors/09. Blue
+    Type: 1
     SmallIcon: {fileID: 2800000, guid: 191188601401d7f4ca9105e13b350e00, type: 3}
     LargeIcon: {fileID: 2800000, guid: b5aa5103c69828e42a9ff77db820f2a6, type: 3}
-  - Key: 10. Indigo
-    Type: 0
+  - Key: Assets/RainbowFolders/Examples/Colors/10. Indigo
+    Type: 1
     SmallIcon: {fileID: 2800000, guid: 996ce5f7498be3b47ad13c2557bef293, type: 3}
     LargeIcon: {fileID: 2800000, guid: 06303b4e77878d243b511b8f0c8bfc69, type: 3}
-  - Key: 11. Violet
-    Type: 0
+  - Key: Assets/RainbowFolders/Examples/Colors/11. Violet
+    Type: 1
     SmallIcon: {fileID: 2800000, guid: 6afa87a5a70f8e54a82e85637cec0904, type: 3}
     LargeIcon: {fileID: 2800000, guid: b84c63ef648173140b8fa6c05aef2768, type: 3}
-  - Key: 12. Magenta
-    Type: 0
+  - Key: Assets/RainbowFolders/Examples/Colors/12. Magenta
+    Type: 1
     SmallIcon: {fileID: 2800000, guid: f14480b09218f3047a15b5ded872de28, type: 3}
     LargeIcon: {fileID: 2800000, guid: 38dec0c9e1ada504d98f8a0f4959a215, type: 3}
