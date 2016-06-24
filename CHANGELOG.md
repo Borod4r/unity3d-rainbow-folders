@@ -13,7 +13,7 @@
 + Support for batch colorizing folders (select multiple folders and colorize from context menu)
 + Fixed not being able to colorize folders from left column view when in two-column layout
 + Changed namespace for Rotorz reorderable list, to avoid conflicts with existing installs of Rotorz plugins
-+ New icons (`Fonts`, `Shaders`, `Terrains`)
++ New icons (`Fonts`, `Shaders`, `Terrains`, `Meshes`)
 + New icons from community
 
 ---

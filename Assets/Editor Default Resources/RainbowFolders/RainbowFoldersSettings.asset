@@ -72,6 +72,10 @@ MonoBehaviour:
     Type: 1
     SmallIcon: {fileID: 2800000, guid: c75be7d9cde129149bb04f51d452d85a, type: 3}
     LargeIcon: {fileID: 2800000, guid: 4716b9cfe49343c499142d04bb004e0b, type: 3}
+  - Key: Assets/RainbowFolders/Examples/Types/Meshes
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: 268edea26d8cd504da659cc71a1d8549, type: 3}
+    LargeIcon: {fileID: 2800000, guid: e69e4447e8078c441b3a955855f4f080, type: 3}
   - Key: RainbowFolders
     Type: 0
     SmallIcon: {fileID: 2800000, guid: 8d50cf779e5b4f54a831bdefc32b044c, type: 3}
