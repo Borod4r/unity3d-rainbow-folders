@@ -12,7 +12,8 @@
 + Fixed error messages in Unity `5.0.4x` when loading settings
 + Support for batch colorizing folders (select multiple folders and colorize from context menu)
 + Fixed not being able to colorize folders from left column view when in two-column layout
-+ New icons (`Fonts`, `Models`)
++ Changed namespace for Rotorz reorderable list, to avoid conflicts with existing installs of Rotorz plugins
++ New icons (`Fonts`, `Shaders`)
 + New icons from community
 
 ---

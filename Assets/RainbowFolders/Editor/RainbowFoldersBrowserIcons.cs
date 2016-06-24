@@ -12,7 +12,6 @@
  * the License.
  */
 
-using System.IO;
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
 using UnityEngine;

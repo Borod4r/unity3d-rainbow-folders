@@ -52,6 +52,10 @@ MonoBehaviour:
     Type: 1
     SmallIcon: {fileID: 2800000, guid: 163b4b589845fee47ac105cdfb911b77, type: 3}
     LargeIcon: {fileID: 2800000, guid: 87a78956e37a460439f1871712ce87fc, type: 3}
+  - Key: Assets/Editor Default Resources
+    Type: 1
+    SmallIcon: {fileID: 2800000, guid: 97efd597cd18c564aadb45280476b23a, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 650a564eae901434e86dcb456fcc046a, type: 3}
   - Key: Editor
     Type: 0
     SmallIcon: {fileID: 2800000, guid: ec2951dbd8c22234c8fdf92529d860fd, type: 3}
