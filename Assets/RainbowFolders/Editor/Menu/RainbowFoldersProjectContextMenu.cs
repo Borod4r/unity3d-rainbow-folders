@@ -24,7 +24,9 @@ namespace Borodar.RainbowFolders.Editor
     public static class RainbowFoldersProjectContextMenu
     {
         private const string COLORIZE_MENU = "Assets/Rainbow Folders/Colorize/";
+        private const string TAG_MENU = "Assets/Rainbow Folders/Tag/";
 
+        // Colors
         private const string DEFAULT = COLORIZE_MENU + "Revert to Default";
         private const string RED = COLORIZE_MENU + "Red";
         private const string VERMILION = COLORIZE_MENU + "Vermilion";
@@ -39,9 +41,14 @@ namespace Borodar.RainbowFolders.Editor
         private const string VIOLET = COLORIZE_MENU + "Violet";
         private const string MAGENTA = COLORIZE_MENU + "Magenta";
 
+        // Tags
+        private const string TAG_DEFAULT = TAG_MENU + "Revert to Default";
+        private const string TAG_RED = TAG_MENU + "Red";
+
         private const string WARNING_MSG =
             "Can only colorize folders. Please right click on the folder in the Project window";
 
+        #region colorize_context_menu
         [MenuItem(DEFAULT, false, 2000)] static void Default() { Colorize(FolderColors.Default); }
         [MenuItem(RED)] static void Red() { Colorize(FolderColors.Red);}
         [MenuItem(VERMILION)] static void Vermilion() { Colorize(FolderColors.Vermilion); }
@@ -55,8 +62,36 @@ namespace Borodar.RainbowFolders.Editor
         [MenuItem(INDIGO)] static void Indigo() { Colorize(FolderColors.Indigo); }
         [MenuItem(VIOLET)] static void Violet() { Colorize(FolderColors.Violet); }
         [MenuItem(MAGENTA)] static void Magenta() { Colorize(FolderColors.Magenta); }
+        #endregion
+
+        [MenuItem(TAG_RED)] static void TagRed() { Tag(FolderTags.Red);}
+
+        public static void Tag(FolderTags tag)
+        {
+            if (tag == FolderTags.None)
+            {
+                RevertSelectedFoldersToDefault();
+                return;
+            }
+
+            var icons = FolderTagsStorage.Instance.GetIconsByTag(tag);
+            ChangeSelectedFoldersIcons(icons);
+
+        }
 
         public static void Colorize(FolderColors color)
+        {
+            if (color == FolderColors.Default)
+            {
+                RevertSelectedFoldersToDefault();
+                return;
+            }
+
+            var icons = FolderColorsStorage.Instance.GetIconsByColor(color);
+            ChangeSelectedFoldersIcons(icons);
+        }
+
+        private static void ChangeSelectedFoldersIcons(FolderIconPair icons)
         {
             Selection.assetGUIDs.ToList().ForEach(
                 assetGuid =>
@@ -65,27 +100,29 @@ namespace Borodar.RainbowFolders.Editor
                     if (AssetDatabase.IsValidFolder(assetPath))
                     {
                         var folder = AssetDatabase.LoadAssetAtPath<DefaultAsset>(assetPath);
-                        ColorizeFolder(color, folder);
+                        var path = AssetDatabase.GetAssetPath(folder);
+                        RainbowFoldersSettings.Instance.ChangeFolderIconsByPath(path, icons);
                     }
                     else
                     {
-                        Debug.LogWarning("Cannot colorize " + assetPath + " as it is not a folder");
+                        // Can't colorize other assets
                     }
                 }
             );
         }
 
-        private static void ColorizeFolder(FolderColors color, Object selectedObj)
+        private static void RevertSelectedFoldersToDefault()
         {
-            var path = AssetDatabase.GetAssetPath(selectedObj);
-            if (color != FolderColors.Default)
-            {
-                RainbowFoldersSettings.Instance.ColorizeFolderByPath(path, FolderColorsStorage.Instance.GetFolderByColor(color));
-            }
-            else
-            {
-                RainbowFoldersSettings.Instance.RemoveAllByPath(path);
-            }
+            Selection.assetGUIDs.ToList().ForEach(
+                assetGuid =>
+                {
+                    var assetPath = AssetDatabase.GUIDToAssetPath(assetGuid);
+                    if (AssetDatabase.IsValidFolder(assetPath))
+                    {
+                        RainbowFoldersSettings.Instance.RemoveAllByPath(assetPath);
+                    }
+                }
+            );
         }
     }
 }
