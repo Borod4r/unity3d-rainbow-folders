@@ -64,7 +64,11 @@ namespace Borodar.RainbowFolders.Editor
         [MenuItem(MAGENTA)] static void Magenta() { Colorize(FolderColors.Magenta); }
         #endregion
 
+        #region tag_context_menu
+        [MenuItem(TAG_DEFAULT, false, 2000)] static void TagDefault() { Tag(FolderTags.Default); }
         [MenuItem(TAG_RED)] static void TagRed() { Tag(FolderTags.Red);}
+        #endregion
+
 
         public static void Tag(FolderTags tag)
         {
