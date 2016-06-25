@@ -33,7 +33,7 @@ namespace Borodar.RainbowFolders.Editor
 
         public override void OnInspectorGUI()
         {
-//            GUI.enabled = false;
+            GUI.enabled = false;
             EditorGUILayout.HelpBox("This is internal file for RainbowFolders. Do not edit.", MessageType.Warning);
 
             serializedObject.Update();

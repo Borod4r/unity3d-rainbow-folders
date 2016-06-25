@@ -17,7 +17,7 @@ namespace Borodar.RainbowFolders.Editor
 {
     public enum FolderTags
     {
-        None = -1,
+        Default = -1,
 
         Red = 0,
         Vermilion = 1,
@@ -26,9 +26,9 @@ namespace Borodar.RainbowFolders.Editor
         Yellow = 4,
         Lime = 5,
         Green = 6,
-        DarkBlue = 7,
+        Cyan= 7,
         Blue = 8,
-        Indigo = 9,
+        DarkBlue = 9,
         Violet = 10,
         Magenta = 11,
     }

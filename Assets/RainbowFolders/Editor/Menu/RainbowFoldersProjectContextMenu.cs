@@ -68,7 +68,7 @@ namespace Borodar.RainbowFolders.Editor
 
         public static void Tag(FolderTags tag)
         {
-            if (tag == FolderTags.None)
+            if (tag == FolderTags.Default)
             {
                 RevertSelectedFoldersToDefault();
                 return;
