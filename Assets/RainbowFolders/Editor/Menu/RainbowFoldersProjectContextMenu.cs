@@ -91,7 +91,6 @@ namespace Borodar.RainbowFolders.Editor
         [MenuItem(TAG_MAGENTA)] static void TagMagenta() { Tag(FolderTags.Magenta);}
         #endregion
 
-
         public static void Tag(FolderTags tag)
         {
             if (tag == FolderTags.Default)
@@ -102,7 +101,6 @@ namespace Borodar.RainbowFolders.Editor
 
             var icons = FolderTagsStorage.Instance.GetIconsByTag(tag);
             ChangeSelectedFoldersIcons(icons);
-
         }
 
         public static void Colorize(FolderColors color)
