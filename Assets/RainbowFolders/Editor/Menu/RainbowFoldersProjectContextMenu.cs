@@ -44,6 +44,12 @@ namespace Borodar.RainbowFolders.Editor
         // Tags
         private const string TAG_DEFAULT = TAG_MENU + "Revert to Default";
         private const string TAG_RED = TAG_MENU + "Red";
+        private const string TAG_VERMILION = TAG_MENU + "Vermilion";
+        private const string TAG_ORANGE = TAG_MENU + "Orange";
+        private const string TAG_YELLOW_ORANGE = TAG_MENU + "Yellow-Orange";
+        private const string TAG_YELLOW = TAG_MENU + "Yellow";
+        private const string TAG_LIME = TAG_MENU + "Lime";
+        private const string TAG_GREEN = TAG_MENU + "Green";
 
         private const string WARNING_MSG =
             "Can only colorize folders. Please right click on the folder in the Project window";
