@@ -50,6 +50,11 @@ namespace Borodar.RainbowFolders.Editor
         private const string TAG_YELLOW = TAG_MENU + "Yellow";
         private const string TAG_LIME = TAG_MENU + "Lime";
         private const string TAG_GREEN = TAG_MENU + "Green";
+        private const string TAG_CYAN = TAG_MENU + "Cyan";
+        private const string TAG_BLUE = TAG_MENU + "Blue";
+        private const string TAG_DARK_BLUE = TAG_MENU + "Dark Blue";
+        private const string TAG_VIOLET = TAG_MENU + "Violet";
+        private const string TAG_MAGENTA = TAG_MENU + "Magenta";
 
         private const string WARNING_MSG =
             "Can only colorize folders. Please right click on the folder in the Project window";
@@ -73,6 +78,17 @@ namespace Borodar.RainbowFolders.Editor
         #region tag_context_menu
         [MenuItem(TAG_DEFAULT, false, 2000)] static void TagDefault() { Tag(FolderTags.Default); }
         [MenuItem(TAG_RED)] static void TagRed() { Tag(FolderTags.Red);}
+        [MenuItem(TAG_VERMILION)] static void TagVermilion() { Tag(FolderTags.Vermilion);}
+        [MenuItem(TAG_ORANGE)] static void TagOrange() { Tag(FolderTags.Orange);}
+        [MenuItem(TAG_YELLOW_ORANGE)] static void TagYellowOrange() { Tag(FolderTags.YellowOrange);}
+        [MenuItem(TAG_YELLOW)] static void TagYellow() { Tag(FolderTags.Yellow);}
+        [MenuItem(TAG_LIME)] static void TagLime() { Tag(FolderTags.Lime);}
+        [MenuItem(TAG_GREEN)] static void TagGreen() { Tag(FolderTags.Green);}
+        [MenuItem(TAG_CYAN)] static void TagCyan() { Tag(FolderTags.Cyan);}
+        [MenuItem(TAG_BLUE)] static void TagBlue() { Tag(FolderTags.Blue);}
+        [MenuItem(TAG_DARK_BLUE)] static void TagDarkBlue() { Tag(FolderTags.DarkBlue);}
+        [MenuItem(TAG_VIOLET)] static void TagViolet() { Tag(FolderTags.Violet);}
+        [MenuItem(TAG_MAGENTA)] static void TagMagenta() { Tag(FolderTags.Magenta);}
         #endregion
 
 
