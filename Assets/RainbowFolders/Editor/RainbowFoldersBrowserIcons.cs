@@ -12,7 +12,6 @@
  * the License.
  */
 
-using System.IO;
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
 using UnityEngine;
@@ -37,8 +36,6 @@ namespace Borodar.RainbowFolders.Editor
 
         private const float LARGE_ICON_SIZE = 64f;
 
-        private static RainbowFoldersSettings _settings;
-
         static RainbowFoldersBrowserIcons()
         {
             EditorApplication.projectWindowItemOnGUI += ReplaceFolderIcon;
@@ -60,9 +57,7 @@ namespace Borodar.RainbowFolders.Editor
                 rect.height = rect.width;
             }
 
-            _settings = _settings ?? RainbowFoldersSettings.Load();
-
-            var texture = _settings.GetCustomFolderIcon(path, isSmall);
+            var texture = RainbowFoldersSettings.Instance.GetCustomFolderIcon(path, isSmall);
 
             if (texture == null) return;
             if (rect.width > LARGE_ICON_SIZE)

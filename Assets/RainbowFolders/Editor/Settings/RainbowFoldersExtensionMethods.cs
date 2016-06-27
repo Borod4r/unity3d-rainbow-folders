@@ -21,7 +21,7 @@ namespace Borodar.RainbowFolders.Editor
 {
     public static class RainbowFoldersExtensionMethods
     {
-        public static void ColorizeFolderByPath(this RainbowFoldersSettings settings, string path, RainbowColorFolder colorIcons)
+        public static void ChangeFolderIconsByPath(this RainbowFoldersSettings settings, string path, FolderIconPair icons)
         {
             Undo.RecordObject(settings, "Modify Rainbow Folder Settings");
 
@@ -33,14 +33,14 @@ namespace Borodar.RainbowFolders.Editor
                 {
                     Key = path,
                     Type = RainbowFolder.KeyType.Path,
-                    SmallIcon = colorIcons.SmallIcon,
-                    LargeIcon = colorIcons.LargeIcon
+                    SmallIcon = icons.SmallIcon,
+                    LargeIcon = icons.LargeIcon
                 });
             }
             else
             {
-                folder.SmallIcon = colorIcons.SmallIcon;
-                folder.LargeIcon = colorIcons.LargeIcon;
+                folder.SmallIcon = icons.SmallIcon;
+                folder.LargeIcon = icons.LargeIcon;
             }
 
             EditorUtility.SetDirty(settings);

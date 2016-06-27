@@ -6,7 +6,9 @@ Have you ever thought about highlighting often used project folders? This simple
 
 With "Rainbow Folders" you can set custom icon for any folder in unity project browser:
 
-![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.2.1_01.png)
+![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.3.0_01_1.png)
+![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.3.0_01_2.png)
+![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.3.0_01_3.png)
 
 ## Configuring folder icons
 
@@ -27,14 +29,14 @@ Then you need to specify actually icons:
 
 Your changes will be applied next time when the project browser will retrieve the focus.
 
-## Quick Colorize
+## Quick Colorize & Tag
 
-You can also quickly colorize folders from context menu. To do so, right click on the folder in project browser, then select Rainbow **Folders -> Colorize -> Color**. Changes will be aplied immediately.
+You can also quickly colorize or tag folders from context menu. To do so, right click on the folder in project browser, then select **Rainbow Folders -> Colorize -> Color** or **Rainbow Folders -> Tag -> Color**. Changes will be applied immediately.
 
 To reset the folder icon to default one, select **Rainbow Folders -> Colorize -> Revert to Default** from the same context menu.
 
-![Rainbow folders inspector](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.2.1_03.png)
+![Rainbow folders inspector](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.3.0_03.png)
 
-**Please Note:**
+## Community
 
-If you’re using “Two Column Layout” mode, then **perform colorizing on the folder in the right column** of the project view. Doing this from the left colum currently is not possible due to internal API limitations.
+We have created a special folder `Community Icons` for other users to be able to add their icons! Please fork the repo and submit the pull request after adding your icons to `Community Icons/User_{your_user_name_here}/`
