@@ -22,7 +22,7 @@ namespace Borodar.RainbowFolders.Editor
         [MenuItem("Edit/Rainbow Folders Settings", false, 500)]
         public static void OpenSettings()
         {
-            var settings = RainbowFoldersSettings.Load();
+            var settings = RainbowFoldersSettings.Instance;
             Selection.activeObject = settings;
         }
     }

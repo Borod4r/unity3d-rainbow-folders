@@ -12,7 +12,7 @@
  * the License.
  */
 
-using Rotorz.ReorderableList;
+using Borodar.ReorderableList;
 using UnityEditor;
 
 namespace Borodar.RainbowFolders.Editor.Settings
