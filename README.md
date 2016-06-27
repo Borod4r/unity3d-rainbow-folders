@@ -25,9 +25,17 @@ Then you need to specify actually icons:
 
 Your changes will be applied next time when the project browser will retrieve the focus.
 
-## Quick Colorize
+## Quick Colorize & Tag
 
-You can also quickly colorize folders from context menu. To do so, right click on the folder in project browser, then select Rainbow **Folders -> Colorize -> Color**. Changes will be applied immediately.
+You can also quickly colorize or tag folders from context menu. To do so, right click on the folder in project browser, then select
+
+**Rainbow Folders -> Colorize -> Color**
+
+or
+
+**Rainbow Folders -> Tag -> Color**
+
+Changes will be applied immediately.
 
 To reset the folder icon to default one, select **Rainbow Folders -> Colorize -> Revert to Default** from the same context menu.
 
@@ -35,4 +43,4 @@ To reset the folder icon to default one, select **Rainbow Folders -> Colorize ->
 
 ## Community
 
-We have create a special folder `Community Icons` for other users to be able to add their icons! Please fork the repo and submit the pull request after adding your icons to `Community Icons/User_{your_user_name_here}/`
+We have created a special folder `Community Icons` for other users to be able to add their icons! Please fork the repo and submit the pull request after adding your icons to `Community Icons/User_{your_user_name_here}/`
