@@ -4,15 +4,14 @@
 
 ---
 
-## v0.2.2
+## v0.3.0
 
-### A bunch of bug fixes and new icons
-
++ Apply color "tags" for folders from context menu
++ Support for colorizing/tagging folders from left column view when in two-column layout
++ Support for batch colorizing/tagging folders (select multiple folders and colorize/tag from context menu)
 + Now keeping all settings assets in `Editor Default Resources` folder so they are not included in build.
-+ Fixed error messages in Unity `5.0.4x` when loading settings
-+ Support for batch colorizing folders (select multiple folders and colorize from context menu)
-+ Fixed not being able to colorize folders from left column view when in two-column layout
 + Changed namespace for Rotorz reorderable list, to avoid conflicts with existing installs of Rotorz plugins
++ Fixed error messages in Unity `5.0.4x` when loading settings
 + New icons (`Fonts`, `Shaders`, `Terrains`, `Meshes`)
 + New icons from community
 
