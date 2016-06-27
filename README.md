@@ -4,7 +4,9 @@ Have you ever thought about highlighting often used project folders? This simple
 
 With "Rainbow Folders" you can set custom icon for any folder in unity project browser:
 
-![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.2.1_01.png)
+![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.3.0_01_1.png)
+![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.3.0_01_2.png)
+![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.3.0_01_3.png)
 
 ## Configuring folder icons
 
@@ -27,19 +29,11 @@ Your changes will be applied next time when the project browser will retrieve th
 
 ## Quick Colorize & Tag
 
-You can also quickly colorize or tag folders from context menu. To do so, right click on the folder in project browser, then select
-
-**Rainbow Folders -> Colorize -> Color**
-
-or
-
-**Rainbow Folders -> Tag -> Color**
-
-Changes will be applied immediately.
+You can also quickly colorize or tag folders from context menu. To do so, right click on the folder in project browser, then select **Rainbow Folders -> Colorize -> Color** or **Rainbow Folders -> Tag -> Color**. Changes will be applied immediately.
 
 To reset the folder icon to default one, select **Rainbow Folders -> Colorize -> Revert to Default** from the same context menu.
 
-![Rainbow folders inspector](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.2.1_03.png)
+![Rainbow folders inspector](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.3.0_03.png)
 
 ## Community
 
