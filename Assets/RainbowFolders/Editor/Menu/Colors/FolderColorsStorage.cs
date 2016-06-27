@@ -23,7 +23,7 @@ namespace Borodar.RainbowFolders.Editor
 {
     public class FolderColorsStorage : ScriptableObject
     {
-        public const string FOLDER_COLOR_STORAGET_ASSET_NAME = "RainbowColorFoldersIconsStorage";
+        public const string FOLDER_COLOR_STORAGE_ASSET_NAME = "RainbowColorFoldersIconsStorage";
 
         public List<RainbowColorFolder> ColorFolderIcons;
 
@@ -44,7 +44,7 @@ namespace Borodar.RainbowFolders.Editor
                             AssetDatabase.CreateFolder("Assets", RainbowFoldersSettings.SETTINGS_PATH);
                         }
 
-                        RainbowFoldersEditorUtility.CreateAsset<RainbowFoldersSettings>(FOLDER_COLOR_STORAGET_ASSET_NAME, 
+                        RainbowFoldersEditorUtility.CreateAsset<FolderColorsStorage>(FOLDER_COLOR_STORAGE_ASSET_NAME, 
                             Path.Combine("Assets", RainbowFoldersSettings.SETTINGS_PATH));
                         instance = EditorGUIUtility.Load(colorStorageAssetPath) as FolderColorsStorage;
                     }
@@ -58,7 +58,7 @@ namespace Borodar.RainbowFolders.Editor
         {
             string assetNameWithExtension = string.Join(".", new []
                 {
-                    FOLDER_COLOR_STORAGET_ASSET_NAME,
+                    FOLDER_COLOR_STORAGE_ASSET_NAME,
                     RainbowFoldersSettings.SETTINGS_ASSET_EXTENSION
                 });
             string settingsPath = Path.Combine(RainbowFoldersSettings.SETTINGS_FOLDER, assetNameWithExtension);
@@ -66,9 +66,10 @@ namespace Borodar.RainbowFolders.Editor
         }
         #endregion
 
-        public RainbowColorFolder GetFolderByColor(FolderColors color)
+        public FolderIconPair GetIconsByColor(FolderColors color)
         {
-            return ColorFolderIcons.Single(x => x.Color == color);
+            var colorFolder = ColorFolderIcons.Single(x => x.Color == color);
+            return new FolderIconPair { SmallIcon = colorFolder.SmallIcon, LargeIcon = colorFolder.LargeIcon };
         }
     }
 }
