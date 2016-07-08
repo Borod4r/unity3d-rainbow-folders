@@ -45,4 +45,5 @@ We have created a special folder `Community Icons` for other users to be able to
 ## Support us
 
 Consider supporting us so we could bring more awesome features to you:
+
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/tarasleskiv/2USD)
