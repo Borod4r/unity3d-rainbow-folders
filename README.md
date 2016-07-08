@@ -1,7 +1,7 @@
 # Unity3D Rainbow Folders
 
 Consider supporting us so we could bring more awesome features to you:
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/tarasleskiv)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/tarasleskiv/2USD)
 
 Join the gitter chat for a discussion:
 [![Join the chat at https://gitter.im/PhannGor/unity3d-rainbow-folders](https://badges.gitter.im/PhannGor/unity3d-rainbow-folders.svg)](https://gitter.im/PhannGor/unity3d-rainbow-folders?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
