@@ -1,12 +1,7 @@
 # Unity3D Rainbow Folders
 
-Consider supporting us so we could bring more awesome features to you:
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/tarasleskiv/2USD)
-
-Join the gitter chat for a discussion:
 [![Join the chat at https://gitter.im/PhannGor/unity3d-rainbow-folders](https://badges.gitter.im/PhannGor/unity3d-rainbow-folders.svg)](https://gitter.im/PhannGor/unity3d-rainbow-folders?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/tarasleskiv/2USD)
 
 Have you ever thought about highlighting often used project folders? This simple but colorful asset allows you to do that!
 
@@ -46,3 +41,8 @@ To reset the folder icon to default one, select **Rainbow Folders -> Colorize ->
 ## Community
 
 We have created a special folder `Community Icons` for other users to be able to add their icons! Please fork the repo and submit the pull request after adding your icons to `Community Icons/User_{your_user_name_here}/`
+
+## Support us
+
+Consider supporting us so we could bring more awesome features to you:
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/tarasleskiv/2USD)
