@@ -24,6 +24,7 @@ namespace Borodar.RainbowFolders.Editor
     {
         private const string COLORIZE_MENU = "Assets/Rainbow Folders/Colorize/";
         private const string TAG_MENU = "Assets/Rainbow Folders/Tag/";
+        private const string TAG_TYPE = "Assets/Rainbow Folders/Folder Type/";
 
         // Colors
         private const string DEFAULT = COLORIZE_MENU + "Revert to Default";
@@ -54,6 +55,25 @@ namespace Borodar.RainbowFolders.Editor
         private const string TAG_DARK_BLUE = TAG_MENU + "Dark Blue";
         private const string TAG_VIOLET = TAG_MENU + "Violet";
         private const string TAG_MAGENTA = TAG_MENU + "Magenta";
+
+        // Type
+        private const string TYPE_DEFAULT = TAG_TYPE + "Default";
+        private const string TYPE_PREFABS = TAG_TYPE + "Prefabs";
+        private const string TYPE_SCENES = TAG_TYPE + "Scenes";
+        private const string TYPE_SCRIPTS = TAG_TYPE + "Scripts";
+        private const string TYPE_EXTENSIONS = TAG_TYPE + "Extensions";
+        private const string TYPE_PLUGINS = TAG_TYPE + "Plugins";
+        private const string TYPE_TEXTURES = TAG_TYPE + "Textures";
+        private const string TYPE_MATERIALS = TAG_TYPE + "Materials";
+        private const string TYPE_AUDIO = TAG_TYPE + "Audio";
+        private const string TYPE_BRACKETS = TAG_TYPE + "Brackets";
+        private const string TYPE_FONTS = TAG_TYPE + "Fonts";
+        private const string TYPE_EDITOR = TAG_TYPE + "Editor";
+        private const string TYPE_RESOURCES = TAG_TYPE + "Resources";
+        private const string TYPE_SHADERS = TAG_TYPE + "Shaders";
+        private const string TYPE_TERRAINS = TAG_TYPE + "Terrains";
+        private const string TYPE_MESHES = TAG_TYPE + "Meshes";
+        private const string TYPE_RAINBOW = TAG_TYPE + "Rainbow";
 
         private const string WARNING_MSG =
             "Can only colorize folders. Please right click on the folder in the Project window";
@@ -90,6 +110,26 @@ namespace Borodar.RainbowFolders.Editor
         [MenuItem(TAG_MAGENTA)] static void TagMagenta() { Tag(FolderTags.Magenta);}
         #endregion
 
+        #region types_context_menu
+        [MenuItem(TYPE_DEFAULT, false, 2000)] static void TypeDefault() { AssingType(FolderTypes.Default); }
+        [MenuItem(TYPE_PREFABS)] static void TypePrefabs() { AssingType(FolderTypes.Prefabs); }
+        [MenuItem(TYPE_SCENES)] static void TypeScenes() { AssingType(FolderTypes.Scenes); }
+        [MenuItem(TYPE_SCRIPTS)] static void TypeScripts() { AssingType(FolderTypes.Scripts); }
+        [MenuItem(TYPE_EXTENSIONS)] static void TypeExtensions() { AssingType(FolderTypes.Extensions); }
+        [MenuItem(TYPE_PLUGINS)] static void TypePlugins() { AssingType(FolderTypes.Plugins); }
+        [MenuItem(TYPE_TEXTURES)] static void TypeTextures() { AssingType(FolderTypes.Textures); }
+        [MenuItem(TYPE_MATERIALS)] static void TypeMaterials() { AssingType(FolderTypes.Materials); }
+        [MenuItem(TYPE_AUDIO)] static void TypeAudio() { AssingType(FolderTypes.Audio); }
+        [MenuItem(TYPE_BRACKETS)] static void TypeBrackets() { AssingType(FolderTypes.Brackets); }
+        [MenuItem(TYPE_FONTS)] static void TypeFonts() { AssingType(FolderTypes.Fonts); }
+        [MenuItem(TYPE_EDITOR)] static void TypeEditor() { AssingType(FolderTypes.Editor); }
+        [MenuItem(TYPE_RESOURCES)] static void TypeResources() { AssingType(FolderTypes.Resources); }
+        [MenuItem(TYPE_SHADERS)] static void TypeShaders() { AssingType(FolderTypes.Shaders); }
+        [MenuItem(TYPE_TERRAINS)] static void TypeTerrains() { AssingType(FolderTypes.Terrains); }
+        [MenuItem(TYPE_MESHES)] static void TypeMeshes() { AssingType(FolderTypes.Meshes); }
+        [MenuItem(TYPE_RAINBOW)] static void TypeRainbow() { AssingType(FolderTypes.Rainbow); }
+        #endregion
+
         public static void Tag(FolderTags tag)
         {
             if (tag == FolderTags.Default)
@@ -111,6 +151,18 @@ namespace Borodar.RainbowFolders.Editor
             }
 
             var icons = FolderColorsStorage.Instance.GetIconsByColor(color);
+            ChangeSelectedFoldersIcons(icons);
+        }
+
+        public static void AssingType(FolderTypes type)
+        {
+            if (type == FolderTypes.Default)
+            {
+                RevertSelectedFoldersToDefault();
+                return;
+            }
+
+            var icons = FolderTypesStorage.Instance.GetIconsByType(type);
             ChangeSelectedFoldersIcons(icons);
         }
 

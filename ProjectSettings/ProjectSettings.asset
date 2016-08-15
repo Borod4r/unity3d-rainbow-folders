@@ -4,6 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
+  productGUID: 1f20db2868dfd0b44b68e6ee95aff580
   AndroidProfiler: 0
   defaultScreenOrientation: 4
   targetDevice: 2
@@ -72,6 +73,7 @@ PlayerSettings:
   uiUse16BitDepthBuffer: 0
   ignoreAlphaClear: 0
   xboxOneResolution: 0
+  xboxOneMonoLoggingLevel: 0
   ps3SplashScreen: {fileID: 0}
   videoMemoryForVertexBuffers: 0
   psp2PowerMode: 0
@@ -98,7 +100,6 @@ PlayerSettings:
   xboxOneDisableKinectGpuReservation: 0
   singlePassStereoRendering: 0
   protectGraphicsMemory: 0
-  productGUID: 1f20db2868dfd0b44b68e6ee95aff580
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1
@@ -254,6 +255,7 @@ PlayerSettings:
   ps4NPtitleDatPath: 
   ps4RemotePlayKeyAssignment: -1
   ps4RemotePlayKeyMappingDir: 
+  ps4PlayTogetherPlayerCount: 0
   ps4EnterButtonAssignment: 1
   ps4ApplicationParam1: 0
   ps4ApplicationParam2: 0
@@ -280,6 +282,7 @@ PlayerSettings:
   ps4attribMoveSupport: 0
   ps4attrib3DSupport: 0
   ps4attribShareSupport: 0
+  ps4attribExclusiveVR: 0
   ps4disableAutoHideSplash: 0
   ps4IncludedModules: []
   monoEnv: 
@@ -424,14 +427,48 @@ PlayerSettings:
   iOS::EnableIncrementalBuildSupportForIl2cpp: 0
   iOS::ScriptingBackend: 1
   boolPropertyNames:
+  - Android::VR::enable
+  - Metro::VR::enable
+  - N3DS::VR::enable
+  - PS3::VR::enable
+  - PS4::VR::enable
+  - PSM::VR::enable
+  - PSP2::VR::enable
+  - SamsungTV::VR::enable
+  - Standalone::VR::enable
+  - Tizen::VR::enable
+  - WebGL::VR::enable
   - WebGL::analyzeBuildSize
   - WebGL::dataCaching
   - WebGL::useEmbeddedResources
+  - WebPlayer::VR::enable
+  - WiiU::VR::enable
+  - Xbox360::VR::enable
+  - XboxOne::VR::enable
   - XboxOne::enus
+  - iOS::VR::enable
+  - tvOS::VR::enable
+  Android::VR::enable: 0
+  Metro::VR::enable: 0
+  N3DS::VR::enable: 0
+  PS3::VR::enable: 0
+  PS4::VR::enable: 0
+  PSM::VR::enable: 0
+  PSP2::VR::enable: 0
+  SamsungTV::VR::enable: 0
+  Standalone::VR::enable: 0
+  Tizen::VR::enable: 0
+  WebGL::VR::enable: 0
   WebGL::analyzeBuildSize: 0
   WebGL::dataCaching: 0
   WebGL::useEmbeddedResources: 0
+  WebPlayer::VR::enable: 0
+  WiiU::VR::enable: 0
+  Xbox360::VR::enable: 0
+  XboxOne::VR::enable: 0
   XboxOne::enus: 1
+  iOS::VR::enable: 0
+  tvOS::VR::enable: 0
   stringPropertyNames:
   - Analytics_ServiceEnabled::Analytics_ServiceEnabled
   - Build_ServiceEnabled::Build_ServiceEnabled
@@ -457,7 +494,44 @@ PlayerSettings:
   WebGL::emscriptenArgs: 
   WebGL::template: APPLICATION:Default
   additionalIl2CppArgs::additionalIl2CppArgs: 
-  vectorPropertyNames: []
+  vectorPropertyNames:
+  - Android::VR::enabledDevices
+  - Metro::VR::enabledDevices
+  - N3DS::VR::enabledDevices
+  - PS3::VR::enabledDevices
+  - PS4::VR::enabledDevices
+  - PSM::VR::enabledDevices
+  - PSP2::VR::enabledDevices
+  - SamsungTV::VR::enabledDevices
+  - Standalone::VR::enabledDevices
+  - Tizen::VR::enabledDevices
+  - WebGL::VR::enabledDevices
+  - WebPlayer::VR::enabledDevices
+  - WiiU::VR::enabledDevices
+  - Xbox360::VR::enabledDevices
+  - XboxOne::VR::enabledDevices
+  - iOS::VR::enabledDevices
+  - tvOS::VR::enabledDevices
+  Android::VR::enabledDevices:
+  - Oculus
+  Metro::VR::enabledDevices: []
+  N3DS::VR::enabledDevices: []
+  PS3::VR::enabledDevices: []
+  PS4::VR::enabledDevices:
+  - PlayStationVR
+  PSM::VR::enabledDevices: []
+  PSP2::VR::enabledDevices: []
+  SamsungTV::VR::enabledDevices: []
+  Standalone::VR::enabledDevices:
+  - Oculus
+  Tizen::VR::enabledDevices: []
+  WebGL::VR::enabledDevices: []
+  WebPlayer::VR::enabledDevices: []
+  WiiU::VR::enabledDevices: []
+  Xbox360::VR::enabledDevices: []
+  XboxOne::VR::enabledDevices: []
+  iOS::VR::enabledDevices: []
+  tvOS::VR::enabledDevices: []
   cloudProjectId: 
   projectName: 
   organizationId: 
