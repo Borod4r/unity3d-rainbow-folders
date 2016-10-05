@@ -68,7 +68,7 @@ namespace Borodar.RainbowFolders.Editor
             }
             else
             {
-                GUI.DrawTexture(rect, texture);
+                GUI.DrawTexture(rect, Texture2D.whiteTexture);
             }
         }
     }
