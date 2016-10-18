@@ -18,7 +18,7 @@ using UnityEngine;
 
 namespace Borodar.RainbowFolders.Editor
 {
-    /* 
+    /*
     * This script allows you to set custom icons for folders in project browser.
     * Recommended icon sizes - small: 16x16 px, large: 64x64 px;
     */
@@ -68,7 +68,7 @@ namespace Borodar.RainbowFolders.Editor
             }
             else
             {
-                GUI.DrawTexture(rect, Texture2D.whiteTexture);
+                GUI.DrawTexture(rect, texture);
             }
         }
     }
