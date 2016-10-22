@@ -68,6 +68,10 @@ namespace Borodar.RainbowFolders.Editor
             }
             else
             {
+#if UNITY_5_5_OR_NEWER
+                // Dirty hack for 5.5 beta where icons become shifted
+                rect = new Rect(rect.x + 4, rect.y - 1, rect.width, rect.height);
+#endif
                 GUI.DrawTexture(rect, texture);
             }
         }
