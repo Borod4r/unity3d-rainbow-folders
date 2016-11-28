@@ -44,7 +44,6 @@ namespace Borodar.RainbowFolders.Editor
         static void ReplaceFolderIcon(string guid, Rect rect)
         {
             var path = AssetDatabase.GUIDToAssetPath(guid);
-
             if (!AssetDatabase.IsValidFolder(path)) return;
 
             var isSmall = rect.width > rect.height;
@@ -58,20 +57,22 @@ namespace Borodar.RainbowFolders.Editor
             }
 
             var texture = RainbowFoldersSettings.Instance.GetCustomFolderIcon(path, isSmall);
-
             if (texture == null) return;
+
             if (rect.width > LARGE_ICON_SIZE)
             {
+                // center the icon if it is zoomed
                 var offset = (rect.width - LARGE_ICON_SIZE) / 2f;
                 var position = new Rect(rect.x + offset, rect.y + offset, LARGE_ICON_SIZE, LARGE_ICON_SIZE);
                 GUI.DrawTexture(position, texture);
             }
             else
             {
-#if UNITY_5_5_OR_NEWER
-                // Dirty hack for 5.5 beta where icons become shifted
-                rect = new Rect(rect.x + 4, rect.y - 1, rect.width, rect.height);
-#endif
+                #if UNITY_5_5_OR_NEWER
+                    // unity shifted small icons a bit in 5.5
+                    if (isSmall) rect = new Rect(rect.x + 3, rect.y, rect.width, rect.height);
+                #endif
+
                 GUI.DrawTexture(rect, texture);
             }
         }
