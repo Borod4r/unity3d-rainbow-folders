@@ -16,8 +16,6 @@ namespace Borodar.RainbowFolders.Editor
 {
     public enum FolderTypes
     {
-        Default = -1,
-
         Prefabs = 0,
         Scenes = 1,
         Scripts = 2,
