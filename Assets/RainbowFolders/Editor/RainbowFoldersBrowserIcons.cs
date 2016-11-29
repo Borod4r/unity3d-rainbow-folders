@@ -12,6 +12,7 @@
  * the License.
  */
 
+using System.Diagnostics.CodeAnalysis;
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
 using UnityEngine;
@@ -26,39 +27,67 @@ namespace Borodar.RainbowFolders.Editor
     [InitializeOnLoad]
     public class RainbowFoldersBrowserIcons
     {
-        #region reserved_folder_names
-        private const string EDITOR_FOLDER_NAME = "Editor";
-        private const string PLUGINS_FOLDER_NAME = "Plugins";
-        private const string RESOURCES_FOLDER_NAME = "Resources";
-        private const string GIZMOS_FOLDER_NAME = "Gizmos";
-        private const string STREAMING_ASSETS_FOLDER_NAME = "StreamingAssets";
-        #endregion
-
         private const float LARGE_ICON_SIZE = 64f;
+
+        private static Texture2D _editIconSmall;
+        private static Texture2D _editIconLarge;
+
+        //---------------------------------------------------------------------
+        // Ctors
+        //---------------------------------------------------------------------
 
         static RainbowFoldersBrowserIcons()
         {
             EditorApplication.projectWindowItemOnGUI += ReplaceFolderIcon;
+            EditorApplication.projectWindowItemOnGUI += DrawEditIcon;
         }
 
-        static void ReplaceFolderIcon(string guid, Rect rect)
+        //---------------------------------------------------------------------
+        // Delegates
+        //---------------------------------------------------------------------
+
+        private static void ReplaceFolderIcon(string guid, Rect rect)
         {
             var path = AssetDatabase.GUIDToAssetPath(guid);
             if (!AssetDatabase.IsValidFolder(path)) return;
 
-            var isSmall = rect.width > rect.height;
-            if (isSmall)
-            {
-                rect.width = rect.height;
-            }
-            else
-            {
-                rect.height = rect.width;
-            }
+            var isSmall = IsIconSmall(ref rect);
 
             var texture = RainbowFoldersSettings.Instance.GetCustomFolderIcon(path, isSmall);
             if (texture == null) return;
 
+            DrawCustomIcon(ref rect, texture, isSmall);
+        }
+
+        private static void DrawEditIcon(string guid, Rect rect)
+        {
+            if (!Event.current.alt) return;
+
+            var isSmall = IsIconSmall(ref rect);
+
+            var isMouseOver = rect.Contains(Event.current.mousePosition);
+            if (!isMouseOver) return;
+
+            var path = AssetDatabase.GUIDToAssetPath(guid);
+            if (!AssetDatabase.IsValidFolder(path)) return;
+
+            var editIcon = (isSmall) ? GetEditIconSmall() : GetEditIconLarge(); ;
+            DrawCustomIcon(ref rect, editIcon, isSmall);
+
+            if (GUI.Button(rect, GUIContent.none, GUIStyle.none))
+            {
+                RainbowFoldersMenu.OpenSettings();
+            }
+
+            EditorApplication.RepaintProjectWindow();
+        }
+
+        //---------------------------------------------------------------------
+        // Helpers
+        //---------------------------------------------------------------------
+
+        private static void DrawCustomIcon(ref Rect rect, Texture texture, bool isSmall)
+        {
             if (rect.width > LARGE_ICON_SIZE)
             {
                 // center the icon if it is zoomed
@@ -75,6 +104,36 @@ namespace Borodar.RainbowFolders.Editor
 
                 GUI.DrawTexture(rect, texture);
             }
+        }
+
+        private static bool IsIconSmall(ref Rect rect)
+        {
+            var isSmall = rect.width > rect.height;
+
+            if (isSmall)
+                rect.width = rect.height;
+            else
+                rect.height = rect.width;
+
+            return isSmall;
+        }
+
+        [SuppressMessage("ReSharper", "ConvertIfStatementToNullCoalescingExpression")]
+        private static Texture2D GetEditIconSmall()
+        {
+            if (_editIconSmall == null)
+                _editIconSmall = EditorGUIUtility.Load("RainbowFolders/Textures/edit_icon_16.png") as Texture2D;
+
+            return _editIconSmall;
+        }
+
+        [SuppressMessage("ReSharper", "ConvertIfStatementToNullCoalescingExpression")]
+        private static Texture2D GetEditIconLarge()
+        {
+            if (_editIconLarge == null)
+                _editIconLarge = EditorGUIUtility.Load("RainbowFolders/Textures/edit_icon_64.png") as Texture2D;
+
+            return _editIconLarge;
         }
     }
 }
