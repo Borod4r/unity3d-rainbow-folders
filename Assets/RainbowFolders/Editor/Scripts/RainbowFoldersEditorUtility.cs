@@ -20,7 +20,7 @@ using UnityEngine;
 
 namespace Borodar.RainbowFolders.Editor
 {
-    public class RainbowFoldersEditorUtility
+    public static class RainbowFoldersEditorUtility
     {
         /// <summary>
         /// Creates .asset file of the specified <see cref="UnityEngine.ScriptableObject"/>
@@ -58,6 +58,11 @@ namespace Borodar.RainbowFolders.Editor
             AssetDatabase.SaveAssets();
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = asset;
+        }
+
+        public static Texture2D GetDefaultFolderIcon()
+        {
+            return EditorGUIUtility.FindTexture("Folder Icon");
         }
     }
 }

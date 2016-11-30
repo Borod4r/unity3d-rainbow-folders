@@ -20,11 +20,42 @@ namespace Borodar.RainbowFolders.Editor.Settings
     [Serializable]
     public class RainbowFolder
     {
-        public string Key;
         public KeyType Type;
+        public string Key;
 
         public Texture2D SmallIcon;
         public Texture2D LargeIcon;
+
+        //---------------------------------------------------------------------
+        // Ctors
+        //---------------------------------------------------------------------
+
+        public RainbowFolder(KeyType type, string key)
+        {
+            Type = type;
+            Key = key;
+        }
+
+        public RainbowFolder(KeyType type, string key, Texture2D smallIcon, Texture2D largeIcon)
+        {
+            Type = type;
+            Key = key;
+            SmallIcon = smallIcon;
+            LargeIcon = largeIcon;
+        }
+
+        //---------------------------------------------------------------------
+        // Public
+        //---------------------------------------------------------------------
+
+        public bool HasAtLeastOneIcon()
+        {
+            return SmallIcon != null || LargeIcon != null;
+        }
+
+        //---------------------------------------------------------------------
+        // Nested
+        //---------------------------------------------------------------------
 
         public enum KeyType
         {

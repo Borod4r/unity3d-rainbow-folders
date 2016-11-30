@@ -62,21 +62,16 @@ namespace Borodar.RainbowFolders.Editor.Settings
             position.x += position.width + PADDING;
             position.y = originalPosition.y;
             position.width = position.height = PREVIEW_SIZE_LARGE;
-            GUI.DrawTexture(position, (Texture2D)largeIcon.objectReferenceValue ?? GetDefaultFolderIcon());
+            GUI.DrawTexture(position, (Texture2D)largeIcon.objectReferenceValue ?? RainbowFoldersEditorUtility.GetDefaultFolderIcon());
 
             position.y += PREVIEW_SIZE_LARGE - PREVIEW_SIZE_SMALL - 4f;
             position.width = position.height = PREVIEW_SIZE_SMALL;
-            GUI.DrawTexture(position, (Texture2D)smallIcon.objectReferenceValue ?? GetDefaultFolderIcon());
+            GUI.DrawTexture(position, (Texture2D)smallIcon.objectReferenceValue ?? RainbowFoldersEditorUtility.GetDefaultFolderIcon());
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             return PREVIEW_SIZE_LARGE;
-        }
-
-        private static Texture2D GetDefaultFolderIcon()
-        {
-            return EditorGUIUtility.FindTexture("Folder Icon");
         }
     }
 }

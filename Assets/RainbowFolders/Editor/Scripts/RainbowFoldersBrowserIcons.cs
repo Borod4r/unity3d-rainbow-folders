@@ -53,7 +53,7 @@ namespace Borodar.RainbowFolders.Editor
 
             var isSmall = IsIconSmall(ref rect);
 
-            var texture = RainbowFoldersSettings.Instance.GetCustomFolderIcon(path, isSmall);
+            var texture = RainbowFoldersSettings.Instance.GetFolderIcon(path, isSmall);
             if (texture == null) return;
 
             DrawCustomIcon(ref rect, texture, isSmall);
@@ -76,7 +76,7 @@ namespace Borodar.RainbowFolders.Editor
 
             if (GUI.Button(rect, GUIContent.none, GUIStyle.none))
             {
-                RainbowFoldersMenu.OpenSettings();
+                PopupWindow.Show(rect, new RainbowFoldersPopupWindow(path));
             }
 
             EditorApplication.RepaintProjectWindow();
