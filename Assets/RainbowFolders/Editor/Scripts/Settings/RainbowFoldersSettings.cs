@@ -66,7 +66,21 @@ namespace Borodar.RainbowFolders.Editor.Settings
         // Public
         //---------------------------------------------------------------------
 
-        public RainbowFolder GetFolder(string folderPath)
+        /// <summary>  
+        /// Searches for a folder config that has the same type and key values.
+        /// Returns the first occurrence within the settings, if found; null otherwise.
+        /// </summary>  
+        public RainbowFolder GetFolder(RainbowFolder match)
+        {
+            if (IsNullOrEmpty(Folders) || match == null) return null;
+            return Folders.Find(x => x.Type == match.Type && x.Key == match.Key);
+        }
+
+        /// <summary>  
+        /// Searches for a folder config that should be applied for the specified path (regardless of
+        /// the key type). Returns the first occurrence within the settings, if found; null otherwise.
+        /// </summary>  
+        public RainbowFolder GetFolderByPath(string folderPath)
         {
             if (IsNullOrEmpty(Folders)) return null;
 
@@ -89,9 +103,52 @@ namespace Borodar.RainbowFolders.Editor.Settings
             return null;
         }
 
+        /// <summary>  
+        /// Searches for a folder config that has the same type and key, and updates
+        /// its other fields with provided value, if found; creates new folder config otherwise.
+        /// </summary>  
+        public void UpdateFolder(RainbowFolder match, RainbowFolder value)
+        {
+            Undo.RecordObject(this, "Modify Rainbow Folder Settings");
+
+            var existingFolder = GetFolder(match);
+            if (existingFolder != null)
+            {
+                if (value.HasAtLeastOneIcon())
+                {
+                    existingFolder.CopyFrom(value);
+                }
+                else
+                {
+                    RemoveAll(match);
+                }
+            }
+            else
+            {
+                if (value.HasAtLeastOneIcon()) AddFolder(value);
+            }
+
+            EditorUtility.SetDirty(this);
+        }
+
+        public void AddFolder(RainbowFolder folder)
+        {
+            Folders.Add(folder);
+        }
+
+        public void RemoveAll(RainbowFolder match)
+        {
+            Folders.RemoveAll(x => x.Type == match.Type && x.Key == match.Key);
+        }
+
+        public void RemoveAllByPath(string path)
+        {
+            Folders.RemoveAll(x => x.Key == path);
+        }
+
         public Texture2D GetFolderIcon(string folderPath, bool small = true)
         {
-            var folder = GetFolder(folderPath);
+            var folder = GetFolderByPath(folderPath);
             if (folder == null) return null;
 
             return small ? folder.SmallIcon : folder.LargeIcon;
@@ -118,21 +175,6 @@ namespace Borodar.RainbowFolders.Editor.Settings
         public void ChangeFolderIconsByPath(string path, FolderIconPair icons)
         {
             ChangeFolderIcons(new RainbowFolder(KeyType.Path, path, icons.SmallIcon, icons.LargeIcon));
-        }
-
-        public void AddFolder(RainbowFolder folder)
-        {
-            Folders.Add(folder);
-        }
-
-        public void RemoveAll(RainbowFolder match)
-        {
-            Folders.RemoveAll(x => x.Type == match.Type && x.Key == match.Key);
-        }
-
-        public void RemoveAllByPath(string path)
-        {
-            Folders.RemoveAll(x => x.Key == path);
         }
 
         //---------------------------------------------------------------------

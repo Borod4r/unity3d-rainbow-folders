@@ -48,6 +48,14 @@ namespace Borodar.RainbowFolders.Editor.Settings
         // Public
         //---------------------------------------------------------------------
 
+        public void CopyFrom(RainbowFolder target)
+        {
+            Type = target.Type;
+            Key = target.Key;
+            SmallIcon = target.SmallIcon;
+            LargeIcon = target.LargeIcon;
+        }
+
         public bool HasAtLeastOneIcon()
         {
             return SmallIcon != null || LargeIcon != null;
