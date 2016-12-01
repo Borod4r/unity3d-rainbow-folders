@@ -18,7 +18,7 @@ using UnityEngine;
 
 namespace Borodar.RainbowFolders.Editor
 {
-    /* 
+    /*
     * This script allows you to set custom icons for folders in project browser.
     * Recommended icon sizes - small: 16x16 px, large: 64x64 px;
     */
@@ -44,7 +44,6 @@ namespace Borodar.RainbowFolders.Editor
         static void ReplaceFolderIcon(string guid, Rect rect)
         {
             var path = AssetDatabase.GUIDToAssetPath(guid);
-
             if (!AssetDatabase.IsValidFolder(path)) return;
 
             var isSmall = rect.width > rect.height;
@@ -58,16 +57,22 @@ namespace Borodar.RainbowFolders.Editor
             }
 
             var texture = RainbowFoldersSettings.Instance.GetCustomFolderIcon(path, isSmall);
-
             if (texture == null) return;
+
             if (rect.width > LARGE_ICON_SIZE)
             {
+                // center the icon if it is zoomed
                 var offset = (rect.width - LARGE_ICON_SIZE) / 2f;
                 var position = new Rect(rect.x + offset, rect.y + offset, LARGE_ICON_SIZE, LARGE_ICON_SIZE);
                 GUI.DrawTexture(position, texture);
             }
             else
             {
+                #if UNITY_5_5_OR_NEWER
+                    // unity shifted small icons a bit in 5.5
+                    if (isSmall) rect = new Rect(rect.x + 3, rect.y, rect.width, rect.height);
+                #endif
+
                 GUI.DrawTexture(rect, texture);
             }
         }
