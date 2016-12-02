@@ -76,7 +76,10 @@ namespace Borodar.RainbowFolders.Editor
 
             if (GUI.Button(rect, GUIContent.none, GUIStyle.none))
             {
-                PopupWindow.Show(rect, new RainbowFoldersPopupWindow(path));
+                //PopupWindow.Show(rect, new RainbowFoldersPopupWindow(path));
+                var position = GUIUtility.GUIToScreenPoint(rect.position + new Vector2(0, rect.height + 2));
+                var size = new Vector2(100f, 100f); // TODO
+                DraggablePopupWindow.Show<DraggablePopupWindow>(new Rect(position, size));
             }
 
             EditorApplication.RepaintProjectWindow();
