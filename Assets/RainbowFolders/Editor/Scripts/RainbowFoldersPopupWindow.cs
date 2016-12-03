@@ -115,8 +115,23 @@ namespace Borodar.RainbowFolders.Editor
 
             // Buttons
 
+            rect.x = PADDING;
+            rect.y = WINDOW_HEIGHT - LINE_HEIGHT - 0.75f * PADDING;            
+            rect.width = 20f;
+            if (GUI.Button(rect, "S"))
+            {
+                Selection.activeObject = _settings;
+                Close();
+            }
+
+            rect.x += 20f + 4f;
+            if (GUI.Button(rect, "D"))
+            {
+                _settings.RemoveAll(_existingFolder);
+                Close();
+            }
+
             rect.x = WINDOW_WIDTH - 2f * (BUTTON_WIDTH + PADDING);
-            rect.y = WINDOW_HEIGHT - LINE_HEIGHT - 0.75f * PADDING;
             rect.width = BUTTON_WIDTH;
             if (GUI.Button(rect, "Cancel"))
             {
