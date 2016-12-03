@@ -14,13 +14,18 @@
 
 using System.Diagnostics.CodeAnalysis;
 using UnityEditor;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 namespace Borodar.RainbowFolders.Editor
 {
-    public class DraggablePopupWindow : EditorWindow
+    public abstract class DraggablePopupWindow : EditorWindow
     {
         private Vector2 _offset;
+
+        //---------------------------------------------------------------------
+        // Static
+        //---------------------------------------------------------------------
 
         /// <summary>
         /// Returns the first DraggablePopupWindow of type T which is currently on the screen.
@@ -35,15 +40,20 @@ namespace Borodar.RainbowFolders.Editor
             return t ?? CreateInstance<T>();
         }
 
+        //---------------------------------------------------------------------
+        // Public
+        //---------------------------------------------------------------------
+
         /// <summary>
         /// Show draggable editor window with popup-style framing.
         /// </summary>
-        public static void Show<T>(Rect position, bool focus = true) where T : DraggablePopupWindow
+        public void Show<T>(Rect position, bool focus = true) where T : DraggablePopupWindow
         {
-            var window = GetDraggableWindow<T>();
-            window.position = position;
-            if (focus) window.Focus();
-            window.ShowPopup();
+            this.minSize = position.size;
+            this.position = position;
+
+            if (focus) this.Focus();
+            this.ShowPopup();
         }
 
         /// <summary>
@@ -52,9 +62,6 @@ namespace Borodar.RainbowFolders.Editor
         [SuppressMessage("ReSharper", "InvertIf")]
         public virtual void OnGUI()
         {
-            // TODO
-            EditorGUILayout.LabelField("Draggable T");
-
             var e = Event.current;
 
             // calculate offset for the mouse cursor when start dragging
