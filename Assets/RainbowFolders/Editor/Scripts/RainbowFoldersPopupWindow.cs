@@ -29,6 +29,7 @@ namespace Borodar.RainbowFolders.Editor
         private const float PREVIEW_SIZE_SMALL = 16f;
         private const float PREVIEW_SIZE_LARGE = 64f;
         private const float BUTTON_WIDTH = 55f;
+        private const float BUTTON_WIDTH_SMALL = 16f;
 
         private const float WINDOW_WIDTH = 325f;
         private const float WINDOW_HEIGHT = 86f;
@@ -126,10 +127,10 @@ namespace Borodar.RainbowFolders.Editor
 
             rect.x = PADDING;
             rect.y = WINDOW_HEIGHT - LINE_HEIGHT - 0.75f * PADDING;            
-            rect.width = 20f;
+            rect.width = BUTTON_WIDTH_SMALL;
             ButtonSettings(rect);
 
-            rect.x += 20f + 4f;
+            rect.x += BUTTON_WIDTH_SMALL + 0.75f * PADDING;
             ButtonDelete(rect);
 
             rect.x = WINDOW_WIDTH - 2f * (BUTTON_WIDTH + PADDING);
@@ -146,14 +147,16 @@ namespace Borodar.RainbowFolders.Editor
 
         private void ButtonSettings(Rect rect)
         {
-            if (!GUI.Button(rect, "S")) return;
+            var icon = RainbowFoldersEditorUtility.GetSettingsButtonIcon();
+            if (!GUI.Button(rect, icon, GUIStyle.none)) return;
             Selection.activeObject = _settings;
             Close();
         }
 
         private void ButtonDelete(Rect rect)
         {
-            if (!GUI.Button(rect, "D")) return;
+            var texture = RainbowFoldersEditorUtility.GetDeleteButtonIcon();
+            if (!GUI.Button(rect, texture, GUIStyle.none)) return;
             foreach (var folder in _existingFolders) _settings.RemoveAll(folder);
             Close();
         }

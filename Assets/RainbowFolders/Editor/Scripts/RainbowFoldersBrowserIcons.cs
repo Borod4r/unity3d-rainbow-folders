@@ -31,8 +31,6 @@ namespace Borodar.RainbowFolders.Editor
         private const float LARGE_ICON_SIZE = 64f;
 
         private static bool _multiSelection;
-        private static Texture2D _editIconSmall;
-        private static Texture2D _editIconLarge;
 
         //---------------------------------------------------------------------
         // Ctors
@@ -79,7 +77,7 @@ namespace Borodar.RainbowFolders.Editor
             var path = AssetDatabase.GUIDToAssetPath(guid);
             if (!AssetDatabase.IsValidFolder(path)) return;
 
-            var editIcon = (isSmall) ? GetEditIconSmall() : GetEditIconLarge();
+            var editIcon = RainbowFoldersEditorUtility.GetEditFolderIcon(isSmall);
             DrawCustomIcon(ref rect, editIcon, isSmall);
 
             if (GUI.Button(rect, GUIContent.none, GUIStyle.none))
@@ -146,24 +144,6 @@ namespace Borodar.RainbowFolders.Editor
         private static bool IsSelected(string guid)
         {
             return Selection.assetGUIDs.Contains(guid);
-        }
-
-        [SuppressMessage("ReSharper", "ConvertIfStatementToNullCoalescingExpression")]
-        private static Texture2D GetEditIconSmall()
-        {
-            if (_editIconSmall == null)
-                _editIconSmall = EditorGUIUtility.Load("RainbowFolders/Textures/edit_icon_16.png") as Texture2D;
-
-            return _editIconSmall;
-        }
-
-        [SuppressMessage("ReSharper", "ConvertIfStatementToNullCoalescingExpression")]
-        private static Texture2D GetEditIconLarge()
-        {
-            if (_editIconLarge == null)
-                _editIconLarge = EditorGUIUtility.Load("RainbowFolders/Textures/edit_icon_64.png") as Texture2D;
-
-            return _editIconLarge;
         }
     }
 }

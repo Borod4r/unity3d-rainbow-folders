@@ -13,6 +13,7 @@
  */
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using UnityEditor;
@@ -20,8 +21,14 @@ using UnityEngine;
 
 namespace Borodar.RainbowFolders.Editor
 {
+    [SuppressMessage("ReSharper", "ConvertIfStatementToNullCoalescingExpression")]
     public static class RainbowFoldersEditorUtility
     {
+        private static Texture2D _editIconSmall;
+        private static Texture2D _editIconLarge;
+        private static Texture2D _settingsIcon;
+        private static Texture2D _deleteIcon;
+
         /// <summary>
         /// Creates .asset file of the specified <see cref="UnityEngine.ScriptableObject"/>
         /// </summary>
@@ -64,5 +71,47 @@ namespace Borodar.RainbowFolders.Editor
         {
             return EditorGUIUtility.FindTexture("Folder Icon");
         }
+
+        public static Texture2D GetEditFolderIcon(bool isSmall)
+        {
+            return (isSmall) ? GetEditIconSmall() : GetEditIconLarge();
+        }
+
+        public static Texture2D GetSettingsButtonIcon()
+        {
+            if (_settingsIcon == null)
+                _settingsIcon = EditorGUIUtility.Load("RainbowFolders/Textures/icon_settings_16.png") as Texture2D;
+
+            return _settingsIcon;
+        }
+
+        public static Texture2D GetDeleteButtonIcon()
+        {
+            if (_deleteIcon == null)
+                _deleteIcon = EditorGUIUtility.Load("RainbowFolders/Textures/icon_delete_16.png") as Texture2D;
+
+            return _deleteIcon;
+        }
+
+        //---------------------------------------------------------------------
+        // Helpers
+        //---------------------------------------------------------------------
+
+        private static Texture2D GetEditIconSmall()
+        {
+            if (_editIconSmall == null)
+                _editIconSmall = EditorGUIUtility.Load("RainbowFolders/Textures/icon_edit_16.png") as Texture2D;
+
+            return _editIconSmall;
+        }
+
+        private static Texture2D GetEditIconLarge()
+        {
+            if (_editIconLarge == null)
+                _editIconLarge = EditorGUIUtility.Load("RainbowFolders/Textures/icon_edit_64.png") as Texture2D;
+
+            return _editIconLarge;
+        }
+
     }
 }
