@@ -24,6 +24,7 @@ namespace Borodar.RainbowFolders.Editor
     [SuppressMessage("ReSharper", "ConvertIfStatementToNullCoalescingExpression")]
     public static class RainbowFoldersEditorUtility
     {
+        private static Texture2D _defaultFolderIcon;
         private static Texture2D _editIconSmall;
         private static Texture2D _editIconLarge;
         private static Texture2D _settingsIcon;
@@ -69,7 +70,10 @@ namespace Borodar.RainbowFolders.Editor
 
         public static Texture2D GetDefaultFolderIcon()
         {
-            return EditorGUIUtility.FindTexture("Folder Icon");
+            if (_defaultFolderIcon == null)
+                _defaultFolderIcon = EditorGUIUtility.FindTexture("Folder Icon");
+
+            return _defaultFolderIcon;
         }
 
         public static Texture2D GetEditFolderIcon(bool isSmall)

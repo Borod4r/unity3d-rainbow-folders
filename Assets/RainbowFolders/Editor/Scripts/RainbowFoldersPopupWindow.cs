@@ -127,11 +127,13 @@ namespace Borodar.RainbowFolders.Editor
             rect.x += rect.width + PADDING;
             rect.y = WINDOW_RECT.y;
             rect.width = rect.height = PREVIEW_SIZE_LARGE;
-            GUI.DrawTexture(rect, _currentFolder.LargeIcon ?? RainbowFoldersEditorUtility.GetDefaultFolderIcon());
+            GUI.DrawTexture(rect, RainbowFoldersEditorUtility.GetDefaultFolderIcon());
+            if (_currentFolder.LargeIcon) GUI.DrawTexture(rect, _currentFolder.LargeIcon);
 
             rect.y += PREVIEW_SIZE_LARGE - PREVIEW_SIZE_SMALL - 4f;
             rect.width = rect.height = PREVIEW_SIZE_SMALL;
-            GUI.DrawTexture(rect, _currentFolder.SmallIcon ?? RainbowFoldersEditorUtility.GetDefaultFolderIcon());
+            GUI.DrawTexture(rect, RainbowFoldersEditorUtility.GetDefaultFolderIcon());
+            if (_currentFolder.SmallIcon) GUI.DrawTexture(rect, _currentFolder.SmallIcon);
 
             // Buttons
 
