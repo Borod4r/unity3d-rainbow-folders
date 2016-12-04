@@ -14,6 +14,7 @@
 
 using System.IO;
 using Borodar.RainbowFolders.Editor.Settings;
+using Borodar.ReorderableList;
 using UnityEditor;
 using UnityEngine;
 using KeyType = Borodar.RainbowFolders.Editor.Settings.RainbowFolder.KeyType;
@@ -36,6 +37,7 @@ namespace Borodar.RainbowFolders.Editor
 
         private static readonly Vector2 WINDOW_SIZE = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
         private static readonly Rect WINDOW_RECT = new Rect(Vector2.zero, WINDOW_SIZE);
+        private static readonly Rect BACKGROUND_RECT = new Rect(Vector2.one, WINDOW_SIZE - new Vector2(2f, 2f));
 
         private string[] _paths;
         private RainbowFoldersSettings _settings;
@@ -77,10 +79,18 @@ namespace Borodar.RainbowFolders.Editor
         public override void OnGUI()
         {
             base.OnGUI();
+            var rect = WINDOW_RECT;
+
+            // Background
+
+            var borderColor = EditorGUIUtility.isProSkin ? new Color(0.13f, 0.13f, 0.13f) : new Color(0.51f, 0.51f, 0.51f);           
+            EditorGUI.DrawRect(WINDOW_RECT, borderColor);
+
+            var backgroundColor = EditorGUIUtility.isProSkin ? new Color(0.18f, 0.18f, 0.18f) : new Color(0.83f, 0.83f, 0.83f);
+            EditorGUI.DrawRect(BACKGROUND_RECT, backgroundColor);
 
             // Labels
 
-            var rect = WINDOW_RECT;
             rect.x += 0.5f * PADDING;
             rect.y += PADDING;
             rect.width = LABELS_WIDTH - PADDING;
