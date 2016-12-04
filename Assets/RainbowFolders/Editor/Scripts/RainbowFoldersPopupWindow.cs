@@ -36,9 +36,9 @@ namespace Borodar.RainbowFolders.Editor
         private static readonly Vector2 WINDOW_SIZE = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
         private static readonly Rect WINDOW_RECT = new Rect(Vector2.zero, WINDOW_SIZE);
 
-        private string _path;
+        private string[] _paths;
         private RainbowFoldersSettings _settings;
-        private RainbowFolder _existingFolder;
+        private RainbowFolder[] _existingFolders;
         private RainbowFolder _currentFolder;
 
         //---------------------------------------------------------------------
@@ -50,14 +50,20 @@ namespace Borodar.RainbowFolders.Editor
             return GetDraggableWindow<RainbowFoldersPopupWindow>();
         }
 
-        public void ShowWithParam(Vector2 position, string path)
+        public void ShowWithParams(Vector2 position, string[] paths, int pathIndex)
         {
-            _path = path;
+            _paths = paths;
             _settings = RainbowFoldersSettings.Instance;
-            _currentFolder = new RainbowFolder(KeyType.Path, _path);
-            _existingFolder = _settings.GetFolderByPath(_path);
 
-            if (_existingFolder != null) _currentFolder.CopyFrom(_existingFolder);
+            var size = paths.Length;
+            _existingFolders = new RainbowFolder[size];
+            _currentFolder = new RainbowFolder(KeyType.Path, paths[pathIndex]);
+
+            for (var i = 0; i < size; i++)
+                _existingFolders[i] = _settings.GetFolderByPath(paths[i]);
+
+            if (_existingFolders[pathIndex] != null)
+                _currentFolder.CopyFrom(_existingFolders[pathIndex]);
 
             var rect = new Rect(position, WINDOW_SIZE);
             Show<RainbowFoldersPopupWindow>(rect);
@@ -93,7 +99,10 @@ namespace Borodar.RainbowFolders.Editor
             rect.width = WINDOW_RECT.width - LABELS_WIDTH - PREVIEW_SIZE_LARGE - 2f * PADDING;
 
             GUI.enabled = false;
-            _currentFolder.Key = (_currentFolder.Type == KeyType.Path) ? _path : Path.GetFileNameWithoutExtension(_path);
+            if (_paths.Length == 1)
+                _currentFolder.Key = (_currentFolder.Type == KeyType.Path) ? _paths[0] : Path.GetFileName(_paths[0]);
+            else
+                _currentFolder.Key = "---";
             EditorGUI.TextField(rect, GUIContent.none, _currentFolder.Key);
             GUI.enabled = true;
 
@@ -118,32 +127,56 @@ namespace Borodar.RainbowFolders.Editor
             rect.x = PADDING;
             rect.y = WINDOW_HEIGHT - LINE_HEIGHT - 0.75f * PADDING;            
             rect.width = 20f;
-            if (GUI.Button(rect, "S"))
-            {
-                Selection.activeObject = _settings;
-                Close();
-            }
+            ButtonSettings(rect);
 
             rect.x += 20f + 4f;
-            if (GUI.Button(rect, "D"))
-            {
-                _settings.RemoveAll(_existingFolder);
-                Close();
-            }
+            ButtonDelete(rect);
 
             rect.x = WINDOW_WIDTH - 2f * (BUTTON_WIDTH + PADDING);
             rect.width = BUTTON_WIDTH;
-            if (GUI.Button(rect, "Cancel"))
-            {
-                Close();
-            }
+            ButtonCancel(rect);
 
             rect.x = WINDOW_WIDTH - BUTTON_WIDTH - PADDING;
-            if (GUI.Button(rect, "Apply"))
+            ButtonApply(rect);
+        }
+
+        //---------------------------------------------------------------------
+        // Helpers
+        //---------------------------------------------------------------------
+
+        private void ButtonSettings(Rect rect)
+        {
+            if (!GUI.Button(rect, "S")) return;
+            Selection.activeObject = _settings;
+            Close();
+        }
+
+        private void ButtonDelete(Rect rect)
+        {
+            if (!GUI.Button(rect, "D")) return;
+            foreach (var folder in _existingFolders) _settings.RemoveAll(folder);
+            Close();
+        }
+
+        private void ButtonCancel(Rect rect)
+        {
+            if (!GUI.Button(rect, "Cancel")) return;
+            Close();
+        }
+
+        private void ButtonApply(Rect rect)
+        {
+            if (!GUI.Button(rect, "Apply")) return;
+
+            for (var i = 0; i < _existingFolders.Length; i++)
             {
-                _settings.UpdateFolder(_existingFolder, _currentFolder);
-                Close();
+                _currentFolder.Key = (_currentFolder.Type == KeyType.Path)
+                    ? _paths[i]
+                    : Path.GetFileName(_paths[i]);
+
+                _settings.UpdateFolder(_existingFolders[i], _currentFolder);
             }
+            Close();
         }
     }
 }

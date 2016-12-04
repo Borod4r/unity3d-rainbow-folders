@@ -30,6 +30,14 @@ namespace Borodar.RainbowFolders.Editor.Settings
         // Ctors
         //---------------------------------------------------------------------
 
+        public RainbowFolder(RainbowFolder value)
+        {
+            Type = value.Type;
+            Key = value.Key;
+            SmallIcon = value.SmallIcon;
+            LargeIcon = value.LargeIcon;
+        }
+
         public RainbowFolder(KeyType type, string key)
         {
             Type = type;

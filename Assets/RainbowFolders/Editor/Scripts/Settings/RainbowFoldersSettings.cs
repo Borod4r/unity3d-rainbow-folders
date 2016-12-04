@@ -131,9 +131,9 @@ namespace Borodar.RainbowFolders.Editor.Settings
             EditorUtility.SetDirty(this);
         }
 
-        public void AddFolder(RainbowFolder folder)
+        public void AddFolder(RainbowFolder value)
         {
-            Folders.Add(folder);
+            Folders.Add(new RainbowFolder(value));
         }
 
         public void RemoveAll(RainbowFolder match)
@@ -161,7 +161,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
             var folder = Folders.SingleOrDefault(x => x.Type == value.Type && x.Key == value.Key);
             if (folder == null)
             {
-                AddFolder(new RainbowFolder(value.Type, value.Key, value.SmallIcon, value.LargeIcon));
+                AddFolder(new RainbowFolder(value));
             }
             else
             {

@@ -13,6 +13,7 @@
  */
 
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
 using UnityEngine;
@@ -29,6 +30,7 @@ namespace Borodar.RainbowFolders.Editor
     {
         private const float LARGE_ICON_SIZE = 64f;
 
+        private static bool _multiSelection;
         private static Texture2D _editIconSmall;
         private static Texture2D _editIconLarge;
 
@@ -61,24 +63,45 @@ namespace Borodar.RainbowFolders.Editor
 
         private static void DrawEditIcon(string guid, Rect rect)
         {
-            if (!Event.current.alt) return;
+            if (!Event.current.alt)
+            {
+                _multiSelection = false;
+                return;
+            }
 
             var isSmall = IsIconSmall(ref rect);
-
             var isMouseOver = rect.Contains(Event.current.mousePosition);
-            if (!isMouseOver) return;
+            _multiSelection = (IsSelected(guid)) ? isMouseOver || _multiSelection : !isMouseOver && _multiSelection;
+
+            // if mouse is not over current folder icon or selected group
+            if (!isMouseOver && (!IsSelected(guid) || !_multiSelection)) return;
 
             var path = AssetDatabase.GUIDToAssetPath(guid);
             if (!AssetDatabase.IsValidFolder(path)) return;
 
-            var editIcon = (isSmall) ? GetEditIconSmall() : GetEditIconLarge(); ;
+            var editIcon = (isSmall) ? GetEditIconSmall() : GetEditIconLarge();
             DrawCustomIcon(ref rect, editIcon, isSmall);
 
             if (GUI.Button(rect, GUIContent.none, GUIStyle.none))
             {
                 var window = RainbowFoldersPopupWindow.GetDraggableWindow();
                 var position = GUIUtility.GUIToScreenPoint(rect.position + new Vector2(0, rect.height + 2));
-                window.ShowWithParam(position, path);
+
+                if (_multiSelection)
+                {
+                    var assetGUIDs = Selection.assetGUIDs;
+                    var size = assetGUIDs.Length;
+
+                    var paths = new string[size];
+                    for (var i = 0; i < size; i++) paths[i] = AssetDatabase.GUIDToAssetPath(assetGUIDs[i]);
+                    var index = ArrayUtility.IndexOf(paths, path);
+
+                    window.ShowWithParams(position, paths, index);
+                }
+                else
+                {
+                    window.ShowWithParams(position, new[] {path}, 0);
+                }
             }
 
             EditorApplication.RepaintProjectWindow();
@@ -118,6 +141,11 @@ namespace Borodar.RainbowFolders.Editor
                 rect.height = rect.width;
 
             return isSmall;
+        }
+
+        private static bool IsSelected(string guid)
+        {
+            return Selection.assetGUIDs.Contains(guid);
         }
 
         [SuppressMessage("ReSharper", "ConvertIfStatementToNullCoalescingExpression")]
