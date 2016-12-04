@@ -139,12 +139,15 @@ namespace Borodar.RainbowFolders.Editor.Settings
         public void RemoveAll(RainbowFolder match)
         {
             if (match == null) return;
+            Undo.RecordObject(this, "Modify Rainbow Folder Settings");
             Folders.RemoveAll(x => x.Type == match.Type && x.Key == match.Key);
+            EditorUtility.SetDirty(this);
         }
 
         public void RemoveAllByPath(string path)
         {
-            Folders.RemoveAll(x => x.Key == path);
+            var match = GetFolderByPath(path);
+            RemoveAll(match);
         }
 
         public Texture2D GetFolderIcon(string folderPath, bool small = true)
