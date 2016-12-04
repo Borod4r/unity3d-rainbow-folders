@@ -138,6 +138,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
 
         public void RemoveAll(RainbowFolder match)
         {
+            if (match == null) return;
             Folders.RemoveAll(x => x.Type == match.Type && x.Key == match.Key);
         }
 
