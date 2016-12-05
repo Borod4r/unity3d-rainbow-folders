@@ -143,6 +143,9 @@ namespace Borodar.RainbowFolders.Editor
             ButtonSettings(rect);
 
             rect.x += BUTTON_WIDTH_SMALL + 0.75f * PADDING;
+            ButtonPresets(rect);
+
+            rect.x += BUTTON_WIDTH_SMALL + 0.75f * PADDING;
             ButtonDelete(rect);
 
             rect.x = WINDOW_WIDTH - 2f * (BUTTON_WIDTH + PADDING);
@@ -171,6 +174,14 @@ namespace Borodar.RainbowFolders.Editor
             if (!GUI.Button(rect, texture, GUIStyle.none)) return;
             foreach (var folder in _existingFolders) _settings.RemoveAll(folder);
             Close();
+        }
+
+        private void ButtonPresets(Rect rect)
+        {
+            var texture = RainbowFoldersEditorUtility.GetPresetsButtonIcon();
+            if (!GUI.Button(rect, texture, GUIStyle.none)) return;
+
+            RainbowFoldersPresetsMenu.ShowDropDown(rect, _currentFolder);
         }
 
         private void ButtonCancel(Rect rect)

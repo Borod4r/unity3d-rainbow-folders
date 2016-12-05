@@ -29,6 +29,7 @@ namespace Borodar.RainbowFolders.Editor
         private static Texture2D _editIconLarge;
         private static Texture2D _settingsIcon;
         private static Texture2D _deleteIcon;
+        private static Texture2D _presetsIcon;
 
         /// <summary>
         /// Creates .asset file of the specified <see cref="UnityEngine.ScriptableObject"/>
@@ -95,6 +96,14 @@ namespace Borodar.RainbowFolders.Editor
                 _deleteIcon = EditorGUIUtility.Load("RainbowFolders/Textures/icon_delete_16.png") as Texture2D;
 
             return _deleteIcon;
+        }
+
+        public static Texture2D GetPresetsButtonIcon()
+        {
+            if (_presetsIcon == null)
+                _presetsIcon = EditorGUIUtility.Load("RainbowFolders/Textures/icon_presets_16.png") as Texture2D;
+
+            return _presetsIcon;
         }
 
         //---------------------------------------------------------------------
