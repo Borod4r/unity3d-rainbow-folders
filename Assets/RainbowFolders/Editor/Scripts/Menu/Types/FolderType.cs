@@ -12,18 +12,16 @@
  * the License.
  */
 
-using Borodar.RainbowFolders.Editor.Settings;
-using UnityEditor;
+using System;
+using UnityEngine;
 
 namespace Borodar.RainbowFolders.Editor
 {
-    public static class RainbowFoldersMenu
+    [Serializable]
+    public class FolderType
     {
-        [MenuItem("Edit/Rainbow Folders Settings", false, 500)]
-        public static void OpenSettings()
-        {
-            var settings = RainbowFoldersSettings.Instance;
-            Selection.activeObject = settings;
-        }
+        public FolderTypeName Type;
+        public Texture2D SmallIcon;
+        public Texture2D LargeIcon;
     }
 }

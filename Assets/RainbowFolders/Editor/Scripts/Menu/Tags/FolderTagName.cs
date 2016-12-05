@@ -12,25 +12,22 @@
  * the License.
  */
 
+
 namespace Borodar.RainbowFolders.Editor
 {
-    public enum FolderTypes
+    public enum FolderTagName
     {
-        Prefabs = 0,
-        Scenes = 1,
-        Scripts = 2,
-        Extensions = 3,
-        Plugins = 4,
-        Textures = 5,
-        Materials = 6,
-        Audio = 7,
-        Brackets = 8,
-        Fonts = 9,
-        Editor = 10,
-        Resources = 11,
-        Shaders = 12,
-        Terrains = 13,
-        Meshes = 14,
-        Rainbow = 15
+        Red = 0,
+        Vermilion = 1,
+        Orange = 2,
+        YellowOrange = 3,
+        Yellow = 4,
+        Lime = 5,
+        Green = 6,
+        Cyan= 7,
+        Blue = 8,
+        DarkBlue = 9,
+        Violet = 10,
+        Magenta = 11,
     }
 }

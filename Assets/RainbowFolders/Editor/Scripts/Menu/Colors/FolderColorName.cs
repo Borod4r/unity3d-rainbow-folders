@@ -13,16 +13,21 @@
  */
 
 
-using System;
-using UnityEngine;
-
 namespace Borodar.RainbowFolders.Editor
 {
-    [Serializable]
-    public class RainbowColorFolder
+    public enum FolderColorName
     {
-        public FolderColors Color;
-        public Texture2D SmallIcon;
-        public Texture2D LargeIcon;
+        Red = 0,
+        Vermilion = 1,
+        Orange = 2,
+        YellowOrange = 3,
+        Yellow = 4,
+        Lime = 5,
+        Green = 6,
+        BondiBlue = 7,
+        Blue = 8,
+        Indigo = 9,
+        Violet = 10,
+        Magenta = 11,
     }
 }

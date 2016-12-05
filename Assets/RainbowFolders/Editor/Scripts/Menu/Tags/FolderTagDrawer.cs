@@ -17,8 +17,8 @@ using UnityEditor;
 
 namespace Borodar.RainbowFolders.Editor.Settings
 {
-    [CustomPropertyDrawer(typeof(RainbowTaggedFolder))]
-    public class RainbowTaggedFolderDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(FolderTag))]
+    public class FolderTagDrawer : PropertyDrawer
     {
         private const float PADDING = 8f;
         private const float LINE_HEIGHT = 16f;

@@ -17,8 +17,8 @@ using UnityEditor;
 
 namespace Borodar.RainbowFolders.Editor.Settings
 {
-    [CustomPropertyDrawer(typeof(RainbowTypeFolder))]
-    public class RainbowColorTypeFolderDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(FolderColor))]
+    public class FolderColorDrawer : PropertyDrawer
     {
         private const float PADDING = 8f;
         private const float LINE_HEIGHT = 16f;
@@ -30,7 +30,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
         {
             var originalPosition = position;
 
-            var folderType = property.FindPropertyRelative("Type");
+            var folderColor = property.FindPropertyRelative("Color");
             var smallIcon = property.FindPropertyRelative("SmallIcon");
             var largeIcon = property.FindPropertyRelative("LargeIcon");
 
@@ -52,7 +52,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
             position.y = originalPosition.y + PADDING;
             position.width = originalPosition.width - LABELS_WIDTH - PREVIEW_SIZE_LARGE - PADDING;
 
-            EditorGUI.PropertyField(position, folderType, GUIContent.none);
+            EditorGUI.PropertyField(position, folderColor, GUIContent.none);
             position.y += LINE_HEIGHT;
             EditorGUI.PropertyField(position, smallIcon, GUIContent.none);
             position.y += LINE_HEIGHT;
@@ -63,11 +63,11 @@ namespace Borodar.RainbowFolders.Editor.Settings
             position.x += position.width + PADDING;
             position.y = originalPosition.y;
             position.width = position.height = PREVIEW_SIZE_LARGE;
-            GUI.DrawTexture(position, (Texture2D)largeIcon.objectReferenceValue ?? RainbowFoldersEditorUtility.GetDefaultFolderIcon());
+            GUI.DrawTexture(position, (Texture2D) largeIcon.objectReferenceValue ?? RainbowFoldersEditorUtility.GetDefaultFolderIcon());
 
             position.y += PREVIEW_SIZE_LARGE - PREVIEW_SIZE_SMALL - 4f;
             position.width = position.height = PREVIEW_SIZE_SMALL;
-            GUI.DrawTexture(position, (Texture2D)smallIcon.objectReferenceValue ?? RainbowFoldersEditorUtility.GetDefaultFolderIcon());
+            GUI.DrawTexture(position, (Texture2D) smallIcon.objectReferenceValue ?? RainbowFoldersEditorUtility.GetDefaultFolderIcon());
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)

@@ -19,9 +19,9 @@ using UnityEngine;
 namespace Borodar.RainbowFolders.Editor
 {
     [Serializable]
-    public class RainbowTaggedFolder
+    public class FolderTag
     {
-        public FolderTags Tag;
+        public FolderTagName Tag;
         public Texture2D SmallIcon;
         public Texture2D LargeIcon;
     }

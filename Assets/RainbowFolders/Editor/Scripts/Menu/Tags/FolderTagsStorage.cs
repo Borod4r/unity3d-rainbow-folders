@@ -25,7 +25,7 @@ namespace Borodar.RainbowFolders.Editor
     {
         public const string FOLDER_TAGS_STORAGE_ASSET_NAME = "RainbowTagsIconsStorage";
 
-        public List<RainbowTaggedFolder> ColorFolderTags;
+        public List<FolderTag> ColorFolderTags;
 
         #region instance
         private static FolderTagsStorage instance;
@@ -66,7 +66,7 @@ namespace Borodar.RainbowFolders.Editor
         }
         #endregion
 
-        public FolderIconPair GetIconsByTag(FolderTags tag)
+        public FolderIconPair GetIconsByTag(FolderTagName tag)
         {
             var taggedFolder = ColorFolderTags.Single(x => x.Tag == tag);
             return new FolderIconPair { SmallIcon = taggedFolder.SmallIcon, LargeIcon = taggedFolder.LargeIcon };

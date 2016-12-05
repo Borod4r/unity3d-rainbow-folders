@@ -131,21 +131,21 @@ namespace Borodar.RainbowFolders.Editor
         // Helpers
         //---------------------------------------------------------------------
 
-        private static void Colorize(FolderColors color, RainbowFolder folder)
+        private static void Colorize(FolderColorName color, RainbowFolder folder)
         {
             var icons = FolderColorsStorage.Instance.GetIconsByColor(color);
             folder.SmallIcon = icons.SmallIcon;
             folder.LargeIcon = icons.LargeIcon;
         }
 
-        private static void AssignTag(FolderTags tag, RainbowFolder folder)
+        private static void AssignTag(FolderTagName tag, RainbowFolder folder)
         {
             var icons = FolderTagsStorage.Instance.GetIconsByTag(tag);
             folder.SmallIcon = icons.SmallIcon;
             folder.LargeIcon = icons.LargeIcon;
         }
 
-        private static void AssingType(FolderTypes type, RainbowFolder folder)
+        private static void AssingType(FolderTypeName type, RainbowFolder folder)
         {
             var icons = FolderTypesStorage.Instance.GetIconsByType(type);
             folder.SmallIcon = icons.SmallIcon;
@@ -159,127 +159,127 @@ namespace Borodar.RainbowFolders.Editor
         // Colors
 
         private static void RedCallback(object folder)
-        { Colorize(FolderColors.Red, folder as RainbowFolder); }
+        { Colorize(FolderColorName.Red, folder as RainbowFolder); }
 
         private static void VermilionCallback(object folder)
-        { Colorize(FolderColors.Vermilion, folder as RainbowFolder); }
+        { Colorize(FolderColorName.Vermilion, folder as RainbowFolder); }
 
         private static void OrangeCallback(object folder)
-        { Colorize(FolderColors.Orange, folder as RainbowFolder); }
+        { Colorize(FolderColorName.Orange, folder as RainbowFolder); }
 
         private static void YellowOrangeCallback(object folder)
-        { Colorize(FolderColors.YellowOrange, folder as RainbowFolder); }
+        { Colorize(FolderColorName.YellowOrange, folder as RainbowFolder); }
 
         private static void YellowCallback(object folder)
-        { Colorize(FolderColors.Yellow, folder as RainbowFolder); }
+        { Colorize(FolderColorName.Yellow, folder as RainbowFolder); }
 
         private static void LimeCallback(object folder)
-        { Colorize(FolderColors.Lime, folder as RainbowFolder); }
+        { Colorize(FolderColorName.Lime, folder as RainbowFolder); }
 
         private static void GreenCallback(object folder)
-        { Colorize(FolderColors.Green, folder as RainbowFolder); }
+        { Colorize(FolderColorName.Green, folder as RainbowFolder); }
 
         private static void BondiBlueCallback(object folder)
-        { Colorize(FolderColors.BondiBlue, folder as RainbowFolder); }
+        { Colorize(FolderColorName.BondiBlue, folder as RainbowFolder); }
 
         private static void BlueCallback(object folder)
-        { Colorize(FolderColors.Blue, folder as RainbowFolder); }
+        { Colorize(FolderColorName.Blue, folder as RainbowFolder); }
 
         private static void IndigoCallback(object folder)
-        { Colorize(FolderColors.Indigo, folder as RainbowFolder); }
+        { Colorize(FolderColorName.Indigo, folder as RainbowFolder); }
 
         private static void VioletCallback(object folder)
-        { Colorize(FolderColors.Violet, folder as RainbowFolder); }
+        { Colorize(FolderColorName.Violet, folder as RainbowFolder); }
 
         private static void MagentaCallback(object folder)
-        { Colorize(FolderColors.Magenta, folder as RainbowFolder); }
+        { Colorize(FolderColorName.Magenta, folder as RainbowFolder); }
 
         // Tags
 
         private static void TagRedCallback(object folder)
-        { AssignTag(FolderTags.Red, folder as RainbowFolder); }
+        { AssignTag(FolderTagName.Red, folder as RainbowFolder); }
 
         private static void TagVermilionCallback(object folder)
-        { AssignTag(FolderTags.Vermilion, folder as RainbowFolder); }
+        { AssignTag(FolderTagName.Vermilion, folder as RainbowFolder); }
 
         private static void TagOrangeCallback(object folder)
-        { AssignTag(FolderTags.Orange, folder as RainbowFolder); }
+        { AssignTag(FolderTagName.Orange, folder as RainbowFolder); }
 
         private static void TagYellowOrangeCallback(object folder)
-        { AssignTag(FolderTags.YellowOrange, folder as RainbowFolder); }
+        { AssignTag(FolderTagName.YellowOrange, folder as RainbowFolder); }
 
         private static void TagYellowCallback(object folder)
-        { AssignTag(FolderTags.Yellow, folder as RainbowFolder); }
+        { AssignTag(FolderTagName.Yellow, folder as RainbowFolder); }
 
         private static void TagLimeCallback(object folder)
-        { AssignTag(FolderTags.Lime, folder as RainbowFolder); }
+        { AssignTag(FolderTagName.Lime, folder as RainbowFolder); }
 
         private static void TagGreenCallback(object folder)
-        { AssignTag(FolderTags.Green, folder as RainbowFolder); }
+        { AssignTag(FolderTagName.Green, folder as RainbowFolder); }
 
         private static void TagCyanCallback(object folder)
-        { AssignTag(FolderTags.Cyan, folder as RainbowFolder); }
+        { AssignTag(FolderTagName.Cyan, folder as RainbowFolder); }
 
         private static void TagBlueCallback(object folder)
-        { AssignTag(FolderTags.Blue, folder as RainbowFolder); }
+        { AssignTag(FolderTagName.Blue, folder as RainbowFolder); }
 
         private static void TagDarkBlueCallback(object folder)
-        { AssignTag(FolderTags.DarkBlue, folder as RainbowFolder); }
+        { AssignTag(FolderTagName.DarkBlue, folder as RainbowFolder); }
 
         private static void TagVioletCallback(object folder)
-        { AssignTag(FolderTags.Violet, folder as RainbowFolder); }
+        { AssignTag(FolderTagName.Violet, folder as RainbowFolder); }
 
         private static void TagMagentaCallback(object folder)
-        { AssignTag(FolderTags.Magenta, folder as RainbowFolder); }
+        { AssignTag(FolderTagName.Magenta, folder as RainbowFolder); }
 
         // Types
 
         private static void PrefabsCallback(object folder)
-        { AssingType(FolderTypes.Prefabs, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Prefabs, folder as RainbowFolder); }
 
         private static void ScenesCallback(object folder)
-        { AssingType(FolderTypes.Scenes, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Scenes, folder as RainbowFolder); }
 
         private static void ScriptsCallback(object folder)
-        { AssingType(FolderTypes.Scripts, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Scripts, folder as RainbowFolder); }
 
         private static void ExtensionsCallback(object folder)
-        { AssingType(FolderTypes.Extensions, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Extensions, folder as RainbowFolder); }
 
         private static void PluginsCallback(object folder)
-        { AssingType(FolderTypes.Plugins, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Plugins, folder as RainbowFolder); }
 
         private static void TexturesCallback(object folder)
-        { AssingType(FolderTypes.Textures, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Textures, folder as RainbowFolder); }
 
         private static void MaterialsCallback(object folder)
-        { AssingType(FolderTypes.Materials, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Materials, folder as RainbowFolder); }
 
         private static void AudioCallback(object folder)
-        { AssingType(FolderTypes.Audio, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Audio, folder as RainbowFolder); }
 
         private static void BracketsCallback(object folder)
-        { AssingType(FolderTypes.Brackets, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Brackets, folder as RainbowFolder); }
 
         private static void FontsCallback(object folder)
-        { AssingType(FolderTypes.Fonts, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Fonts, folder as RainbowFolder); }
 
         private static void EditorCallback(object folder)
-        { AssingType(FolderTypes.Editor, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Editor, folder as RainbowFolder); }
 
         private static void ResourcesCallback(object folder)
-        { AssingType(FolderTypes.Resources, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Resources, folder as RainbowFolder); }
 
         private static void ShadersCallback(object folder)
-        { AssingType(FolderTypes.Shaders, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Shaders, folder as RainbowFolder); }
 
         private static void TerrainsCallback(object folder)
-        { AssingType(FolderTypes.Terrains, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Terrains, folder as RainbowFolder); }
 
         private static void MeshesCallback(object folder)
-        { AssingType(FolderTypes.Meshes, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Meshes, folder as RainbowFolder); }
 
         private static void RainbowCallback(object folder)
-        { AssingType(FolderTypes.Rainbow, folder as RainbowFolder); }
+        { AssingType(FolderTypeName.Rainbow, folder as RainbowFolder); }
     }
 }

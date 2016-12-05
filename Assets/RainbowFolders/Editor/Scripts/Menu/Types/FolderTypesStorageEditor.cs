@@ -19,7 +19,7 @@ using UnityEngine;
 namespace Borodar.RainbowFolders.Editor
 {
     [CustomEditor(typeof(FolderTypesStorage))]
-    public class FoldersTypesContainerEditor : UnityEditor.Editor
+    public class FolderTypesStorageEditor : UnityEditor.Editor
     {
         private const string PROP_NAME_FOLDERS = "TypeFolderIcons";
 

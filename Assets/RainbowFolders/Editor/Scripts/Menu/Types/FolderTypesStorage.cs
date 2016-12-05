@@ -25,7 +25,7 @@ namespace Borodar.RainbowFolders.Editor
     {
         public const string FOLDER_TYPE_STORAGE_ASSET_NAME = "RainbowTypeFoldersIconsStorage";
 
-        public List<RainbowTypeFolder> TypeFolderIcons;
+        public List<FolderType> TypeFolderIcons;
 
         private static FolderTypesStorage instance;
 
@@ -63,7 +63,7 @@ namespace Borodar.RainbowFolders.Editor
             return settingsPath;
         }
 
-        public FolderIconPair GetIconsByType(FolderTypes type)
+        public FolderIconPair GetIconsByType(FolderTypeName type)
         {
             var colorFolder = TypeFolderIcons.Single(x => x.Type == type);
             return new FolderIconPair { SmallIcon = colorFolder.SmallIcon, LargeIcon = colorFolder.LargeIcon };

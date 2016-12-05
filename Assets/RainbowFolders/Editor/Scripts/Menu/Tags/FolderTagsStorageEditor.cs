@@ -19,10 +19,10 @@ using UnityEngine;
 
 namespace Borodar.RainbowFolders.Editor
 {
-    [CustomEditor(typeof(FolderColorsStorage))]
-    public class FoldersColorsContainerEditor : UnityEditor.Editor
+    [CustomEditor(typeof(FolderTagsStorage))]
+    public class FolderTagsStorageEditor : UnityEditor.Editor
     {
-        private const string PROP_NAME_FOLDERS = "ColorFolderIcons";
+        private const string PROP_NAME_FOLDERS = "ColorFolderTags";
 
         private SerializedProperty _foldersProperty;
 
@@ -37,7 +37,7 @@ namespace Borodar.RainbowFolders.Editor
             EditorGUILayout.HelpBox("This is internal file for RainbowFolders. Do not edit.", MessageType.Warning);
 
             serializedObject.Update();
-            ReorderableListGUI.Title("Internal storage of colorful folder icons");
+            ReorderableListGUI.Title("Internal storage of tagged folder icons");
             ReorderableListGUI.ListField(_foldersProperty);
             serializedObject.ApplyModifiedProperties();
         }
