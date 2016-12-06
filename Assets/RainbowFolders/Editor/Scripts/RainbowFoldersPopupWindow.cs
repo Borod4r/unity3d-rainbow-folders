@@ -14,7 +14,6 @@
 
 using System.IO;
 using Borodar.RainbowFolders.Editor.Settings;
-using Borodar.ReorderableList;
 using UnityEditor;
 using UnityEngine;
 using KeyType = Borodar.RainbowFolders.Editor.Settings.RainbowFolder.KeyType;
@@ -146,7 +145,7 @@ namespace Borodar.RainbowFolders.Editor
             ButtonPresets(rect);
 
             rect.x += BUTTON_WIDTH_SMALL + 0.75f * PADDING;
-            ButtonDelete(rect);
+            ButtonDefault(rect);
 
             rect.x = WINDOW_WIDTH - 2f * (BUTTON_WIDTH + PADDING);
             rect.width = BUTTON_WIDTH;
@@ -163,25 +162,25 @@ namespace Borodar.RainbowFolders.Editor
         private void ButtonSettings(Rect rect)
         {
             var icon = RainbowFoldersEditorUtility.GetSettingsButtonIcon();
-            if (!GUI.Button(rect, icon, GUIStyle.none)) return;
+            if (!GUI.Button(rect, new GUIContent(icon, "Settings"), GUIStyle.none)) return;
             Selection.activeObject = _settings;
-            Close();
-        }
-
-        private void ButtonDelete(Rect rect)
-        {
-            var texture = RainbowFoldersEditorUtility.GetDeleteButtonIcon();
-            if (!GUI.Button(rect, texture, GUIStyle.none)) return;
-            foreach (var folder in _existingFolders) _settings.RemoveAll(folder);
             Close();
         }
 
         private void ButtonPresets(Rect rect)
         {
-            var texture = RainbowFoldersEditorUtility.GetPresetsButtonIcon();
-            if (!GUI.Button(rect, texture, GUIStyle.none)) return;
+            var icon = RainbowFoldersEditorUtility.GetPresetsButtonIcon();
+            if (!GUI.Button(rect, new GUIContent(icon, "Presets"), GUIStyle.none)) return;
 
             RainbowFoldersPresetsMenu.ShowDropDown(rect, _currentFolder);
+        }
+
+        private void ButtonDefault(Rect rect)
+        {
+            var icon = RainbowFoldersEditorUtility.GetDeleteButtonIcon();
+            if (!GUI.Button(rect, new GUIContent(icon, "Revert to Default"), GUIStyle.none)) return;
+            _currentFolder.SmallIcon = null;
+            _currentFolder.LargeIcon = null;
         }
 
         private void ButtonCancel(Rect rect)
