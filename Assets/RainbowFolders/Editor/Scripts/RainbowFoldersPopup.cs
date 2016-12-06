@@ -20,7 +20,7 @@ using KeyType = Borodar.RainbowFolders.Editor.Settings.RainbowFolder.KeyType;
 
 namespace Borodar.RainbowFolders.Editor
 {
-    public class RainbowFoldersPopupWindow : DraggablePopupWindow
+    public class RainbowFoldersPopup : DraggablePopupWindow
     {
         private const float PADDING = 8f;
         private const float SPACING = 1f;
@@ -47,9 +47,9 @@ namespace Borodar.RainbowFolders.Editor
         // Public
         //---------------------------------------------------------------------
 
-        public static RainbowFoldersPopupWindow GetDraggableWindow()
+        public static RainbowFoldersPopup GetDraggableWindow()
         {
-            return GetDraggableWindow<RainbowFoldersPopupWindow>();
+            return GetDraggableWindow<RainbowFoldersPopup>();
         }
 
         public void ShowWithParams(Vector2 position, string[] paths, int pathIndex)
@@ -68,7 +68,7 @@ namespace Borodar.RainbowFolders.Editor
                 _currentFolder.CopyFrom(_existingFolders[pathIndex]);
 
             var rect = new Rect(position, WINDOW_SIZE);
-            Show<RainbowFoldersPopupWindow>(rect);
+            Show<RainbowFoldersPopup>(rect);
         }
 
         //---------------------------------------------------------------------

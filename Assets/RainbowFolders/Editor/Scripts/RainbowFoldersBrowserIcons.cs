@@ -82,7 +82,7 @@ namespace Borodar.RainbowFolders.Editor
 
             if (GUI.Button(rect, GUIContent.none, GUIStyle.none))
             {
-                var window = RainbowFoldersPopupWindow.GetDraggableWindow();
+                var window = RainbowFoldersPopup.GetDraggableWindow();
                 var position = GUIUtility.GUIToScreenPoint(rect.position + new Vector2(0, rect.height + 2));
 
                 if (_multiSelection)
