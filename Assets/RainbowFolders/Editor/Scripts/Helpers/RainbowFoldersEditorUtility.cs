@@ -15,7 +15,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -30,6 +29,7 @@ namespace Borodar.RainbowFolders.Editor
         private static Texture2D _settingsIcon;
         private static Texture2D _deleteIcon;
         private static Texture2D _presetsIcon;
+        private static Texture2D _assetLogo;
 
         /// <summary>
         /// Creates .asset file of the specified <see cref="UnityEngine.ScriptableObject"/>
@@ -69,6 +69,10 @@ namespace Borodar.RainbowFolders.Editor
             Selection.activeObject = asset;
         }
 
+        //---------------------------------------------------------------------
+        // Textures
+        //---------------------------------------------------------------------
+
         public static Texture2D GetDefaultFolderIcon()
         {
             if (_defaultFolderIcon == null)
@@ -84,26 +88,22 @@ namespace Borodar.RainbowFolders.Editor
 
         public static Texture2D GetSettingsButtonIcon()
         {
-            if (_settingsIcon == null)
-                _settingsIcon = EditorGUIUtility.Load("RainbowFolders/Textures/icon_settings_16.png") as Texture2D;
-
-            return _settingsIcon;
+            return GetTexture(ref _settingsIcon, "icon_settings_16.png");
         }
 
         public static Texture2D GetDeleteButtonIcon()
         {
-            if (_deleteIcon == null)
-                _deleteIcon = EditorGUIUtility.Load("RainbowFolders/Textures/icon_delete_16.png") as Texture2D;
-
-            return _deleteIcon;
+            return GetTexture(ref _deleteIcon, "icon_delete_16.png");
         }
 
         public static Texture2D GetPresetsButtonIcon()
         {
-            if (_presetsIcon == null)
-                _presetsIcon = EditorGUIUtility.Load("RainbowFolders/Textures/icon_presets_16.png") as Texture2D;
+            return GetTexture(ref _presetsIcon, "icon_presets_16.png");
+        }
 
-            return _presetsIcon;
+        public static Texture2D GetAssetLogo()
+        {
+            return GetTexture(ref _assetLogo, "rainbow_logo_64.png");
         }
 
         //---------------------------------------------------------------------
@@ -112,18 +112,20 @@ namespace Borodar.RainbowFolders.Editor
 
         private static Texture2D GetEditIconSmall()
         {
-            if (_editIconSmall == null)
-                _editIconSmall = EditorGUIUtility.Load("RainbowFolders/Textures/icon_edit_16.png") as Texture2D;
-
-            return _editIconSmall;
+            return GetTexture(ref _editIconSmall, "icon_edit_16.png");
         }
 
         private static Texture2D GetEditIconLarge()
         {
-            if (_editIconLarge == null)
-                _editIconLarge = EditorGUIUtility.Load("RainbowFolders/Textures/icon_edit_64.png") as Texture2D;
+            return GetTexture(ref _editIconLarge, "icon_edit_64.png");
+        }
 
-            return _editIconLarge;
+        private static Texture2D GetTexture(ref Texture2D texture, string fileName)
+        {
+            if (texture == null)
+                texture = EditorGUIUtility.Load("RainbowFolders/Textures/" + fileName) as Texture2D;
+
+            return texture;
         }
 
     }

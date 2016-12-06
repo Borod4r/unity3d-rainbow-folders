@@ -12,7 +12,6 @@
  * the License.
  */
 
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
@@ -40,6 +39,7 @@ namespace Borodar.RainbowFolders.Editor
         {
             EditorApplication.projectWindowItemOnGUI += ReplaceFolderIcon;
             EditorApplication.projectWindowItemOnGUI += DrawEditIcon;
+            EditorApplication.projectWindowItemOnGUI += ShowWelcomeWindow;
         }
 
         //---------------------------------------------------------------------
@@ -103,6 +103,20 @@ namespace Borodar.RainbowFolders.Editor
             }
 
             EditorApplication.RepaintProjectWindow();
+        }
+
+        private static void ShowWelcomeWindow(string guid, Rect rect)
+        {
+            if (EditorPrefs.GetBool(RainbowFoldersWelcome.PREF_KEY))
+            {
+                // ReSharper disable once DelegateSubtraction
+                EditorApplication.projectWindowItemOnGUI -= ShowWelcomeWindow;
+                return;
+            }
+
+            RainbowFoldersWelcome.ShowWindow();
+            EditorPrefs.SetBool(RainbowFoldersWelcome.PREF_KEY, true);
+
         }
 
         //---------------------------------------------------------------------

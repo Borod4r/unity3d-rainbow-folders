@@ -12,35 +12,88 @@
  * the License.
  */
 
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
 namespace Borodar.RainbowFolders.Editor
 {
-    public class RainbowFoldersWelcome : EditorWindow
+    public class RainbowFoldersWelcome : DraggablePopupWindow
     {
-        private const string TITLE = "Rainbow Folders";
+        public const string PREF_KEY = "RainbowFolders.IsWelcomeShown";
+
+        private const float WINDOW_WIDTH = 325f;
+        private const float WINDOW_HEIGHT = 100f;
+
+        private static readonly Vector2 WINDOW_SIZE = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
+        private static readonly Rect WINDOW_RECT = new Rect(Vector2.zero, WINDOW_SIZE);
+        private static readonly Rect BACKGROUND_RECT = new Rect(Vector2.one, WINDOW_SIZE - new Vector2(2f, 2f));
 
         //---------------------------------------------------------------------
         // Public
         //---------------------------------------------------------------------
 
-        public static void ShowWindow(Vector2 position)
+        public static void ShowWindow()
         {
-            var window = GetWindow<RainbowFoldersWelcome>();
-            window.position = new Rect(position, new Vector2(window.position.width, window.position.height));
-            //window.position.Set(position.x, position.y, window.position.width, window.position.height);
-            window.Show();
-
+            var position = new Rect(CalcWindowPosition(), WINDOW_SIZE);
+            var window = GetDraggableWindow<RainbowFoldersWelcome>();
+            window.Show<RainbowFoldersWelcome>(position);
         }
 
         //---------------------------------------------------------------------
         // Messages
         //---------------------------------------------------------------------
 
-        protected void OnGUI()
+        public override void OnGUI()
         {
-            EditorGUILayout.LabelField("With \"Rainbow Folders\" you can set custom icon for any folder in unity project browser");
+            base.OnGUI();
+
+            // Background
+
+            var borderColor = EditorGUIUtility.isProSkin ? new Color(0.13f, 0.13f, 0.13f) : new Color(0.51f, 0.51f, 0.51f);
+            EditorGUI.DrawRect(WINDOW_RECT, borderColor);
+
+            var backgroundColor = EditorGUIUtility.isProSkin ? new Color(0.18f, 0.18f, 0.18f) : new Color(0.83f, 0.83f, 0.83f);
+            EditorGUI.DrawRect(BACKGROUND_RECT, backgroundColor);
+
+            // Content
+
+            GUILayout.BeginHorizontal();
+            {
+                GUI.skin.label.wordWrap = true;
+                GUILayout.Label(new GUIContent(RainbowFoldersEditorUtility.GetAssetLogo()));
+
+                GUILayout.BeginVertical();
+                //GUILayout.Label("Let's Make it colorful!");
+                GUILayout.Label("Welcome!", EditorStyles.boldLabel);
+                GUILayout.Label("With \"Rainbow Folders\" you can set custom icon for any folder in Unity project browser.");
+                GUILayout.EndVertical();
+            }
+            GUILayout.EndHorizontal();
+
+            if (GUILayout.Button("Close")) Close();
+        }
+
+        //---------------------------------------------------------------------
+        // Helpers
+        //---------------------------------------------------------------------
+
+        private static Vector2 CalcWindowPosition()
+        {
+            return GetProjectWindow().position.position + new Vector2(10f, 30f);
+        }
+
+        private static EditorWindow GetProjectWindow()
+        {
+            return GetWindowByName("UnityEditor.ProjectWindow")
+                ?? GetWindowByName("UnityEditor.ObjectBrowser")
+                ?? GetWindowByName("UnityEditor.ProjectBrowser");
+        }
+
+        private static EditorWindow GetWindowByName(string pName)
+        {
+            var objectList = Resources.FindObjectsOfTypeAll(typeof(EditorWindow));
+            return (from obj in objectList where obj.GetType().ToString() == pName select ((EditorWindow) obj)).FirstOrDefault();
         }
     }
 }
