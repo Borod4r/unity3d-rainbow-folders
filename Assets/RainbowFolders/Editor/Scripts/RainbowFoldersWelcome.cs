@@ -23,7 +23,7 @@ namespace Borodar.RainbowFolders.Editor
         public const string PREF_KEY = "RainbowFolders.IsWelcomeShown";
 
         private const float WINDOW_WIDTH = 325f;
-        private const float WINDOW_HEIGHT = 100f;
+        private const float WINDOW_HEIGHT = 250f;
 
         private static readonly Vector2 WINDOW_SIZE = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
         private static readonly Rect WINDOW_RECT = new Rect(Vector2.zero, WINDOW_SIZE);
@@ -64,14 +64,26 @@ namespace Borodar.RainbowFolders.Editor
                 GUILayout.Label(new GUIContent(RainbowFoldersEditorUtility.GetAssetLogo()));
 
                 GUILayout.BeginVertical();
-                //GUILayout.Label("Let's Make it colorful!");
-                GUILayout.Label("Welcome!", EditorStyles.boldLabel);
-                GUILayout.Label("With \"Rainbow Folders\" you can set custom icon for any folder in Unity project browser.");
+                {
+                    GUILayout.Label("Welcome!", EditorStyles.boldLabel);
+                    GUILayout.Label("With \"Rainbow Folders\" you can set custom icon for any folder in Unity project browser.");
+                }
                 GUILayout.EndVertical();
             }
             GUILayout.EndHorizontal();
 
-            if (GUILayout.Button("Close")) Close();
+            GUILayout.Label("• Just hold the Alt key and click on any folder icon.");
+            GUILayout.Label("• Configuration dialogue will appear, and you'll be able to assign icons the for the corresponding folder, your own ones or chose from dozens of presets.");
+            GUILayout.Label("• To reset the folder icon to the default one, just Alt-click on it, then press the red cross button in configuration dialogue and apply changes.");
+            GUILayout.Label("• You can also edit multiple folders at once, just select them all and Alt-click at one their icons.\n");
+
+            GUILayout.BeginHorizontal();
+            {
+                GUILayout.FlexibleSpace();
+                if (GUILayout.Button("Close", GUILayout.Width(125f))) Close();
+                GUILayout.FlexibleSpace();
+            }
+            GUILayout.EndHorizontal();
         }
 
         //---------------------------------------------------------------------
