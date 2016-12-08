@@ -53,9 +53,9 @@ You can also edit multiple folders at once, just select them all and **Alt-click
 
 To view all existing assignments, click on the gear button in configuration dialogue, then take a look at the Inspector.
 
-There is reorderable list with all defined "folder" configurations. You can modify existing items, remove them using "-" button or add new ones by clicking "+" button below.
-
 ![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/10.png)
+
+There is reorderable list with all defined "folder" configurations. You can modify existing items, remove them using "-" button or add new ones by clicking "+" button below.
 
 ![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/11.png)
 
