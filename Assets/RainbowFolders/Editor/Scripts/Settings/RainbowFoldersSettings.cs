@@ -16,6 +16,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using UnityEditor;
@@ -25,10 +26,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
 {
     public class RainbowFoldersSettings : ScriptableObject
     {
-        public const string SETTINGS_ASSET_EXTENSION = "asset";
-        public const string SETTINGS_ASSET_NAME = "RainbowFoldersSettings";
-        public const string SETTINGS_FOLDER = "RainbowFolders";
-        public const string SETTINGS_PATH = "Editor Default Resources/" + SETTINGS_FOLDER;
+        private const string RELATIVE_PATH = "Editor/Data/RainbowFoldersSettings.asset";
 
         public List<RainbowFolder> Folders;
 
@@ -38,26 +36,14 @@ namespace Borodar.RainbowFolders.Editor.Settings
 
         private static RainbowFoldersSettings _instance;
 
+        [SuppressMessage("ReSharper", "ConvertIfStatementToNullCoalescingExpression")]
         public static RainbowFoldersSettings Instance
         {
             get
             {
                 if (_instance == null)
-                {
-                    var assetNameWithExtension = string.Join (".", new [] { SETTINGS_ASSET_NAME, SETTINGS_ASSET_EXTENSION });
-                    var settingsPath = Path.Combine(SETTINGS_FOLDER, assetNameWithExtension);
+                    _instance = RainbowFoldersEditorUtility.LoadFromAsset<RainbowFoldersSettings>(RELATIVE_PATH);
 
-                    if ((_instance = EditorGUIUtility.Load(settingsPath) as RainbowFoldersSettings) == null)
-                    {
-                        if (!Directory.Exists(Path.Combine(Application.dataPath, SETTINGS_PATH)))
-                        {
-                            AssetDatabase.CreateFolder("Assets", SETTINGS_PATH);
-                        }
-
-                        RainbowFoldersEditorUtility.CreateAsset<RainbowFoldersSettings>(SETTINGS_ASSET_NAME, Path.Combine("Assets", SETTINGS_PATH));
-                        _instance = EditorGUIUtility.Load(settingsPath) as RainbowFoldersSettings;
-                    }
-                }
                 return _instance;
             }
         }

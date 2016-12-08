@@ -53,6 +53,8 @@ namespace Borodar.RainbowFolders.Editor
 
             var isSmall = IsIconSmall(ref rect);
 
+            var setting = RainbowFoldersSettings.Instance;
+            if (setting == null) return;
             var texture = RainbowFoldersSettings.Instance.GetFolderIcon(path, isSmall);
             if (texture == null) return;
 

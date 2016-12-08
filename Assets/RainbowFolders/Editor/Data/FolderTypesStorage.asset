@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61ce4e6f0e8de4b869c42bc50400d057, type: 3}
-  m_Name: RainbowTypeFoldersIconsStorage
+  m_Name: FolderTypesStorage
   m_EditorClassIdentifier: 
   TypeFolderIcons:
   - Type: 0
