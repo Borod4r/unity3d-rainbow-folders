@@ -77,7 +77,7 @@ namespace Borodar.RainbowFolders.Editor
             Selection.activeObject = asset;
         }
 
-        public static T LoadFromAsset<T>(string relativePath) where T : ScriptableObject
+        public static T LoadFromAsset<T>(string relativePath) where T : UnityEngine.Object
         {
             var assetPath = Path.Combine(RainbowFoldersPreferences.HomeFolder, relativePath);
             var asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);            
@@ -139,7 +139,7 @@ namespace Borodar.RainbowFolders.Editor
         private static Texture2D GetTexture(ref Texture2D texture, string fileName)
         {
             if (texture == null)
-                texture = EditorGUIUtility.Load("RainbowFolders/Textures/" + fileName) as Texture2D;
+                texture = LoadFromAsset<Texture2D>("Editor/Textures/" + fileName);
 
             return texture;
         }
