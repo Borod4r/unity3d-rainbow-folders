@@ -23,6 +23,10 @@ namespace Borodar.RainbowFolders.Editor
     [SuppressMessage("ReSharper", "ConvertIfStatementToNullCoalescingExpression")]
     public static class RainbowFoldersEditorUtility
     {
+        private const string LOAD_ASSET_ERROR_MSG = "Could not load {0}\n" +
+                                                    "Did you move the \"Rainbow Folders\" around in your project? " +
+                                                    "Go to \"Preferences -> Rainbow Folders\" and update the location of the asset.";
+
         private static Texture2D _defaultFolderIcon;
         private static Texture2D _editIconSmall;
         private static Texture2D _editIconLarge;
@@ -30,6 +34,10 @@ namespace Borodar.RainbowFolders.Editor
         private static Texture2D _deleteIcon;
         private static Texture2D _presetsIcon;
         private static Texture2D _assetLogo;
+
+        //---------------------------------------------------------------------
+        // Assets
+        //---------------------------------------------------------------------
 
         /// <summary>
         /// Creates .asset file of the specified <see cref="UnityEngine.ScriptableObject"/>
@@ -67,6 +75,14 @@ namespace Borodar.RainbowFolders.Editor
             AssetDatabase.SaveAssets();
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = asset;
+        }
+
+        public static T LoadFromAsset<T>(string relativePath) where T : ScriptableObject
+        {
+            var assetPath = Path.Combine(RainbowFoldersPreferences.HomeFolder, relativePath);
+            var asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);            
+            if (!asset) Debug.LogError(string.Format(LOAD_ASSET_ERROR_MSG, assetPath));
+            return asset;
         }
 
         //---------------------------------------------------------------------

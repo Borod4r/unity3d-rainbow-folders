@@ -14,57 +14,39 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using UnityEditor;
-using Borodar.RainbowFolders.Editor.Settings;
-using System.IO;
+using EditorUtility = Borodar.RainbowFolders.Editor.RainbowFoldersEditorUtility;
 
 namespace Borodar.RainbowFolders.Editor
 {
     public class FolderTagsStorage : ScriptableObject
     {
-        public const string FOLDER_TAGS_STORAGE_ASSET_NAME = "RainbowTagsIconsStorage";
+        private const string RELATIVE_PATH = "Editor/Data/FolderTagsStorage.asset";
 
         public List<FolderTag> ColorFolderTags;
 
-        #region instance
-        private static FolderTagsStorage instance;
+        //---------------------------------------------------------------------
+        // Instance
+        //---------------------------------------------------------------------
 
+        private static FolderTagsStorage _instance;
+
+        [SuppressMessage("ReSharper", "ConvertIfStatementToNullCoalescingExpression")]
         public static FolderTagsStorage Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    var colorStorageAssetPath = GetColorStorageAssetPath();
-                    if ((instance = EditorGUIUtility.Load(colorStorageAssetPath) as FolderTagsStorage) == null)
-                    {
-                        if (!Directory.Exists(Path.Combine(Application.dataPath, RainbowFoldersSettings.SETTINGS_PATH)))
-                        {
-                            AssetDatabase.CreateFolder("Assets", RainbowFoldersSettings.SETTINGS_PATH);
-                        }
+                if (_instance == null)
+                    _instance = EditorUtility.LoadFromAsset<FolderTagsStorage>(RELATIVE_PATH);
 
-                        RainbowFoldersEditorUtility.CreateAsset<FolderTagsStorage>(FOLDER_TAGS_STORAGE_ASSET_NAME, 
-                            Path.Combine("Assets", RainbowFoldersSettings.SETTINGS_PATH));
-                        instance = EditorGUIUtility.Load(colorStorageAssetPath) as FolderTagsStorage;
-                    }
-                }
-                return instance;
+                return _instance;
             }
         }
 
-        // Path to load from 'Editor Default Resources' folder.
-        private static string GetColorStorageAssetPath()
-        {
-            string assetNameWithExtension = string.Join(".", new []
-                {
-                    FOLDER_TAGS_STORAGE_ASSET_NAME,
-                    RainbowFoldersSettings.SETTINGS_ASSET_EXTENSION
-                });
-            string settingsPath = Path.Combine(RainbowFoldersSettings.SETTINGS_FOLDER, assetNameWithExtension);
-            return settingsPath;
-        }
-        #endregion
+        //---------------------------------------------------------------------
+        // Public
+        //---------------------------------------------------------------------
 
         public FolderIconPair GetIconsByTag(FolderTagName tag)
         {

@@ -14,54 +14,39 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using UnityEditor;
-using Borodar.RainbowFolders.Editor.Settings;
-using System.IO;
+using EditorUtility = Borodar.RainbowFolders.Editor.RainbowFoldersEditorUtility;
 
 namespace Borodar.RainbowFolders.Editor
 {
     public class FolderTypesStorage : ScriptableObject
     {
-        public const string FOLDER_TYPE_STORAGE_ASSET_NAME = "RainbowTypeFoldersIconsStorage";
+        private const string RELATIVE_PATH = "Editor/Data/FolderTypesStorage.asset";
 
         public List<FolderType> TypeFolderIcons;
 
-        private static FolderTypesStorage instance;
+        //---------------------------------------------------------------------
+        // Instance
+        //---------------------------------------------------------------------
 
+        private static FolderTypesStorage _instance;
+
+        [SuppressMessage("ReSharper", "ConvertIfStatementToNullCoalescingExpression")]
         public static FolderTypesStorage Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    var typeStorageAssetPath = GetTypeStorageAssetPath();
-                    if ((instance = EditorGUIUtility.Load(typeStorageAssetPath) as FolderTypesStorage) == null)
-                    {
-                        if (!Directory.Exists(Path.Combine(Application.dataPath, RainbowFoldersSettings.SETTINGS_PATH)))
-                        {
-                            AssetDatabase.CreateFolder("Assets", RainbowFoldersSettings.SETTINGS_PATH);
-                        }
+                if (_instance == null)
+                    _instance = EditorUtility.LoadFromAsset<FolderTypesStorage>(RELATIVE_PATH);
 
-                        RainbowFoldersEditorUtility.CreateAsset<FolderColorsStorage>(FOLDER_TYPE_STORAGE_ASSET_NAME,
-                            Path.Combine("Assets", RainbowFoldersSettings.SETTINGS_PATH));
-                        instance = EditorGUIUtility.Load(typeStorageAssetPath) as FolderTypesStorage;
-                    }
-                }
-                return instance;
+                return _instance;
             }
         }
 
-        private static string GetTypeStorageAssetPath()
-        {
-            string assetNameWithExtension = string.Join(".", new[]
-                {
-                    FOLDER_TYPE_STORAGE_ASSET_NAME,
-                    RainbowFoldersSettings.SETTINGS_ASSET_EXTENSION
-                });
-            string settingsPath = Path.Combine(RainbowFoldersSettings.SETTINGS_FOLDER, assetNameWithExtension);
-            return settingsPath;
-        }
+        //---------------------------------------------------------------------
+        // Public
+        //---------------------------------------------------------------------
 
         public FolderIconPair GetIconsByType(FolderTypeName type)
         {

@@ -14,57 +14,39 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using UnityEditor;
-using Borodar.RainbowFolders.Editor.Settings;
-using System.IO;
+using EditorUtility = Borodar.RainbowFolders.Editor.RainbowFoldersEditorUtility;
 
 namespace Borodar.RainbowFolders.Editor
 {
     public class FolderColorsStorage : ScriptableObject
     {
-        public const string FOLDER_COLOR_STORAGE_ASSET_NAME = "RainbowColorFoldersIconsStorage";
+        private const string RELATIVE_PATH = "Editor/Data/FolderColorsStorage.asset";
 
         public List<FolderColor> ColorFolderIcons;
 
-        #region instance
-        private static FolderColorsStorage instance;
+        //---------------------------------------------------------------------
+        // Instance
+        //---------------------------------------------------------------------
 
+        private static FolderColorsStorage _instance;
+
+        [SuppressMessage("ReSharper", "ConvertIfStatementToNullCoalescingExpression")]
         public static FolderColorsStorage Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    var colorStorageAssetPath = GetColorStorageAssetPath();
-                    if ((instance = EditorGUIUtility.Load(colorStorageAssetPath) as FolderColorsStorage) == null)
-                    {
-                        if (!Directory.Exists(Path.Combine(Application.dataPath, RainbowFoldersSettings.SETTINGS_PATH)))
-                        {
-                            AssetDatabase.CreateFolder("Assets", RainbowFoldersSettings.SETTINGS_PATH);
-                        }
+                if (_instance == null)
+                    _instance = EditorUtility.LoadFromAsset<FolderColorsStorage>(RELATIVE_PATH);
 
-                        RainbowFoldersEditorUtility.CreateAsset<FolderColorsStorage>(FOLDER_COLOR_STORAGE_ASSET_NAME, 
-                            Path.Combine("Assets", RainbowFoldersSettings.SETTINGS_PATH));
-                        instance = EditorGUIUtility.Load(colorStorageAssetPath) as FolderColorsStorage;
-                    }
-                }
-                return instance;
+                return _instance;
             }
         }
 
-        // Path to load from 'Editor Default Resources' folder.
-        private static string GetColorStorageAssetPath()
-        {
-            string assetNameWithExtension = string.Join(".", new []
-                {
-                    FOLDER_COLOR_STORAGE_ASSET_NAME,
-                    RainbowFoldersSettings.SETTINGS_ASSET_EXTENSION
-                });
-            string settingsPath = Path.Combine(RainbowFoldersSettings.SETTINGS_FOLDER, assetNameWithExtension);
-            return settingsPath;
-        }
-        #endregion
+        //---------------------------------------------------------------------
+        // Public
+        //---------------------------------------------------------------------
 
         public FolderIconPair GetIconsByColor(FolderColorName color)
         {
