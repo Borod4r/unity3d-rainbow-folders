@@ -63,6 +63,8 @@ There is reorderable list with all defined "folder" configurations. You can modi
 
 The “Rainbow Folders” asset doesn’t require to be in the root of you project, you can freely move it wherever you want. Then just go to **Edit -> Preferences -> Rainbow Folders** and update the folder location:
 
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/12.png)
+
 ## Community
 
 We have created a special folder `Community Icons` for other users to be able to add their icons! Please fork the repo and submit the pull request after adding your icons to `Community Icons/{your_user_name_here}/`
