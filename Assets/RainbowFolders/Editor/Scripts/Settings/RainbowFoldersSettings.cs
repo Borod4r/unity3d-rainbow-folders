@@ -27,6 +27,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
     public class RainbowFoldersSettings : ScriptableObject
     {
         private const string RELATIVE_PATH = "Editor/Data/RainbowFoldersSettings.asset";
+        private const string DEVEL_PATH = "Assets/Devel/Editor/Data/RainbowFoldersSettings.asset";
 
         public List<RainbowFolder> Folders;
 
@@ -42,7 +43,11 @@ namespace Borodar.RainbowFolders.Editor.Settings
             get
             {
                 if (_instance == null)
-                    _instance = RainbowFoldersEditorUtility.LoadFromAsset<RainbowFoldersSettings>(RELATIVE_PATH);
+                    #if RAINBOW_FOLDERS_DEVEL
+                        _instance = AssetDatabase.LoadAssetAtPath<RainbowFoldersSettings>(DEVEL_PATH);
+                    #else
+                        _instance = RainbowFoldersEditorUtility.LoadFromAsset<RainbowFoldersSettings>(RELATIVE_PATH);
+                    #endif
 
                 return _instance;
             }
