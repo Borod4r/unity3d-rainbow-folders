@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8dadcf27965408e8ca2ba6f2419388, type: 3}
+  m_Name: FolderTagsStorage
+  m_EditorClassIdentifier: 
+  ColorFolderTags:
+  - Tag: 0
+    SmallIcon: {fileID: 2800000, guid: 92b0bc9ddf47e7c439b816e4f3358617, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 3e9903716db29884db10c4761158194a, type: 3}
+  - Tag: 1
+    SmallIcon: {fileID: 2800000, guid: 9af651017422eb342bb70580d772e446, type: 3}
+    LargeIcon: {fileID: 2800000, guid: fb4c037eb733ab444a6c2ba07227da11, type: 3}
+  - Tag: 2
+    SmallIcon: {fileID: 2800000, guid: aa9fc7071d5eb1c429b697ac0a038a80, type: 3}
+    LargeIcon: {fileID: 2800000, guid: ef55849a2ae927d458e203080c8ee6ad, type: 3}
+  - Tag: 3
+    SmallIcon: {fileID: 2800000, guid: e34b40e8541b43e489676304cd7843f6, type: 3}
+    LargeIcon: {fileID: 2800000, guid: dfb7e52f2da69994c8a075a6f1028f7f, type: 3}
+  - Tag: 4
+    SmallIcon: {fileID: 2800000, guid: c307d00979506dc42b55246945eca05b, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 14852ef2c0a992545b421612b34b7a8c, type: 3}
+  - Tag: 5
+    SmallIcon: {fileID: 2800000, guid: 7f6371776b8d941479f39606318f5588, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 6bcb6e1c12881c34e8fe83ad6d5166d6, type: 3}
+  - Tag: 6
+    SmallIcon: {fileID: 2800000, guid: 9e571ae94ec295840a1977c7f4d8c9c9, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 3252a088bf949e04db52d745a29d4cee, type: 3}
+  - Tag: 7
+    SmallIcon: {fileID: 2800000, guid: 1fc61058e5717b24eab0060b7ff80a64, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 7b3237bbdd8514e49982b36ac8cefdf3, type: 3}
+  - Tag: 8
+    SmallIcon: {fileID: 2800000, guid: 5eab31a003af25741a7dca4d2affaded, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 71714604046a7f1438ccf60800ba9eca, type: 3}
+  - Tag: 9
+    SmallIcon: {fileID: 2800000, guid: bd871a1c68938b848adc74c50bb04a4d, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 980ffdf13df9e86469913858907674fd, type: 3}
+  - Tag: 10
+    SmallIcon: {fileID: 2800000, guid: f3e2d724e55ac464bab917fb41e5f3a5, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 2c15a1b0d7c0f7e4a96a4c07104da9db, type: 3}
+  - Tag: 11
+    SmallIcon: {fileID: 2800000, guid: 4604f75e19797b44880551dc47c0a657, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 0d0ce6157355db044aa688963c5eb699, type: 3}

@@ -7,40 +7,67 @@ Have you ever thought about highlighting often used project folders? This simple
 
 With "Rainbow Folders" you can set custom icon for any folder in unity project browser:
 
-![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.3.0_01_1.png)
-![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.3.0_01_2.png)
-![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.3.0_01_3.png)
+![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/01.png)
+![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/02.png)
+![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/03.png)
 
 ## Configuring folder icons
 
-From the main menu select **Edit -> Rainbow Folders Settings**, then take a look at the Inspector.
+Just hold the **Alt key** and click on any folder icon in Unity project browser.
 
-There is reorderable list with few predefined "folder" items. You can modify existing items, remove them using "-" button or add new ones by clicking "+" button below.
+![Alt-click example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/04.png)
 
-![Rainbow folders inspector](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.2.1_02.png)
+Configuration dialogue will appear, and you'll be able to assign icons to the corresponding folder.
 
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/05.png)
 
-You can assign a custom icon to the folder using:
-* Folder **Name** - name of the folder you want to change the icon for. Icon will be applied to all folders with the same name
-* or folder **Path** - icon will be applied to a single folder. The path format: `Assets/SomeFolder/YourFolder`
+What you need to configure for each folder item, are these fields:
+
+* **Folder Name** - icon will be applied to all folders with that name.
+* or **Folder Path** - icon will be applied to a single folder with specified path.
 
 Then you need to specify actually icons:
-* **Small Icon** - your custom icon for the left panel of the project browser (16x16 px)
-* **Large Icon**  - your custom icon for the right panel of the project browser (64x64 px)
+* **Small Icon** - custom icon for the left panel of the project browser (16x16 px)
+* **Large Icon** - custom icon for the right panel of the project browser (64x64 px)
 
 Your changes will be applied next time when the project browser will retrieve the focus.
 
-## Quick Colorize & Tag
+### Presets
 
-You can also quickly colorize or tag folders from context menu. To do so, right click on the folder in project browser, then select **Rainbow Folders -> Colorize -> Color** or **Rainbow Folders -> Tag -> Color**. Changes will be applied immediately.
+You can choose icons from few dozen of presets. Simply click on the star button in configuration dialogue, select one of them from the drop-down menu and apply changes.
 
-To reset the folder icon to default one, select **Rainbow Folders -> Colorize -> Revert to Default** from the same context menu.
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/07.png)
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/08.png)
 
-![Rainbow folders inspector](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/RainbowFolders/v0.3.0_03.png)
+### Revert to default
+
+To reset the folder icon to the default one, just **Alt-click** on it, then press the red cross button in configuration dialogue and apply changes.
+
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/06.png)
+
+### Multi-editing
+
+You can also edit multiple folders at once, just select them all and **Alt-click** at one of their icons.
+
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/09.png)
+
+To view all existing assignments, click on the gear button in configuration dialogue, then take a look at the Inspector.
+
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/10.png)
+
+There is reorderable list with all defined "folder" configurations. You can modify existing items, remove them using "-" button or add new ones by clicking "+" button below.
+
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/11.png)
+
+## Folder Location
+
+The “Rainbow Folders” asset doesn’t require to be in the root of you project, you can freely move it wherever you want. Then just go to **Edit -> Preferences -> Rainbow Folders** and update the folder location:
+
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/12.png)
 
 ## Community
 
-We have created a special folder `Community Icons` for other users to be able to add their icons! Please fork the repo and submit the pull request after adding your icons to `Community Icons/User_{your_user_name_here}/`
+We have created a special folder `Community Icons` for other users to be able to add their icons! Please fork the repo and submit the pull request after adding your icons to `Community Icons/{your_user_name_here}/`
 
 ## Support us
 
