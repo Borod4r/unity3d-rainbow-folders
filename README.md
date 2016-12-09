@@ -71,6 +71,7 @@ We have created a special folder `Community Icons` for other users to be able to
 
 ## Support us
 
-Consider supporting us so we could bring more awesome features to you:
-
+**Rainbow Folders** asset is donationware. If you want to support future development or just say "thanks" to the autors, please buy it on the [Asset Store](http://u3d.as/mor) or donate directly with PayPal:
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/tarasleskiv/2USD)
+
+Reviews are also highly appreciated. Thank you!
