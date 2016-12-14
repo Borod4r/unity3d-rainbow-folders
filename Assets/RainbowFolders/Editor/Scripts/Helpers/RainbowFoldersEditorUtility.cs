@@ -15,6 +15,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -123,8 +124,25 @@ namespace Borodar.RainbowFolders.Editor
         }
 
         //---------------------------------------------------------------------
+        // Windows
+        //---------------------------------------------------------------------
+
+        public static EditorWindow GetProjectWindow()
+        {
+            return GetWindowByName("UnityEditor.ProjectWindow")
+                ?? GetWindowByName("UnityEditor.ObjectBrowser")
+                ?? GetWindowByName("UnityEditor.ProjectBrowser");
+        }
+
+        //---------------------------------------------------------------------
         // Helpers
         //---------------------------------------------------------------------
+
+        private static EditorWindow GetWindowByName(string pName)
+        {
+            var objectList = Resources.FindObjectsOfTypeAll(typeof(EditorWindow));
+            return (from obj in objectList where obj.GetType().ToString() == pName select ((EditorWindow)obj)).FirstOrDefault();
+        }
 
         private static Texture2D GetEditIconSmall()
         {

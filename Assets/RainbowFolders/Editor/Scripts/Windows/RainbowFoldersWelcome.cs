@@ -92,20 +92,9 @@ namespace Borodar.RainbowFolders.Editor
 
         private static Vector2 CalcWindowPosition()
         {
-            return GetProjectWindow().position.position + new Vector2(10f, 30f);
+            return RainbowFoldersEditorUtility.GetProjectWindow().position.position + new Vector2(10f, 30f);
         }
 
-        private static EditorWindow GetProjectWindow()
-        {
-            return GetWindowByName("UnityEditor.ProjectWindow")
-                ?? GetWindowByName("UnityEditor.ObjectBrowser")
-                ?? GetWindowByName("UnityEditor.ProjectBrowser");
-        }
-
-        private static EditorWindow GetWindowByName(string pName)
-        {
-            var objectList = Resources.FindObjectsOfTypeAll(typeof(EditorWindow));
-            return (from obj in objectList where obj.GetType().ToString() == pName select ((EditorWindow) obj)).FirstOrDefault();
-        }
+        
     }
 }
