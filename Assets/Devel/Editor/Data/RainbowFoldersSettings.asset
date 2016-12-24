@@ -13,6 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Folders:
   - Type: 1
+    Key: Assets/Devel/Examples/Types/Android
+    SmallIcon: {fileID: 2800000, guid: 6858fce162a9b4744baedb1357e0b690, type: 3}
+    LargeIcon: {fileID: 2800000, guid: c1e5c2a549b1b8048a04987738bb9c52, type: 3}
+  - Type: 1
     Key: Assets/Devel/Examples/Types/Prefabs
     SmallIcon: {fileID: 2800000, guid: 483d693b3f9d5704b89409016b40bc74, type: 3}
     LargeIcon: {fileID: 2800000, guid: fac7470563f79024ebc244b39080448d, type: 3}
