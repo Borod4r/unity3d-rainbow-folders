@@ -100,3 +100,7 @@ MonoBehaviour:
     Key: Windows
     SmallIcon: {fileID: 2800000, guid: 277aff0709e51d2418b61f0c82cb277f, type: 3}
     LargeIcon: {fileID: 2800000, guid: c34025bbb220b844a8e633a414c63632, type: 3}
+  - Type: 0
+    Key: Mac
+    SmallIcon: {fileID: 2800000, guid: 54a92a89ce169714a9a00aebb271cdd6, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 80ea8e29a9c225e4291234d6ba25a868, type: 3}
