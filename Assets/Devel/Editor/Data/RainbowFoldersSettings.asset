@@ -13,10 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Folders:
   - Type: 1
-    Key: Assets/Devel/Examples/Types/Android
-    SmallIcon: {fileID: 2800000, guid: 6858fce162a9b4744baedb1357e0b690, type: 3}
-    LargeIcon: {fileID: 2800000, guid: c1e5c2a549b1b8048a04987738bb9c52, type: 3}
-  - Type: 1
     Key: Assets/Devel/Examples/Types/Prefabs
     SmallIcon: {fileID: 2800000, guid: 483d693b3f9d5704b89409016b40bc74, type: 3}
     LargeIcon: {fileID: 2800000, guid: fac7470563f79024ebc244b39080448d, type: 3}
@@ -181,6 +177,14 @@ MonoBehaviour:
     SmallIcon: {fileID: 2800000, guid: f14480b09218f3047a15b5ded872de28, type: 3}
     LargeIcon: {fileID: 2800000, guid: 38dec0c9e1ada504d98f8a0f4959a215, type: 3}
   - Type: 1
-    Key: Assets/Devel/Examples/Types/iOS
+    Key: Assets/Devel/Examples/Platforms/Android
+    SmallIcon: {fileID: 2800000, guid: 6858fce162a9b4744baedb1357e0b690, type: 3}
+    LargeIcon: {fileID: 2800000, guid: c1e5c2a549b1b8048a04987738bb9c52, type: 3}
+  - Type: 1
+    Key: Assets/Devel/Examples/Platforms/iOS
     SmallIcon: {fileID: 2800000, guid: 25e93be6802c63c408e62e4bdfa4e91f, type: 3}
     LargeIcon: {fileID: 2800000, guid: 6888916ad986e2944a731fd320e5f566, type: 3}
+  - Type: 1
+    Key: Assets/Devel/Examples/Platforms/Windows
+    SmallIcon: {fileID: 2800000, guid: 277aff0709e51d2418b61f0c82cb277f, type: 3}
+    LargeIcon: {fileID: 2800000, guid: c34025bbb220b844a8e633a414c63632, type: 3}

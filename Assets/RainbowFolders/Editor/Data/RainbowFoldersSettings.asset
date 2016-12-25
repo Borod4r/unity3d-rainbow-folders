@@ -92,7 +92,11 @@ MonoBehaviour:
     Key: Textures
     SmallIcon: {fileID: 2800000, guid: 27bb0c12d809b1e4fb2851723d50cde6, type: 3}
     LargeIcon: {fileID: 2800000, guid: f61940b61bdca1843bed2dbc93de9038, type: 3}
-  - Type: 1
-    Key: Assets/RainbowFolders/Examples/iOS
+  - Type: 0
+    Key: iOS
     SmallIcon: {fileID: 2800000, guid: 25e93be6802c63c408e62e4bdfa4e91f, type: 3}
     LargeIcon: {fileID: 2800000, guid: 6888916ad986e2944a731fd320e5f566, type: 3}
+  - Type: 0
+    Key: Windows
+    SmallIcon: {fileID: 2800000, guid: 277aff0709e51d2418b61f0c82cb277f, type: 3}
+    LargeIcon: {fileID: 2800000, guid: c34025bbb220b844a8e633a414c63632, type: 3}
