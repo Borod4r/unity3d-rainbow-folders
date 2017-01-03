@@ -31,7 +31,8 @@ namespace Borodar.RainbowFolders.Editor
         // Sub-menus        
         private const string MENU_COLORIZE = MENU_BASE + "Colorize/";
         private const string MENU_TAG = MENU_BASE + "Tag/";
-        private const string MENU_TYPE = MENU_BASE + "Folder Type/";        
+        private const string MENU_TYPE = MENU_BASE + "Type/";        
+        private const string MENU_PLATFORM = MENU_BASE + "Platform/";        
 
         // Colors
         private const string COLOR_RED = MENU_COLORIZE + "Red";
@@ -78,6 +79,14 @@ namespace Borodar.RainbowFolders.Editor
         private const string TYPE_TERRAINS = MENU_TYPE + "Terrains";
         private const string TYPE_MESHES = MENU_TYPE + "Meshes";
         private const string TYPE_RAINBOW = MENU_TYPE + "Rainbow";
+
+        // Platforms
+
+        private const string PLATFORM_ANDROID = MENU_PLATFORM + "Android";
+        private const string PLATFORM_IOS = MENU_PLATFORM + "iOS";
+        private const string PLATFORM_MAC = MENU_PLATFORM + "Mac";
+        private const string PLATFORM_WEBGL = MENU_PLATFORM + "WebGL";
+        private const string PLATFORM_WINDOWS = MENU_PLATFORM + "Windows";
 
         //---------------------------------------------------------------------
         // Menu Items
@@ -208,6 +217,18 @@ namespace Borodar.RainbowFolders.Editor
         [MenuItem(TYPE_TEXTURES)]
         public static void TypeTextures() { AssingType(FolderTypeName.Textures); }
 
+        // Platforms
+        [MenuItem(PLATFORM_ANDROID)]
+        public static void PlatformAndroid() { AssingPlatform(FolderPlatformName.Android); }
+        [MenuItem(PLATFORM_IOS)]
+        public static void PlatformiOS() { AssingPlatform(FolderPlatformName.iOS); }
+        [MenuItem(PLATFORM_MAC)]
+        public static void PlatformMac() { AssingPlatform(FolderPlatformName.Mac); }
+        [MenuItem(PLATFORM_WEBGL)]
+        public static void PlatformWebGL() { AssingPlatform(FolderPlatformName.WebGL); }
+        [MenuItem(PLATFORM_WINDOWS)]
+        public static void PlatformWindows() { AssingPlatform(FolderPlatformName.Windows); }
+
         //---------------------------------------------------------------------
         // Helpers
         //---------------------------------------------------------------------
@@ -227,6 +248,12 @@ namespace Borodar.RainbowFolders.Editor
         private static void AssingType(FolderTypeName type)
         {
             var icons = FolderTypesStorage.Instance.GetIconsByType(type);
+            ChangeSelectedFoldersIcons(icons);
+        }
+
+        private static void AssingPlatform(FolderPlatformName platform)
+        {
+            var icons = FolderPlatformsStorage.Instance.GetIconsByType(platform);
             ChangeSelectedFoldersIcons(icons);
         }
 
