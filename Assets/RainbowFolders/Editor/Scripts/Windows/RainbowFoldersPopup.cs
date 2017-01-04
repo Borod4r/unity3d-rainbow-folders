@@ -12,6 +12,7 @@
  * the License.
  */
 
+using System.Collections.Generic;
 using System.IO;
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
@@ -38,7 +39,7 @@ namespace Borodar.RainbowFolders.Editor
         private static readonly Rect WINDOW_RECT = new Rect(Vector2.zero, WINDOW_SIZE);
         private static readonly Rect BACKGROUND_RECT = new Rect(Vector2.one, WINDOW_SIZE - new Vector2(2f, 2f));
 
-        private string[] _paths;
+        private List<string> _paths;
         private RainbowFoldersSettings _settings;
         private RainbowFolder[] _existingFolders;
         private RainbowFolder _currentFolder;
@@ -52,12 +53,12 @@ namespace Borodar.RainbowFolders.Editor
             return GetDraggableWindow<RainbowFoldersPopup>();
         }
 
-        public void ShowWithParams(Vector2 position, string[] paths, int pathIndex)
+        public void ShowWithParams(Vector2 position, List<string> paths, int pathIndex)
         {
             _paths = paths;
             _settings = RainbowFoldersSettings.Instance;
 
-            var size = paths.Length;
+            var size = paths.Count;
             _existingFolders = new RainbowFolder[size];
             _currentFolder = new RainbowFolder(KeyType.Path, paths[pathIndex]);
 
@@ -109,7 +110,7 @@ namespace Borodar.RainbowFolders.Editor
             rect.width = WINDOW_RECT.width - LABELS_WIDTH - PREVIEW_SIZE_LARGE - 2f * PADDING;
 
             GUI.enabled = false;
-            if (_paths.Length == 1)
+            if (_paths.Count == 1)
                 _currentFolder.Key = (_currentFolder.Type == KeyType.Path) ? _paths[0] : Path.GetFileName(_paths[0]);
             else
                 _currentFolder.Key = "---";

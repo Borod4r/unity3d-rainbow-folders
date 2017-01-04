@@ -12,6 +12,7 @@
  * the License.
  */
 
+using System.Collections.Generic;
 using System.Linq;
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
@@ -89,18 +90,14 @@ namespace Borodar.RainbowFolders.Editor
 
                 if (_multiSelection)
                 {
-                    var assetGUIDs = Selection.assetGUIDs;
-                    var size = assetGUIDs.Length;
-
-                    var paths = new string[size];
-                    for (var i = 0; i < size; i++) paths[i] = AssetDatabase.GUIDToAssetPath(assetGUIDs[i]);
-                    var index = ArrayUtility.IndexOf(paths, path);
+                    var paths = Selection.assetGUIDs.Select<string, string>(AssetDatabase.GUIDToAssetPath).Where(AssetDatabase.IsValidFolder).ToList();
+                    var index = paths.IndexOf(path);
 
                     window.ShowWithParams(position, paths, index);
                 }
                 else
                 {
-                    window.ShowWithParams(position, new[] {path}, 0);
+                    window.ShowWithParams(position, new List<string> {path}, 0);
                 }
             }
 

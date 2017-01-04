@@ -23,6 +23,7 @@ namespace Borodar.RainbowFolders.Editor
         private const string MENU_COLORIZE = "Colors/";
         private const string MENU_TAG = "Tags/";
         private const string MENU_TYPE = "Types/";
+        private const string MENU_PLATFORM = "Platforms/";
 
         // Colors
         private static readonly GUIContent COLOR_RED = new GUIContent(MENU_COLORIZE + "Red");
@@ -69,7 +70,14 @@ namespace Borodar.RainbowFolders.Editor
         private static readonly GUIContent TYPE_SHADERS = new GUIContent(MENU_TYPE + "Shaders");
         private static readonly GUIContent TYPE_TERRAINS = new GUIContent(MENU_TYPE + "Terrains");
         private static readonly GUIContent TYPE_TEXTURES = new GUIContent(MENU_TYPE + "Textures");
-        
+
+        // Platforms
+        private static readonly GUIContent PLATFORM_ANDROID = new GUIContent(MENU_PLATFORM + "Android");
+        private static readonly GUIContent PLATFORM_IOS = new GUIContent(MENU_PLATFORM + "iOS");
+        private static readonly GUIContent PLATFORM_MAC = new GUIContent(MENU_PLATFORM + "Mac");
+        private static readonly GUIContent PLATFORM_WEBGL = new GUIContent(MENU_PLATFORM + "WebGL");
+        private static readonly GUIContent PLATFORM_WINDOWS = new GUIContent(MENU_PLATFORM + "Windows");
+
         //---------------------------------------------------------------------
         // Public
         //---------------------------------------------------------------------
@@ -124,6 +132,13 @@ namespace Borodar.RainbowFolders.Editor
             menu.AddItem(TYPE_TERRAINS,   false, TerrainsCallback,   folder);
             menu.AddItem(TYPE_TEXTURES,   false, TexturesCallback,   folder);
 
+            //Platfroms
+            menu.AddItem(PLATFORM_ANDROID, false, AndroidCallback, folder);
+            menu.AddItem(PLATFORM_IOS, false, IosCallback, folder);
+            menu.AddItem(PLATFORM_MAC, false, MacCallback, folder);
+            menu.AddItem(PLATFORM_WEBGL, false, WebGLCallback, folder);
+            menu.AddItem(PLATFORM_WINDOWS, false, WindowsCallback, folder);
+
             menu.DropDown(position);
         }
 
@@ -148,6 +163,13 @@ namespace Borodar.RainbowFolders.Editor
         private static void AssingType(FolderTypeName type, RainbowFolder folder)
         {
             var icons = FolderTypesStorage.Instance.GetIconsByType(type);
+            folder.SmallIcon = icons.SmallIcon;
+            folder.LargeIcon = icons.LargeIcon;
+        }
+
+        private static void AssingPlatform(FolderPlatformName platform, RainbowFolder folder)
+        {
+            var icons = FolderPlatformsStorage.Instance.GetIconsByType(platform);
             folder.SmallIcon = icons.SmallIcon;
             folder.LargeIcon = icons.LargeIcon;
         }
@@ -281,5 +303,22 @@ namespace Borodar.RainbowFolders.Editor
 
         private static void RainbowCallback(object folder)
         { AssingType(FolderTypeName.Rainbow, folder as RainbowFolder); }
+
+        // Platfroms
+
+        private static void AndroidCallback(object folder)
+        { AssingPlatform(FolderPlatformName.Android, folder as RainbowFolder); }
+
+        private static void IosCallback(object folder)
+        { AssingPlatform(FolderPlatformName.iOS, folder as RainbowFolder); }
+
+        private static void MacCallback(object folder)
+        { AssingPlatform(FolderPlatformName.Mac, folder as RainbowFolder); }
+
+        private static void WebGLCallback(object folder)
+        { AssingPlatform(FolderPlatformName.WebGL, folder as RainbowFolder); }
+
+        private static void WindowsCallback(object folder)
+        { AssingPlatform(FolderPlatformName.Windows, folder as RainbowFolder); }
     }
 }

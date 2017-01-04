@@ -4,6 +4,25 @@
 
 ---
 
+## v0.5.1
+
++ Added back the context menu, according to numerous requests
++ New platform icons (`Android`, `iOS`, `Mac`, `WebGL`, `Windows`)
++ Minor bugfixes
+
+---
+
+## v0.5.0
+
++ Improved workflow: change icons with alt-click on a folder, right in the project view.
++ Added possibility to change icons for multiple folders at once
++ Added option to move "Rainbow Folders" wherever you want in your project
++ Got rid of the "Editor Default Resources" folder.
++ Fixed the "Scripts" icon appearance for the dark theme
++ Minor bugfixes
+
+---
+
 ## v0.3.0
 
 + Apply color "tags" for folders from context menu

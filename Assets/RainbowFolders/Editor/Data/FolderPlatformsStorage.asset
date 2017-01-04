@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372d6f116aea7bc42982a74242d63567, type: 3}
+  m_Name: FolderPlatformsStorage
+  m_EditorClassIdentifier: 
+  PlatformFolderIcons:
+  - Platform: 0
+    SmallIcon: {fileID: 2800000, guid: 6858fce162a9b4744baedb1357e0b690, type: 3}
+    LargeIcon: {fileID: 2800000, guid: c1e5c2a549b1b8048a04987738bb9c52, type: 3}
+  - Platform: 1
+    SmallIcon: {fileID: 2800000, guid: 25e93be6802c63c408e62e4bdfa4e91f, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 6888916ad986e2944a731fd320e5f566, type: 3}
+  - Platform: 2
+    SmallIcon: {fileID: 2800000, guid: 54a92a89ce169714a9a00aebb271cdd6, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 80ea8e29a9c225e4291234d6ba25a868, type: 3}
+  - Platform: 3
+    SmallIcon: {fileID: 2800000, guid: b8e8a328d6527a14783473666c1f8a08, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 010e6d817952d434197d318f48b2f16a, type: 3}
+  - Platform: 4
+    SmallIcon: {fileID: 2800000, guid: 277aff0709e51d2418b61f0c82cb277f, type: 3}
+    LargeIcon: {fileID: 2800000, guid: c34025bbb220b844a8e633a414c63632, type: 3}

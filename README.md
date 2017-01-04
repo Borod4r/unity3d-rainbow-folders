@@ -59,9 +59,23 @@ There is reorderable list with all defined "folder" configurations. You can modi
 
 ![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/11.png)
 
+## Context menu
+
+All the above functionality is also available via the context menu.
+
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/14.png)
+
+**Right-click** on any folder in project view and select **Rainbow Folders → Apply Custom** to open configuration dialogue.
+
+The **Rainbow Folders → Revert to Default** item will reset corresponding folder icon to the default one.
+
+With **Color, Tag, Type** and **Platform** sub-items you can easily apply custom icons from few dozen of presets, right from the context menu.
+
+Select **Rainbow Folders → Settings** to view all existing assignments in the inspector.
+
 ## Folder Location
 
-The “Rainbow Folders” asset doesn’t require to be in the root of you project, you can freely move it wherever you want. Then just go to **Edit -> Preferences -> Rainbow Folders** and update the folder location:
+The “Rainbow Folders” asset doesn’t require to be in the root of you project, you can freely move it wherever you want. Then just go to **Edit → Preferences → Rainbow Folders** and update the folder location:
 
 ![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/12.png)
 
