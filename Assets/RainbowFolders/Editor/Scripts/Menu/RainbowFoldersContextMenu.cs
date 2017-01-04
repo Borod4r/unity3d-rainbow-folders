@@ -29,24 +29,24 @@ namespace Borodar.RainbowFolders.Editor
         private const string ITEM_SETTINGS = MENU_BASE + "Settings";
         
         // Sub-menus        
-        private const string MENU_COLORIZE = MENU_BASE + "Colorize/";
+        private const string MENU_COLOR = MENU_BASE + "Color/";
         private const string MENU_TAG = MENU_BASE + "Tag/";
         private const string MENU_TYPE = MENU_BASE + "Type/";        
         private const string MENU_PLATFORM = MENU_BASE + "Platform/";        
 
         // Colors
-        private const string COLOR_RED = MENU_COLORIZE + "Red";
-        private const string COLOR_VERMILION = MENU_COLORIZE + "Vermilion";
-        private const string COLOR_ORANGE = MENU_COLORIZE + "Orange";
-        private const string COLOR_YELLOW_ORANGE = MENU_COLORIZE + "Yellow-Orange";
-        private const string COLOR_YELLOW = MENU_COLORIZE + "Yellow";
-        private const string COLOR_LIME = MENU_COLORIZE + "Lime";
-        private const string COLOR_GREEN = MENU_COLORIZE + "Green";
-        private const string COLOR_BONDI_BLUE = MENU_COLORIZE + "Bondi Blue";
-        private const string COLOR_BLUE = MENU_COLORIZE + "Blue";
-        private const string COLOR_INDIGO = MENU_COLORIZE + "Indigo";
-        private const string COLOR_VIOLET = MENU_COLORIZE + "Violet";
-        private const string COLOR_MAGENTA = MENU_COLORIZE + "Magenta";
+        private const string COLOR_RED = MENU_COLOR + "Red";
+        private const string COLOR_VERMILION = MENU_COLOR + "Vermilion";
+        private const string COLOR_ORANGE = MENU_COLOR + "Orange";
+        private const string COLOR_YELLOW_ORANGE = MENU_COLOR + "Yellow-Orange";
+        private const string COLOR_YELLOW = MENU_COLOR + "Yellow";
+        private const string COLOR_LIME = MENU_COLOR + "Lime";
+        private const string COLOR_GREEN = MENU_COLOR + "Green";
+        private const string COLOR_BONDI_BLUE = MENU_COLOR + "Bondi Blue";
+        private const string COLOR_BLUE = MENU_COLOR + "Blue";
+        private const string COLOR_INDIGO = MENU_COLOR + "Indigo";
+        private const string COLOR_VIOLET = MENU_COLOR + "Violet";
+        private const string COLOR_MAGENTA = MENU_COLOR + "Magenta";
 
         // Tags
         private const string TAG_RED = MENU_TAG + "Red";
