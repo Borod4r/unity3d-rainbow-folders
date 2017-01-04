@@ -97,7 +97,7 @@ namespace Borodar.RainbowFolders.Editor
         {
             var window = RainbowFoldersPopup.GetDraggableWindow();
             var position = RainbowFoldersEditorUtility.GetProjectWindow().position.position + new Vector2(10f, 30f);
-            var paths = Selection.assetGUIDs.Select(AssetDatabase.GUIDToAssetPath).Where(AssetDatabase.IsValidFolder).ToList();
+            var paths = Selection.assetGUIDs.Select<string, string>(AssetDatabase.GUIDToAssetPath).Where(AssetDatabase.IsValidFolder).ToList();
             window.ShowWithParams(position, paths.ToList(), 0);
         }
 

@@ -90,7 +90,7 @@ namespace Borodar.RainbowFolders.Editor
 
                 if (_multiSelection)
                 {
-                    var paths = Selection.assetGUIDs.Select(AssetDatabase.GUIDToAssetPath).Where(AssetDatabase.IsValidFolder).ToList();
+                    var paths = Selection.assetGUIDs.Select<string, string>(AssetDatabase.GUIDToAssetPath).Where(AssetDatabase.IsValidFolder).ToList();
                     var index = paths.IndexOf(path);
 
                     window.ShowWithParams(position, paths, index);
