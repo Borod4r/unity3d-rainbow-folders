@@ -33,7 +33,7 @@ namespace Borodar.RainbowFolders.Editor
         private const float BUTTON_WIDTH_SMALL = 16f;
 
         private const float WINDOW_WIDTH = 325f;
-        private const float WINDOW_HEIGHT = 86f;
+        private const float WINDOW_HEIGHT = 110f;
 
         private static readonly Vector2 WINDOW_SIZE = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
         private static readonly Rect WINDOW_RECT = new Rect(Vector2.zero, WINDOW_SIZE);
@@ -99,6 +99,8 @@ namespace Borodar.RainbowFolders.Editor
             _currentFolder.Type = (KeyType)EditorGUI.EnumPopup(rect, _currentFolder.Type);
 
             rect.y += LINE_HEIGHT + SPACING;
+            EditorGUI.LabelField(rect, "Recursive");
+            rect.y += LINE_HEIGHT + SPACING;
             EditorGUI.LabelField(rect, "Small Icon");
             rect.y += LINE_HEIGHT + SPACING;
             EditorGUI.LabelField(rect, "Large Icon");
@@ -107,7 +109,7 @@ namespace Borodar.RainbowFolders.Editor
 
             rect.x += LABELS_WIDTH;
             rect.y = WINDOW_RECT.y + PADDING;
-            rect.width = WINDOW_RECT.width - LABELS_WIDTH - PREVIEW_SIZE_LARGE - 2f * PADDING;
+            rect.width = WINDOW_RECT.width - LABELS_WIDTH - PADDING;
 
             GUI.enabled = false;
             if (_paths.Count == 1)
@@ -117,15 +119,21 @@ namespace Borodar.RainbowFolders.Editor
             EditorGUI.TextField(rect, GUIContent.none, _currentFolder.Key);
             GUI.enabled = true;
 
+            
+            rect.y += LINE_HEIGHT + SPACING - (EditorGUIUtility.isProSkin ? SPACING : 0f);
+            rect.width -= PREVIEW_SIZE_LARGE + PADDING;
+            _currentFolder.IsRecursive = EditorGUI.Toggle(rect, _currentFolder.IsRecursive);
+
+            rect.y += LINE_HEIGHT + SPACING + (EditorGUIUtility.isProSkin ? SPACING : 0f);
+            _currentFolder.SmallIcon = (Texture2D) EditorGUI.ObjectField(rect, _currentFolder.SmallIcon, typeof(Texture2D), false);
+
             rect.y += LINE_HEIGHT + SPACING;
-            _currentFolder.SmallIcon = (Texture2D)EditorGUI.ObjectField(rect, _currentFolder.SmallIcon, typeof(Texture2D), false);
-            rect.y += LINE_HEIGHT + SPACING;
-            _currentFolder.LargeIcon = (Texture2D)EditorGUI.ObjectField(rect, _currentFolder.LargeIcon, typeof(Texture2D), false);
+            _currentFolder.LargeIcon = (Texture2D) EditorGUI.ObjectField(rect, _currentFolder.LargeIcon, typeof(Texture2D), false);
 
             // Preview
 
             rect.x += rect.width + PADDING;
-            rect.y = WINDOW_RECT.y;
+            rect.y = WINDOW_RECT.y + LINE_HEIGHT + 6f;
             rect.width = rect.height = PREVIEW_SIZE_LARGE;
             GUI.DrawTexture(rect, RainbowFoldersEditorUtility.GetDefaultFolderIcon());
             if (_currentFolder.LargeIcon) GUI.DrawTexture(rect, _currentFolder.LargeIcon);
@@ -180,6 +188,7 @@ namespace Borodar.RainbowFolders.Editor
         {
             var icon = RainbowFoldersEditorUtility.GetDeleteButtonIcon();
             if (!GUI.Button(rect, new GUIContent(icon, "Revert to Default"), GUIStyle.none)) return;
+            _currentFolder.IsRecursive = false;
             _currentFolder.SmallIcon = null;
             _currentFolder.LargeIcon = null;
         }

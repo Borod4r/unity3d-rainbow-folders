@@ -81,10 +81,24 @@ namespace Borodar.RainbowFolders.Editor.Settings
                 {
                     case KeyType.Name:
                         var folderName = Path.GetFileName(folderPath);
-                        if (folder.Key.Equals(folderName)) return folder;
+                        if (folder.IsRecursive)
+                        {
+                            if (folderPath.Contains(string.Format("/{0}/", folder.Key))) return folder;
+                        }
+                        else
+                        {
+                            if (folder.Key.Equals(folderName)) return folder;
+                        }
                         break;
                     case KeyType.Path:
-                        if (folder.Key.Equals(folderPath)) return folder;
+                        if (folder.IsRecursive)
+                        {
+                            if (folderPath.StartsWith(folder.Key)) return folder;
+                        }
+                        else
+                        {
+                            if (folder.Key.Equals(folderPath)) return folder;
+                        }
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -169,7 +183,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
 
         public void ChangeFolderIconsByPath(string path, FolderIconPair icons)
         {
-            ChangeFolderIcons(new RainbowFolder(KeyType.Path, path, icons.SmallIcon, icons.LargeIcon));
+            ChangeFolderIcons(new RainbowFolder(KeyType.Path, path, icons));
         }
 
         //---------------------------------------------------------------------

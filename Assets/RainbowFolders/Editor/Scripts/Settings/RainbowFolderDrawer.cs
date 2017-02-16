@@ -35,6 +35,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
 
             var folderKey = property.FindPropertyRelative("Key");
             var folderKeyType = property.FindPropertyRelative("Type");
+            var folderRecursive = property.FindPropertyRelative("IsRecursive");
             var smallIcon = property.FindPropertyRelative("SmallIcon");
             var largeIcon = property.FindPropertyRelative("LargeIcon");
 
@@ -45,10 +46,14 @@ namespace Borodar.RainbowFolders.Editor.Settings
             position.height = LINE_HEIGHT;
 
             var typeSelected = (KeyType) Enum.GetValues(typeof(KeyType)).GetValue(folderKeyType.enumValueIndex);
-            folderKeyType.enumValueIndex = (int)(KeyType) EditorGUI.EnumPopup(position, typeSelected);    
+            folderKeyType.enumValueIndex = (int)(KeyType) EditorGUI.EnumPopup(position, typeSelected);
+
+            position.y += LINE_HEIGHT + SPACING;
+            EditorGUI.LabelField(position, "Recursive");
 
             position.y += LINE_HEIGHT + SPACING;
             EditorGUI.LabelField(position, "Small Icon");
+
             position.y += LINE_HEIGHT + SPACING;
             EditorGUI.LabelField(position, "Large Icon");
 
@@ -56,18 +61,24 @@ namespace Borodar.RainbowFolders.Editor.Settings
 
             position.x += LABELS_WIDTH;
             position.y = originalPosition.y + PADDING;
-            position.width = originalPosition.width - LABELS_WIDTH - PREVIEW_SIZE_LARGE - PADDING;
-
+            position.width = originalPosition.width - LABELS_WIDTH;
             EditorGUI.PropertyField(position, folderKey, GUIContent.none);
-            position.y += LINE_HEIGHT + SPACING;
+
+            position.width = originalPosition.width - LABELS_WIDTH - PREVIEW_SIZE_LARGE - PADDING;
+            position.y += LINE_HEIGHT + (EditorGUIUtility.isProSkin ?  0f : SPACING) ;
+            EditorGUI.PropertyField(position, folderRecursive, GUIContent.none);
+
+            position.y += LINE_HEIGHT + SPACING + (EditorGUIUtility.isProSkin ? SPACING : 0f);
             EditorGUI.PropertyField(position, smallIcon, GUIContent.none);
+
             position.y += LINE_HEIGHT + SPACING;
             EditorGUI.PropertyField(position, largeIcon, GUIContent.none);
+            
 
             // Preview
 
             position.x += position.width + PADDING;
-            position.y = originalPosition.y;
+            position.y = originalPosition.y + LINE_HEIGHT + SPACING + 5f;
             position.width = position.height = PREVIEW_SIZE_LARGE;
             GUI.DrawTexture(position, (Texture2D) largeIcon.objectReferenceValue ?? RainbowFoldersEditorUtility.GetDefaultFolderIcon());
 
@@ -78,7 +89,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            return PREVIEW_SIZE_LARGE;
+            return PREVIEW_SIZE_LARGE + LINE_HEIGHT + 4f;
         }
     }
 }

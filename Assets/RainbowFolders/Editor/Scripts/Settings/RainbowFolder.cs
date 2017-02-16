@@ -22,6 +22,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
     {
         public KeyType Type;
         public string Key;
+        public bool IsRecursive;
 
         public Texture2D SmallIcon;
         public Texture2D LargeIcon;
@@ -34,6 +35,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
         {
             Type = value.Type;
             Key = value.Key;
+            IsRecursive = value.IsRecursive;
             SmallIcon = value.SmallIcon;
             LargeIcon = value.LargeIcon;
         }
@@ -44,12 +46,12 @@ namespace Borodar.RainbowFolders.Editor.Settings
             Key = key;
         }
 
-        public RainbowFolder(KeyType type, string key, Texture2D smallIcon, Texture2D largeIcon)
+        public RainbowFolder(KeyType type, string key, FolderIconPair icons)
         {
             Type = type;
             Key = key;
-            SmallIcon = smallIcon;
-            LargeIcon = largeIcon;
+            SmallIcon = icons.SmallIcon;
+            LargeIcon = icons.LargeIcon;
         }
 
         //---------------------------------------------------------------------
@@ -60,6 +62,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
         {
             Type = target.Type;
             Key = target.Key;
+            IsRecursive = target.IsRecursive;
             SmallIcon = target.SmallIcon;
             LargeIcon = target.LargeIcon;
         }
