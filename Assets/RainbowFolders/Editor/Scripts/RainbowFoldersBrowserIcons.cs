@@ -133,8 +133,10 @@ namespace Borodar.RainbowFolders.Editor
             }
             else
             {
-                #if UNITY_5_5
-                    // unity shifted small icons a bit in 5.5
+                // unity shifted small icons a bit in 5.4 and 5.5
+                #if UNITY_5_4_4
+                    if (isSmall) rect = new Rect(rect.x + 7, rect.y, rect.width, rect.height);
+                #elif UNITY_5_5
                     if (isSmall) rect = new Rect(rect.x + 3, rect.y, rect.width, rect.height);
                 #endif
 
