@@ -21,7 +21,7 @@ namespace Borodar.RainbowFolders.Editor
     public class RainbowFoldersPreferences
     {
         private const string HOME_FOLDER_PREF_KEY = "Borodar.RainbowFolders.HomeFolder.";
-        private const string HOME_FOLDER_DEFAULT = "Assets/RainbowFolders";
+        private const string HOME_FOLDER_DEFAULT = "Assets/Plugins/RainbowFolders";
         private const string HOME_FOLDER_HINT = "Change this setting to the new location of the \"Rainbow Folders\" if you move the folder around in your project.";
 
         public static EditorPrefsString HomeFolder = new EditorPrefsString(HOME_FOLDER_PREF_KEY + ProjectName, "Folder Location", HOME_FOLDER_DEFAULT);

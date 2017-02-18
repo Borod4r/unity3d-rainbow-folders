@@ -245,15 +245,15 @@ MonoBehaviour:
   - Type: 1
     Key: Assets/Devel/Recursive
     IsRecursive: 1
-    SmallIcon: {fileID: 2800000, guid: ed89c5b2588683046989a2a138f3b343, type: 3}
-    LargeIcon: {fileID: 2800000, guid: 9fca1a811da70484494d9e10d46e0636, type: 3}
-  - Type: 1
-    Key: Assets/Devel/Recursive/Level 01-2
-    IsRecursive: 1
     SmallIcon: {fileID: 2800000, guid: a65c70fcbe9ac0b4fbcbac4a0b67e64f, type: 3}
     LargeIcon: {fileID: 2800000, guid: 3d8f946e891cc8f4e81b1a296f8fb6be, type: 3}
   - Type: 1
-    Key: Assets/Devel/Recursive/Level 01-2/Level 02-2
+    Key: Assets/Devel/Recursive/Level 01-2
     IsRecursive: 1
     SmallIcon: {fileID: 2800000, guid: 0379f5bc653a23045a15e41eb54d6db8, type: 3}
     LargeIcon: {fileID: 2800000, guid: 575f900c4ff32fa42a779d65da794c83, type: 3}
+  - Type: 1
+    Key: Assets/Devel/Recursive/Level 01-2/Level 02-2
+    IsRecursive: 1
+    SmallIcon: {fileID: 2800000, guid: 191188601401d7f4ca9105e13b350e00, type: 3}
+    LargeIcon: {fileID: 2800000, guid: b5aa5103c69828e42a9ff77db820f2a6, type: 3}
