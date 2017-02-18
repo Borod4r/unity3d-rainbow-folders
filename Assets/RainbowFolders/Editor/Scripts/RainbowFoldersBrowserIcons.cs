@@ -13,6 +13,7 @@
  */
 
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
@@ -85,20 +86,7 @@ namespace Borodar.RainbowFolders.Editor
 
             if (GUI.Button(rect, GUIContent.none, GUIStyle.none))
             {
-                var window = RainbowFoldersPopup.GetDraggableWindow();
-                var position = GUIUtility.GUIToScreenPoint(rect.position + new Vector2(0, rect.height + 2));
-
-                if (_multiSelection)
-                {
-                    var paths = Selection.assetGUIDs.Select<string, string>(AssetDatabase.GUIDToAssetPath).Where(AssetDatabase.IsValidFolder).ToList();
-                    var index = paths.IndexOf(path);
-
-                    window.ShowWithParams(position, paths, index);
-                }
-                else
-                {
-                    window.ShowWithParams(position, new List<string> {path}, 0);
-                }
+                ShowPopupWindow(rect, path);
             }
 
             EditorApplication.RepaintProjectWindow();
@@ -121,6 +109,27 @@ namespace Borodar.RainbowFolders.Editor
         //---------------------------------------------------------------------
         // Helpers
         //---------------------------------------------------------------------
+
+        private static void ShowPopupWindow(Rect rect, string path)
+        {
+            var window = RainbowFoldersPopup.GetDraggableWindow();
+            var position = GUIUtility.GUIToScreenPoint(rect.position + new Vector2(0, rect.height + 2));
+
+            if (_multiSelection)
+            {
+                // ReSharper disable once RedundantTypeArgumentsOfMethod
+                var paths = Selection.assetGUIDs
+                    .Select<string, string>(AssetDatabase.GUIDToAssetPath)
+                    .Where(AssetDatabase.IsValidFolder).ToList();
+
+                var index = paths.IndexOf(path);
+                window.ShowWithParams(position, paths, index);
+            }
+            else
+            {
+                window.ShowWithParams(position, new List<string> {path}, 0);
+            }
+        }
 
         private static void DrawCustomIcon(ref Rect rect, Texture texture, bool isSmall)
         {

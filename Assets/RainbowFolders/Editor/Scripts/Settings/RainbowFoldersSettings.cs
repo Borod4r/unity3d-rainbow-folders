@@ -67,21 +67,22 @@ namespace Borodar.RainbowFolders.Editor.Settings
             return Folders.Find(x => x.Type == match.Type && x.Key == match.Key);
         }
 
-        /// <summary>  
+        /// <summary>
         /// Searches for a folder config that should be applied for the specified path (regardless of
-        /// the key type). Returns the first occurrence within the settings, if found; null otherwise.
+        /// the key type). Returns the last occurrence within the settings, if found; null otherwise.
         /// </summary>  
-        public RainbowFolder GetFolderByPath(string folderPath)
+        public RainbowFolder GetFolderByPath(string folderPath, bool allowRecursive = false)
         {
             if (IsNullOrEmpty(Folders)) return null;
 
-            foreach (var folder in Folders)
+            for (var index = Folders.Count - 1; index >= 0; index--)
             {
+                var folder = Folders[index];
                 switch (folder.Type)
                 {
                     case KeyType.Name:
                         var folderName = Path.GetFileName(folderPath);
-                        if (folder.IsRecursive)
+                        if (allowRecursive && folder.IsRecursive)
                         {
                             if (folderPath.Contains(string.Format("/{0}/", folder.Key))) return folder;
                         }
@@ -91,7 +92,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
                         }
                         break;
                     case KeyType.Path:
-                        if (folder.IsRecursive)
+                        if (allowRecursive && folder.IsRecursive)
                         {
                             if (folderPath.StartsWith(folder.Key)) return folder;
                         }
@@ -157,7 +158,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
 
         public Texture2D GetFolderIcon(string folderPath, bool small = true)
         {
-            var folder = GetFolderByPath(folderPath);
+            var folder = GetFolderByPath(folderPath, true);
             if (folder == null) return null;
 
             return small ? folder.SmallIcon : folder.LargeIcon;
