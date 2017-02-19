@@ -24,6 +24,9 @@ namespace Borodar.RainbowFolders.Editor
     [SuppressMessage("ReSharper", "ConvertIfStatementToNullCoalescingExpression")]
     public static class RainbowFoldersEditorUtility
     {
+        public static readonly Color32 BG_COLOR_FREE = new Color32(194, 194, 194, 255);
+        public static readonly Color32 BG_COLOR_PRO = new Color32(56, 56, 56, 255);
+
         private const string LOAD_ASSET_ERROR_MSG = "Could not load {0}\n" +
                                                     "Did you move the \"Rainbow Folders\" around in your project? " +
                                                     "Go to \"Preferences -> Rainbow Folders\" and update the location of the asset.";
