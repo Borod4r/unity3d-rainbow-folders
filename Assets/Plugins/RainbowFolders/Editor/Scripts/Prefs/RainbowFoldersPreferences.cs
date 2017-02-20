@@ -24,7 +24,26 @@ namespace Borodar.RainbowFolders.Editor
         private const string HOME_FOLDER_DEFAULT = "Assets/Plugins/RainbowFolders";
         private const string HOME_FOLDER_HINT = "Change this setting to the new location of the \"Rainbow Folders\" if you move the folder around in your project.";
 
-        public static EditorPrefsString HomeFolder = new EditorPrefsString(HOME_FOLDER_PREF_KEY + ProjectName, "Folder Location", HOME_FOLDER_DEFAULT);
+        private const string MOD_KEY_PREF_KEY = "Borodar.RainbowFolders.EditMod.";
+        private const EventModifiers MOD_KEY_DEFAULT = EventModifiers.Alt;
+        private const string MOD_KEY_HINT = "Modifier key that is used to show configuration dialogue when clicking on a folder icon.";
+
+        private static readonly EditorPrefsString HOME_FOLDER_PREF;
+        private static readonly EditorPrefsModifierKey MODIFIER_KEY_PREF ;
+
+        public static string HomeFolder;
+        public static EventModifiers ModifierKey;
+
+        static RainbowFoldersPreferences()
+        {
+            var homeLabel = new GUIContent("Folder Location", HOME_FOLDER_HINT);
+            HOME_FOLDER_PREF = new EditorPrefsString(HOME_FOLDER_PREF_KEY + ProjectName, homeLabel, HOME_FOLDER_DEFAULT);
+            HomeFolder = HOME_FOLDER_PREF.Value;
+
+            var modifierLabel = new GUIContent("Modifier Key", MOD_KEY_HINT);
+            MODIFIER_KEY_PREF = new EditorPrefsModifierKey(MOD_KEY_PREF_KEY + ProjectName, modifierLabel, MOD_KEY_DEFAULT);
+            ModifierKey = MODIFIER_KEY_PREF.Value;
+        }
 
         //---------------------------------------------------------------------
         // Messages
@@ -33,9 +52,14 @@ namespace Borodar.RainbowFolders.Editor
         [PreferenceItem("Rainbow Folders")]
         public static void EditorPreferences()
         {
-            EditorGUILayout.HelpBox(HOME_FOLDER_HINT, MessageType.Info);
             EditorGUILayout.Separator();
-            HomeFolder.Draw();
+            HOME_FOLDER_PREF.Draw();
+            HomeFolder = HOME_FOLDER_PREF.Value;
+
+            EditorGUILayout.Separator();
+            MODIFIER_KEY_PREF.Draw();
+            ModifierKey = MODIFIER_KEY_PREF.Value;
+
             GUILayout.FlexibleSpace();
             EditorGUILayout.LabelField("Version " + AssetInfo.VERSION, EditorStyles.centeredGreyMiniLabel);
         }
@@ -61,10 +85,10 @@ namespace Borodar.RainbowFolders.Editor
         public abstract class EditorPrefsItem<T>
         {
             public string Key;
-            public string Label;
+            public GUIContent Label;
             public T DefaultValue;
 
-            protected EditorPrefsItem(string key, string label, T defaultValue)
+            protected EditorPrefsItem(string key, GUIContent label, T defaultValue)
             {
                 if (string.IsNullOrEmpty(key))
                 {
@@ -87,10 +111,8 @@ namespace Borodar.RainbowFolders.Editor
 
         public class EditorPrefsString : EditorPrefsItem<string>
         {
-            public EditorPrefsString(string key, string label, string defaultValue)
-                : base(key, label, defaultValue)
-            {
-            }
+            public EditorPrefsString(string key, GUIContent label, string defaultValue)
+                : base(key, label, defaultValue) { }
 
             public override string Value
             {
@@ -102,6 +124,28 @@ namespace Borodar.RainbowFolders.Editor
             {
                 EditorGUIUtility.labelWidth = 100f;
                 Value = EditorGUILayout.TextField(Label, Value);
+            }
+        }
+
+        private class EditorPrefsModifierKey : EditorPrefsItem<EventModifiers> {
+
+            public EditorPrefsModifierKey(string key, GUIContent label, EventModifiers defaultValue)
+                : base( key, label, defaultValue ) { }
+
+            public override EventModifiers Value {
+                get
+                {
+                    var index = EditorPrefs.GetInt(Key, (int) DefaultValue);
+                    return (Enum.IsDefined(typeof(EventModifiers), index)) ? (EventModifiers) index : DefaultValue;
+                }
+                set
+                {
+                    EditorPrefs.SetInt(Key, (int) value);
+                }
+            }
+
+            public override void Draw() {
+                Value = (EventModifiers) EditorGUILayout.EnumPopup(Label, Value);
             }
         }
     }

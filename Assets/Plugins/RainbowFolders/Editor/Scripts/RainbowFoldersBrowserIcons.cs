@@ -70,7 +70,7 @@ namespace Borodar.RainbowFolders.Editor
 
         private static void DrawEditIcon(string guid, Rect rect)
         {
-            if (!Event.current.alt)
+            if ((Event.current.modifiers & RainbowFoldersPreferences.ModifierKey) == EventModifiers.None)
             {
                 _multiSelection = false;
                 return;
