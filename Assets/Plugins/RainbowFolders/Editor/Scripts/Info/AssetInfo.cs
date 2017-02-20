@@ -18,6 +18,6 @@ namespace Borodar.RainbowFolders.Editor
     {
         public const string NAME = "Rainbow Folders";
         public const string STORE_ID = "50668";
-        public const string VERSION = "0.5.0";
+        public const string VERSION = "0.7";
     }
 }
