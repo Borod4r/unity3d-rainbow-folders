@@ -1,7 +1,8 @@
 # Unity3D Rainbow Folders
 
-[![Join the chat at https://gitter.im/PhannGor/unity3d-rainbow-folders](https://badges.gitter.im/PhannGor/unity3d-rainbow-folders.svg)](https://gitter.im/PhannGor/unity3d-rainbow-folders?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/tarasleskiv/2USD)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://raw.githubusercontent.com/PhannGor/unity3d-rainbow-folders/master/LICENSE)
+[![Donate](https://img.shields.io/badge/Donate-Asset%20Store-green.svg)](http://u3d.as/mor)
+
 
 Have you ever thought about highlighting often used project folders? This simple but colorful asset allows you to do that!
 
@@ -79,14 +80,10 @@ The “Rainbow Folders” asset doesn’t require to be in the root of you proje
 
 ![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/12.png)
 
-## Community
-
-We have created a special folder `Community Icons` for other users to be able to add their icons! Please fork the repo and submit the pull request after adding your icons to `Community Icons/{your_user_name_here}/`
-
 ## Support us
 
-The **Rainbow Folders** asset is donationware. If you want to support future development or just say "thanks" to the autors, please buy it on the [Asset Store](http://u3d.as/mor) or donate directly with PayPal:
+[![Donate](https://img.shields.io/badge/Donate-Asset%20Store-green.svg)](http://u3d.as/mor)
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/tarasleskiv/2USD)
+The **Rainbow Folders** asset is donationware. If you want to support future development or just say "thanks" to the autors, please buy it on the [Asset Store](http://u3d.as/mor).
 
 Reviews are also highly appreciated. Thank you!
