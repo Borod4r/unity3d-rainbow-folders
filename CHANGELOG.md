@@ -1,6 +1,20 @@
 # Rainbow Folders version history
 
-[![Join the chat at https://gitter.im/PhannGor/unity3d-rainbow-folders](https://badges.gitter.im/PhannGor/unity3d-rainbow-folders.svg)](https://gitter.im/PhannGor/unity3d-rainbow-folders?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+---
+
+## v0.7
+
++ Added option to change modifier key for the configuration dialog
++ Added support for Unity Collaborate (beta)
++ Install “Rainbow Folders” to the Plugins folder by default
++ Compatibility fix For Unity 5.6.0 beta
+
+---
+
+## v0.6
+
++ Added option to apply custom icon for all subfolders automatically
++ Compatibility fix For Unity 5.4.4
 
 ---
 
@@ -12,7 +26,7 @@
 
 ---
 
-## v0.5.0
+## v0.5
 
 + Improved workflow: change icons with alt-click on a folder, right in the project view.
 + Added possibility to change icons for multiple folders at once
@@ -23,7 +37,7 @@
 
 ---
 
-## v0.3.0
+## v0.3
 
 + Apply color "tags" for folders from context menu
 + Support for colorizing/tagging folders from left column view when in two-column layout
