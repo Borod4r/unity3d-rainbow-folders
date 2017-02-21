@@ -12,20 +12,37 @@ With "Rainbow Folders" you can set custom icon for any folder in unity project b
 ![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/02.png)
 ![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/03.png)
 
+## Installing
+
+Rainbow Folders is a standard Unity extension and should be installed like any other Unity package. Just drag the RainbowFolders.unitypackage into your current project, or in the Editor go to the drop-down menu Assets → Import Package → Custom Package and then browse to the RainbowFolders.unitypackage file.
+
+When downloading from the Asset Store then Download Manager will automate this process.
+
+![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/02.png)
+
+Once the Importing dialog appears, just click the Import button.
+
+## Folder location
+
+The package will be imported into the `Assets/Plugins/RainbowFolders` folder by default. Most users prefer to keep it here, but you can freely move it wherever you want.  Just go to **Edit → Preferences → Rainbow Folders** and update the folder location:
+
+![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/03.png) 
+
 ## Configuring folder icons
 
-Just hold the **Alt key** and click on any folder icon in Unity project browser.
+To apply custom icon for some folder in your project view, just hold the **Modifier key** and click on any folder icon in Unity project browser. By default, it’s the **Alt key**, but you can change it in **Preferences**.
 
 ![Alt-click example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/04.png)
 
 Configuration dialogue will appear, and you'll be able to assign icons to the corresponding folder.
 
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/05.png)
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/05.png)
 
 What you need to configure for each folder item, are these fields:
 
 * **Folder Name** - icon will be applied to all folders with that name.
 * or **Folder Path** - icon will be applied to a single folder with specified path.
+* **Recursive** checkbox - subfolders icons will be changed automatically
 
 Then you need to specify actually icons:
 * **Small Icon** - custom icon for the left panel of the project browser (16x16 px)
@@ -35,16 +52,16 @@ Your changes will be applied next time when the project browser will retrieve th
 
 ### Presets
 
-You can choose icons from few dozen of presets. Simply click on the star button in configuration dialogue, select one of them from the drop-down menu and apply changes.
+You can choose icons from few dozen of presets. Simply click on the star button in configuration dialog, select one of them from the drop-down menu and apply changes.
 
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/07.png)
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/08.png)
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/07.png)
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/08.png)
 
 ### Revert to default
 
 To reset the folder icon to the default one, just **Alt-click** on it, then press the red cross button in configuration dialogue and apply changes.
 
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/06.png)
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/06.png)
 
 ### Multi-editing
 
@@ -52,13 +69,17 @@ You can also edit multiple folders at once, just select them all and **Alt-click
 
 ![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/09.png)
 
-To view all existing assignments, click on the gear button in configuration dialogue, then take a look at the Inspector.
+### Configs List
 
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/10.png)
+To view all existing assignments, click on the gear button in the configuration dialog, then take a look at the Inspector.
+
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/10.png)
 
 There is reorderable list with all defined "folder" configurations. You can modify existing items, remove them using "-" button or add new ones by clicking "+" button below.
 
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/11.png)
+![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/11.png)
+
+If there is more than one config for the same folder (including recursive assignments), then **latest (lowest) item** in the list will be applied.
 
 ## Context menu
 
@@ -74,11 +95,16 @@ With **Color, Tag, Type** and **Platform** sub-items you can easily apply custom
 
 Select **Rainbow Folders → Settings** to view all existing assignments in the inspector.
 
-## Folder Location
+## Upgrading
 
-The “Rainbow Folders” asset doesn’t require to be in the root of you project, you can freely move it wherever you want. Then just go to **Edit → Preferences → Rainbow Folders** and update the folder location:
+Please always do a clean import of the **Rainbow Folders** package (delete the old version before importing the new one). Otherwise, you may receive a number of difficult to diagnose issues.
+* Backup your settings file (optional):
+`Assets/.../RainbowFolders/Editor/Data/RainbowFoldersSettings.asset`
+* Delete the `Assets/.../RainbowFolders` folder.
+* Delete the `Assets/Editor Default Resources/RainbowFolders` folder, if exists.
+* Import the new version from package or from the Asset Store.
+* Restore your settings file.
 
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/12.png)
 
 ## Support us
 
