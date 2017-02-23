@@ -31,12 +31,6 @@ namespace Borodar.RainbowFolders.Editor.Settings
 
         public override void OnInspectorGUI()
         {
-            EditorGUILayout.HelpBox("Please set your custom folder icons by specifying:\n\n" +
-                                    "- Folder Name\n" +
-                                    "Icon will be applied to all folders with the same name\n\n" +
-                                    "- Folder Path\n" +
-                                    "Icon will be applied to a single folder. The path format: Assets/SomeFolder/YourFolder", MessageType.Info);
-
             serializedObject.Update();
             ReorderableListGUI.Title("Rainbow Folders");
             ReorderableListGUI.ListField(_foldersProperty);
