@@ -183,11 +183,8 @@ namespace Borodar.RainbowFolders.Editor
 
             if (_isCollabEnabled())
             {
-                var backgroundColor = EditorGUIUtility.isProSkin
-                    ? RainbowFoldersEditorUtility.BG_COLOR_PRO
-                    : RainbowFoldersEditorUtility.BG_COLOR_FREE;
-
-                EditorGUI.DrawRect(iconRect, backgroundColor);
+                var background = RainbowFoldersEditorUtility.GetCollabBackground(isSmall, EditorGUIUtility.isProSkin);
+                GUI.DrawTexture(iconRect, background);
                 GUI.DrawTexture(iconRect, texture);
                 _drawCollabOverlay(guid, iconRect);
             }

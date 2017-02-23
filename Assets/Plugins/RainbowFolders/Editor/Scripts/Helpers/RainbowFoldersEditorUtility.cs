@@ -39,6 +39,11 @@ namespace Borodar.RainbowFolders.Editor
         private static Texture2D _presetsIcon;
         private static Texture2D _assetLogo;
 
+        private static Texture2D _collabBackgroundSmallFree;
+        private static Texture2D _collabBackgroundSmallPro;
+        private static Texture2D _collabBackgroundLargeFree;
+        private static Texture2D _collabBackgroundLargePro;
+
         //---------------------------------------------------------------------
         // Assets
         //---------------------------------------------------------------------
@@ -124,6 +129,17 @@ namespace Borodar.RainbowFolders.Editor
         public static Texture2D GetAssetLogo()
         {
             return GetTexture(ref _assetLogo, "rainbow_logo_64.png");
+        }
+
+        public static Texture2D GetCollabBackground(bool isSmall,bool isPro)
+        {
+            return isSmall
+                ? isPro
+                    ? GetTexture(ref _collabBackgroundSmallPro, "collab_bg_pro_16.png")
+                    : GetTexture(ref _collabBackgroundSmallFree, "collab_bg_free_16.png")
+                : isPro
+                    ? GetTexture(ref _collabBackgroundLargePro, "collab_bg_pro_64.png")
+                    : GetTexture(ref _collabBackgroundLargeFree, "collab_bg_free_64.png");
         }
 
         //---------------------------------------------------------------------
