@@ -24,6 +24,7 @@ using KeyType = Borodar.RainbowFolders.Editor.Settings.RainbowFolder.KeyType;
 
 namespace Borodar.RainbowFolders.Editor.Settings
 {
+    [HelpURL("http://www.borodar.com/stuff/rainbowfolders/docs/quickstart_v" + AssetInfo.VERSION + ".pdf")]
     public class RainbowFoldersSettings : ScriptableObject
     {
         private const string RELATIVE_PATH = "Editor/Data/RainbowFoldersSettings.asset";
