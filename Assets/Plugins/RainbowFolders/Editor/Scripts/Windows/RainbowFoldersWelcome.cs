@@ -80,7 +80,8 @@ namespace Borodar.RainbowFolders.Editor
             GUILayout.BeginHorizontal();
             {
                 GUILayout.FlexibleSpace();
-                if (GUILayout.Button("Close", GUILayout.Width(125f))) Close();
+                if (GUILayout.Button("More Info", GUILayout.Width(100f))) Application.OpenURL(AssetInfo.HELP_URL);;
+                if (GUILayout.Button("Close", GUILayout.Width(100f))) Close();
                 GUILayout.FlexibleSpace();
             }
             GUILayout.EndHorizontal();
