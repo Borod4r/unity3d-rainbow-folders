@@ -36,3 +36,9 @@ Assets/UnityVS.meta
 # Asset Store Tools
 /Assets/!Internal/
 /Assets/!Internal.meta
+
+# Rider
+/.idea/
+/Assets/JetBrains/
+/Assets/JetBrains.meta
+
