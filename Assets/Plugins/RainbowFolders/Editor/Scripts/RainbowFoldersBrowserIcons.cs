@@ -71,7 +71,7 @@ namespace Borodar.RainbowFolders.Editor
             var texture = RainbowFoldersSettings.Instance.GetFolderIcon(path, isSmall);
             if (texture == null) return;
 
-            DrawCustomIcon(guid, ref rect, texture, isSmall);
+            DrawCustomIcon(guid, rect, texture, isSmall);
         }
 
         private static void DrawEditIcon(string guid, Rect rect)
@@ -93,7 +93,7 @@ namespace Borodar.RainbowFolders.Editor
             if (!AssetDatabase.IsValidFolder(path)) return;
 
             var editIcon = RainbowFoldersEditorUtility.GetEditFolderIcon(isSmall);
-            DrawCustomIcon(guid, ref rect, editIcon, isSmall);
+            DrawCustomIcon(guid, rect, editIcon, isSmall);
 
             if (GUI.Button(rect, GUIContent.none, GUIStyle.none))
             {
@@ -187,39 +187,38 @@ namespace Borodar.RainbowFolders.Editor
             }
         }
 
-        private static void DrawCustomIcon(string guid, ref Rect rect, Texture texture, bool isSmall)
+        private static void DrawCustomIcon(string guid, Rect rect, Texture texture, bool isSmall)
         {
-            var iconRect = rect;
             if (rect.width > LARGE_ICON_SIZE)
             {
                 // center the icon if it is zoomed
                 var offset = (rect.width - LARGE_ICON_SIZE) / 2f;
-                iconRect = new Rect(rect.x + offset, rect.y + offset, LARGE_ICON_SIZE, LARGE_ICON_SIZE);
+                rect = new Rect(rect.x + offset, rect.y + offset, LARGE_ICON_SIZE, LARGE_ICON_SIZE);
             }
             else
             {
                 // unity shifted small icons a bit in 5.5
                 #if UNITY_5_5
-                    if (isSmall) iconRect = new Rect(rect.x + 3, rect.y, rect.width, rect.height);
+                    if (isSmall) rect = new Rect(rect.x + 3, rect.y, rect.width, rect.height);
                 #endif
             }
 
             if (_isCollabEnabled())
             {
                 var background = RainbowFoldersEditorUtility.GetCollabBackground(isSmall, EditorGUIUtility.isProSkin);
-                GUI.DrawTexture(iconRect, background);
-                GUI.DrawTexture(iconRect, texture);
-                _drawCollabOverlay(guid, iconRect);
+                GUI.DrawTexture(rect, background);
+                GUI.DrawTexture(rect, texture);
+                _drawCollabOverlay(guid, rect);
             }
             else if (_isVcsEnabled())
             {
-                if (isSmall) iconRect = new Rect(iconRect.x + 7, iconRect.y, iconRect.width, iconRect.height);
+                var iconRect = (!isSmall) ? rect : new Rect(rect.x + 7, rect.y, rect.width, rect.height);
                 GUI.DrawTexture(iconRect, texture);
                 _drawVcsOverlay(guid, rect);
             }
             else
             {
-                GUI.DrawTexture(iconRect, texture);
+                GUI.DrawTexture(rect, texture);
             }
         }
 
