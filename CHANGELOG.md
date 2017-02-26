@@ -2,6 +2,12 @@
 
 ---
 
+## v0.7.1
+
++ Added support for Unity Version Control Overlay (beta)
+
+---
+
 ## v0.7
 
 + Added option to change modifier key for the configuration dialog
