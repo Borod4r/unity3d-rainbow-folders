@@ -18,6 +18,7 @@ using System.Linq;
 using System.Reflection;
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using ProjectWindowItemCallback = UnityEditor.EditorApplication.ProjectWindowItemCallback;
 
@@ -34,7 +35,9 @@ namespace Borodar.RainbowFolders.Editor
         private const float LARGE_ICON_SIZE = 64f;
 
         private static Func<bool> _isCollabEnabled;
+        private static Func<bool> _isVcsEnabled;
         private static ProjectWindowItemCallback _drawCollabOverlay;
+        private static ProjectWindowItemCallback _drawVcsOverlay;
         private static bool _multiSelection;
 
         //---------------------------------------------------------------------
@@ -46,7 +49,10 @@ namespace Borodar.RainbowFolders.Editor
             EditorApplication.projectWindowItemOnGUI += ReplaceFolderIcon;
             EditorApplication.projectWindowItemOnGUI += DrawEditIcon;
             EditorApplication.projectWindowItemOnGUI += ShowWelcomeWindow;
-            InitCollabDelegates();
+
+            var assembly = typeof(EditorApplication).Assembly;
+            InitCollabDelegates(assembly);
+            InitVcsDelegates(assembly);
         }
 
         //---------------------------------------------------------------------
@@ -115,10 +121,29 @@ namespace Borodar.RainbowFolders.Editor
         // Helpers
         //---------------------------------------------------------------------
 
-        private static void InitCollabDelegates()
+        private static void InitVcsDelegates(Assembly assembly)
         {
-            var assembly = typeof(EditorApplication).Assembly;
+            try
+            {
+                _isVcsEnabled = () => Provider.isActive;
 
+                var vcsHookType = assembly.GetType("UnityEditorInternal.VersionControl.ProjectHooks");
+                var vcsHook = vcsHookType.GetMethod("OnProjectWindowItem", BindingFlags.Static | BindingFlags.Public);
+                _drawVcsOverlay = (ProjectWindowItemCallback) Delegate.CreateDelegate(typeof(ProjectWindowItemCallback), vcsHook);
+            }
+            catch (SystemException ex)
+            {
+                if (!(ex is NullReferenceException) && !(ex is ArgumentNullException)) throw;
+                _isVcsEnabled = () => false;
+
+                #if RAINBOW_FOLDERS_DEVEL
+                    Debug.LogException(ex);
+                #endif
+            }
+        }
+
+        private static void InitCollabDelegates(Assembly assembly)
+        {
             try
             {
                 var collabAccessType = assembly.GetType("UnityEditor.Web.CollabAccess");
@@ -173,10 +198,8 @@ namespace Borodar.RainbowFolders.Editor
             }
             else
             {
-                // unity shifted small icons a bit in 5.4 and 5.5
-                #if UNITY_5_4_4
-                    if (isSmall) iconRect = new Rect(rect.x + 7, rect.y, rect.width, rect.height);
-                #elif UNITY_5_5
+                // unity shifted small icons a bit in 5.5
+                #if UNITY_5_5
                     if (isSmall) iconRect = new Rect(rect.x + 3, rect.y, rect.width, rect.height);
                 #endif
             }
@@ -187,6 +210,12 @@ namespace Borodar.RainbowFolders.Editor
                 GUI.DrawTexture(iconRect, background);
                 GUI.DrawTexture(iconRect, texture);
                 _drawCollabOverlay(guid, iconRect);
+            }
+            else if (_isVcsEnabled())
+            {
+                if (isSmall) iconRect = new Rect(iconRect.x + 7, iconRect.y, iconRect.width, iconRect.height);
+                GUI.DrawTexture(iconRect, texture);
+                _drawVcsOverlay(guid, rect);
             }
             else
             {
