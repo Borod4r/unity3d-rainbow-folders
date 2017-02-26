@@ -18,6 +18,7 @@ using System.Linq;
 using System.Reflection;
 using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using ProjectWindowItemCallback = UnityEditor.EditorApplication.ProjectWindowItemCallback;
 
@@ -34,7 +35,9 @@ namespace Borodar.RainbowFolders.Editor
         private const float LARGE_ICON_SIZE = 64f;
 
         private static Func<bool> _isCollabEnabled;
+        private static Func<bool> _isVcsEnabled;
         private static ProjectWindowItemCallback _drawCollabOverlay;
+        private static ProjectWindowItemCallback _drawVcsOverlay;
         private static bool _multiSelection;
 
         //---------------------------------------------------------------------
@@ -46,7 +49,10 @@ namespace Borodar.RainbowFolders.Editor
             EditorApplication.projectWindowItemOnGUI += ReplaceFolderIcon;
             EditorApplication.projectWindowItemOnGUI += DrawEditIcon;
             EditorApplication.projectWindowItemOnGUI += ShowWelcomeWindow;
-            InitCollabDelegates();
+
+            var assembly = typeof(EditorApplication).Assembly;
+            InitCollabDelegates(assembly);
+            InitVcsDelegates(assembly);
         }
 
         //---------------------------------------------------------------------
@@ -65,7 +71,7 @@ namespace Borodar.RainbowFolders.Editor
             var texture = RainbowFoldersSettings.Instance.GetFolderIcon(path, isSmall);
             if (texture == null) return;
 
-            DrawCustomIcon(guid, ref rect, texture, isSmall);
+            DrawCustomIcon(guid, rect, texture, isSmall);
         }
 
         private static void DrawEditIcon(string guid, Rect rect)
@@ -87,7 +93,7 @@ namespace Borodar.RainbowFolders.Editor
             if (!AssetDatabase.IsValidFolder(path)) return;
 
             var editIcon = RainbowFoldersEditorUtility.GetEditFolderIcon(isSmall);
-            DrawCustomIcon(guid, ref rect, editIcon, isSmall);
+            DrawCustomIcon(guid, rect, editIcon, isSmall);
 
             if (GUI.Button(rect, GUIContent.none, GUIStyle.none))
             {
@@ -115,10 +121,29 @@ namespace Borodar.RainbowFolders.Editor
         // Helpers
         //---------------------------------------------------------------------
 
-        private static void InitCollabDelegates()
+        private static void InitVcsDelegates(Assembly assembly)
         {
-            var assembly = typeof(EditorApplication).Assembly;
+            try
+            {
+                _isVcsEnabled = () => Provider.isActive;
 
+                var vcsHookType = assembly.GetType("UnityEditorInternal.VersionControl.ProjectHooks");
+                var vcsHook = vcsHookType.GetMethod("OnProjectWindowItem", BindingFlags.Static | BindingFlags.Public);
+                _drawVcsOverlay = (ProjectWindowItemCallback) Delegate.CreateDelegate(typeof(ProjectWindowItemCallback), vcsHook);
+            }
+            catch (SystemException ex)
+            {
+                if (!(ex is NullReferenceException) && !(ex is ArgumentNullException)) throw;
+                _isVcsEnabled = () => false;
+
+                #if RAINBOW_FOLDERS_DEVEL
+                    Debug.LogException(ex);
+                #endif
+            }
+        }
+
+        private static void InitCollabDelegates(Assembly assembly)
+        {
             try
             {
                 var collabAccessType = assembly.GetType("UnityEditor.Web.CollabAccess");
@@ -162,35 +187,38 @@ namespace Borodar.RainbowFolders.Editor
             }
         }
 
-        private static void DrawCustomIcon(string guid, ref Rect rect, Texture texture, bool isSmall)
+        private static void DrawCustomIcon(string guid, Rect rect, Texture texture, bool isSmall)
         {
-            var iconRect = rect;
             if (rect.width > LARGE_ICON_SIZE)
             {
                 // center the icon if it is zoomed
                 var offset = (rect.width - LARGE_ICON_SIZE) / 2f;
-                iconRect = new Rect(rect.x + offset, rect.y + offset, LARGE_ICON_SIZE, LARGE_ICON_SIZE);
+                rect = new Rect(rect.x + offset, rect.y + offset, LARGE_ICON_SIZE, LARGE_ICON_SIZE);
             }
             else
             {
-                // unity shifted small icons a bit in 5.4 and 5.5
-                #if UNITY_5_4_4
-                    if (isSmall) iconRect = new Rect(rect.x + 7, rect.y, rect.width, rect.height);
-                #elif UNITY_5_5
-                    if (isSmall) iconRect = new Rect(rect.x + 3, rect.y, rect.width, rect.height);
+                // unity shifted small icons a bit in 5.5
+                #if UNITY_5_5
+                    if (isSmall) rect = new Rect(rect.x + 3, rect.y, rect.width, rect.height);
                 #endif
             }
 
             if (_isCollabEnabled())
             {
                 var background = RainbowFoldersEditorUtility.GetCollabBackground(isSmall, EditorGUIUtility.isProSkin);
-                GUI.DrawTexture(iconRect, background);
+                GUI.DrawTexture(rect, background);
+                GUI.DrawTexture(rect, texture);
+                _drawCollabOverlay(guid, rect);
+            }
+            else if (_isVcsEnabled())
+            {
+                var iconRect = (!isSmall) ? rect : new Rect(rect.x + 7, rect.y, rect.width, rect.height);
                 GUI.DrawTexture(iconRect, texture);
-                _drawCollabOverlay(guid, iconRect);
+                _drawVcsOverlay(guid, rect);
             }
             else
             {
-                GUI.DrawTexture(iconRect, texture);
+                GUI.DrawTexture(rect, texture);
             }
         }
 
