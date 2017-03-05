@@ -88,11 +88,16 @@ namespace Borodar.RainbowFolders.Editor
         private const string PLATFORM_WEBGL = MENU_PLATFORM + "WebGL";
         private const string PLATFORM_WINDOWS = MENU_PLATFORM + "Windows";
 
+        // Items Priorites
+        private const int DEFAULT_PRIORITY = 2100;
+        private const int PRESET_PRIORITY = 2200;
+        private const int SETTINGS_PRIORITY = 2300;
+
         //---------------------------------------------------------------------
         // Menu Items
         //---------------------------------------------------------------------
 
-        [MenuItem(ITEM_CUSTOM, false, 0)]
+        [MenuItem(ITEM_CUSTOM, false, DEFAULT_PRIORITY)]
         public static void ApplyCustom()
         {
             var window = RainbowFoldersPopup.GetDraggableWindow();
@@ -101,13 +106,13 @@ namespace Borodar.RainbowFolders.Editor
             window.ShowWithParams(position, paths.ToList(), 0);
         }
 
-        [MenuItem(ITEM_DEFAULT, false, 0)]
+        [MenuItem(ITEM_DEFAULT, false, DEFAULT_PRIORITY)]
         public static void RevertToDefault()
         {
             RevertSelectedFoldersToDefault();
         }
 
-        [MenuItem(ITEM_SETTINGS, false, 2000)]
+        [MenuItem(ITEM_SETTINGS, false, SETTINGS_PRIORITY)]
         public static void OpenSettings()
         {
             Selection.activeObject = RainbowFoldersSettings.Instance;
@@ -130,103 +135,103 @@ namespace Borodar.RainbowFolders.Editor
 
         // Colors
 
-        [MenuItem(COLOR_RED)]
+        [MenuItem(COLOR_RED, false, PRESET_PRIORITY)]
         public static void Red() { Colorize(FolderColorName.Red); }
-        [MenuItem(COLOR_VERMILION)]
+        [MenuItem(COLOR_VERMILION, false, PRESET_PRIORITY)]
         public static void Vermilion() { Colorize(FolderColorName.Vermilion); }
-        [MenuItem(COLOR_ORANGE)]
+        [MenuItem(COLOR_ORANGE, false, PRESET_PRIORITY)]
         public static void Orange() { Colorize(FolderColorName.Orange); }
-        [MenuItem(COLOR_YELLOW_ORANGE)]
+        [MenuItem(COLOR_YELLOW_ORANGE, false, PRESET_PRIORITY)]
         public static void YellowOrange() { Colorize(FolderColorName.YellowOrange); }
-        [MenuItem(COLOR_YELLOW)]
+        [MenuItem(COLOR_YELLOW, false, PRESET_PRIORITY)]
         public static void Yellow() { Colorize(FolderColorName.Yellow); }
-        [MenuItem(COLOR_LIME)]
+        [MenuItem(COLOR_LIME, false, PRESET_PRIORITY)]
         public static void Lime() { Colorize(FolderColorName.Lime); }
-        [MenuItem(COLOR_GREEN)]
+        [MenuItem(COLOR_GREEN, false, PRESET_PRIORITY)]
         public static void Green() { Colorize(FolderColorName.Green); }
-        [MenuItem(COLOR_BONDI_BLUE)]
+        [MenuItem(COLOR_BONDI_BLUE, false, PRESET_PRIORITY)]
         public static void BondiBlue() { Colorize(FolderColorName.BondiBlue); }
-        [MenuItem(COLOR_BLUE)]
+        [MenuItem(COLOR_BLUE, false, PRESET_PRIORITY)]
         public static void Blue() { Colorize(FolderColorName.Blue); }
-        [MenuItem(COLOR_INDIGO)]
+        [MenuItem(COLOR_INDIGO, false, PRESET_PRIORITY)]
         public static void Indigo() { Colorize(FolderColorName.Indigo); }
-        [MenuItem(COLOR_VIOLET)]
+        [MenuItem(COLOR_VIOLET, false, PRESET_PRIORITY)]
         public static void Violet() { Colorize(FolderColorName.Violet); }
-        [MenuItem(COLOR_MAGENTA)]
+        [MenuItem(COLOR_MAGENTA, false, PRESET_PRIORITY)]
         public static void Magenta() { Colorize(FolderColorName.Magenta); }
 
         // Tags
 
-        [MenuItem(TAG_RED)]
+        [MenuItem(TAG_RED, false, PRESET_PRIORITY)]
         public static void TagRed() { AssignTag(FolderTagName.Red); }
-        [MenuItem(TAG_VERMILION)]
+        [MenuItem(TAG_VERMILION, false, PRESET_PRIORITY)]
         public static void TagVermilion() { AssignTag(FolderTagName.Vermilion); }
-        [MenuItem(TAG_ORANGE)]
+        [MenuItem(TAG_ORANGE, false, PRESET_PRIORITY)]
         public static void TagOrange() { AssignTag(FolderTagName.Orange); }
-        [MenuItem(TAG_YELLOW_ORANGE)]
+        [MenuItem(TAG_YELLOW_ORANGE, false, PRESET_PRIORITY)]
         public static void TagYellowOrange() { AssignTag(FolderTagName.YellowOrange); }
-        [MenuItem(TAG_YELLOW)]
+        [MenuItem(TAG_YELLOW, false, PRESET_PRIORITY)]
         public static void TagYellow() { AssignTag(FolderTagName.Yellow); }
-        [MenuItem(TAG_LIME)]
+        [MenuItem(TAG_LIME, false, PRESET_PRIORITY)]
         public static void TagLime() { AssignTag(FolderTagName.Lime); }
-        [MenuItem(TAG_GREEN)]
+        [MenuItem(TAG_GREEN, false, PRESET_PRIORITY)]
         public static void TagGreen() { AssignTag(FolderTagName.Green); }
-        [MenuItem(TAG_CYAN)]
+        [MenuItem(TAG_CYAN, false, PRESET_PRIORITY)]
         public static void TagCyan() { AssignTag(FolderTagName.Cyan); }
-        [MenuItem(TAG_BLUE)]
+        [MenuItem(TAG_BLUE, false, PRESET_PRIORITY)]
         public static void TagBlue() { AssignTag(FolderTagName.Blue); }
-        [MenuItem(TAG_DARK_BLUE)]
+        [MenuItem(TAG_DARK_BLUE, false, PRESET_PRIORITY)]
         public static void TagDarkBlue() { AssignTag(FolderTagName.DarkBlue); }
-        [MenuItem(TAG_VIOLET)]
+        [MenuItem(TAG_VIOLET, false, PRESET_PRIORITY)]
         public static void TagViolet() { AssignTag(FolderTagName.Violet); }
-        [MenuItem(TAG_MAGENTA)]
+        [MenuItem(TAG_MAGENTA, false, PRESET_PRIORITY)]
         public static void TagMagenta() { AssignTag(FolderTagName.Magenta); }
 
         // Types
 
-        [MenuItem(TYPE_AUDIO)]
+        [MenuItem(TYPE_AUDIO, false, PRESET_PRIORITY)]
         public static void TypeAudio() { AssingType(FolderTypeName.Audio); }
-        [MenuItem(TYPE_BRACKETS)]
+        [MenuItem(TYPE_BRACKETS, false, PRESET_PRIORITY)]
         public static void TypeBrackets() { AssingType(FolderTypeName.Brackets); }
-        [MenuItem(TYPE_EDITOR)]
+        [MenuItem(TYPE_EDITOR, false, PRESET_PRIORITY)]
         public static void TypeEditor() { AssingType(FolderTypeName.Editor); }
-        [MenuItem(TYPE_EXTENSIONS)]
+        [MenuItem(TYPE_EXTENSIONS, false, PRESET_PRIORITY)]
         public static void TypeExtensions() { AssingType(FolderTypeName.Extensions); }
-        [MenuItem(TYPE_FONTS)]
+        [MenuItem(TYPE_FONTS, false, PRESET_PRIORITY)]
         public static void TypeFonts() { AssingType(FolderTypeName.Fonts); }
-        [MenuItem(TYPE_MATERIALS)]
+        [MenuItem(TYPE_MATERIALS, false, PRESET_PRIORITY)]
         public static void TypeMaterials() { AssingType(FolderTypeName.Materials); }
-        [MenuItem(TYPE_MESHES)]
+        [MenuItem(TYPE_MESHES, false, PRESET_PRIORITY)]
         public static void TypeMeshes() { AssingType(FolderTypeName.Meshes); }
-        [MenuItem(TYPE_PLUGINS)]
+        [MenuItem(TYPE_PLUGINS, false, PRESET_PRIORITY)]
         public static void TypePlugins() { AssingType(FolderTypeName.Plugins); }
-        [MenuItem(TYPE_PREFABS)]
+        [MenuItem(TYPE_PREFABS, false, PRESET_PRIORITY)]
         public static void TypePrefabs() { AssingType(FolderTypeName.Prefabs); }
-        [MenuItem(TYPE_RAINBOW)]
+        [MenuItem(TYPE_RAINBOW, false, PRESET_PRIORITY)]
         public static void TypeRainbow() { AssingType(FolderTypeName.Rainbow); }
-        [MenuItem(TYPE_RESOURCES)]
+        [MenuItem(TYPE_RESOURCES, false, PRESET_PRIORITY)]
         public static void TypeResources() { AssingType(FolderTypeName.Resources); }
-        [MenuItem(TYPE_SCENES)]
+        [MenuItem(TYPE_SCENES, false, PRESET_PRIORITY)]
         public static void TypeScenes() { AssingType(FolderTypeName.Scenes); }
-        [MenuItem(TYPE_SCRIPTS)]
+        [MenuItem(TYPE_SCRIPTS, false, PRESET_PRIORITY)]
         public static void TypeScripts() { AssingType(FolderTypeName.Scripts); }
-        [MenuItem(TYPE_SHADERS)]
+        [MenuItem(TYPE_SHADERS, false, PRESET_PRIORITY)]
         public static void TypeShaders() { AssingType(FolderTypeName.Shaders); }
-        [MenuItem(TYPE_TERRAINS)]
+        [MenuItem(TYPE_TERRAINS, false, PRESET_PRIORITY)]
         public static void TypeTerrains() { AssingType(FolderTypeName.Terrains); }
-        [MenuItem(TYPE_TEXTURES)]
+        [MenuItem(TYPE_TEXTURES, false, PRESET_PRIORITY)]
         public static void TypeTextures() { AssingType(FolderTypeName.Textures); }
 
         // Platforms
-        [MenuItem(PLATFORM_ANDROID)]
+        [MenuItem(PLATFORM_ANDROID, false, PRESET_PRIORITY)]
         public static void PlatformAndroid() { AssingPlatform(FolderPlatformName.Android); }
-        [MenuItem(PLATFORM_IOS)]
+        [MenuItem(PLATFORM_IOS, false, PRESET_PRIORITY)]
         public static void PlatformiOS() { AssingPlatform(FolderPlatformName.iOS); }
-        [MenuItem(PLATFORM_MAC)]
+        [MenuItem(PLATFORM_MAC, false, PRESET_PRIORITY)]
         public static void PlatformMac() { AssingPlatform(FolderPlatformName.Mac); }
-        [MenuItem(PLATFORM_WEBGL)]
+        [MenuItem(PLATFORM_WEBGL, false, PRESET_PRIORITY)]
         public static void PlatformWebGL() { AssingPlatform(FolderPlatformName.WebGL); }
-        [MenuItem(PLATFORM_WINDOWS)]
+        [MenuItem(PLATFORM_WINDOWS, false, PRESET_PRIORITY)]
         public static void PlatformWindows() { AssingPlatform(FolderPlatformName.Windows); }
 
         //---------------------------------------------------------------------
