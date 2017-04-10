@@ -1,7 +1,15 @@
+# Discontinued
+
+This project is discontinued and deprecated. Unfortunately, our benefit from the open source project was too low to justify the extra effort to keep it alive.
+
+Meanwhile, development continues and new versions of the Rainbow Folders are now available exclusively on the [Asset Store](http://u3d.as/mor)
+
+
+Now back to original README content…
+
 # Unity3D Rainbow Folders
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://raw.githubusercontent.com/PhannGor/unity3d-rainbow-folders/master/LICENSE)
-[![Donate](https://img.shields.io/badge/Donate-Asset%20Store-green.svg)](http://u3d.as/mor)
 
 
 Have you ever thought about highlighting often used project folders? This simple but colorful asset allows you to do that!
@@ -104,12 +112,3 @@ Please always do a clean import of the **Rainbow Folders** package (delete the o
 * Delete the `Assets/Editor Default Resources/RainbowFolders` folder, if exists.
 * Import the new version from package or from the Asset Store.
 * Restore your settings file.
-
-
-## Support us
-
-[![Donate](https://img.shields.io/badge/Donate-Asset%20Store-green.svg)](http://u3d.as/mor)
-
-The **Rainbow Folders** asset is donationware. If you want to support future development or just say "thanks" to the autors, please buy it on the [Asset Store](http://u3d.as/mor).
-
-Reviews are also highly appreciated. Thank you!
