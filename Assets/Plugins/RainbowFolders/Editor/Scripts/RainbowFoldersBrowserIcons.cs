@@ -200,6 +200,9 @@ namespace Borodar.RainbowFolders.Editor
                 // unity shifted small icons a bit in 5.5
                 #if UNITY_5_5
                     if (isSmall) rect = new Rect(rect.x + 3, rect.y, rect.width, rect.height);
+                #elif UNITY_5_6_OR_NEWER
+                    if (isSmall && !IsTreeView(rect))
+                        rect = new Rect(rect.x + 3, rect.y, rect.width, rect.height);
                 #endif
             }
 
@@ -232,6 +235,11 @@ namespace Borodar.RainbowFolders.Editor
                 rect.height = rect.width;
 
             return isSmall;
+        }
+
+        private static bool IsTreeView(Rect rect)
+        {
+            return (rect.x - 16) % 14 == 0;
         }
 
         private static bool IsSelected(string guid)
