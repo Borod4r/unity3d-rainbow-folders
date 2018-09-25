@@ -17,9 +17,12 @@ namespace Borodar.ReorderableList.Internal {
 		static GUIHelper() {
 			var tyGUIClip = Type.GetType("UnityEngine.GUIClip,UnityEngine");
 			if (tyGUIClip != null) {
-				var piVisibleRect = tyGUIClip.GetProperty("visibleRect", BindingFlags.Static | BindingFlags.Public);
+				var piVisibleRect = tyGUIClip.GetProperty("visibleRect", BindingFlags.Static | BindingFlags.NonPublic);
 				if (piVisibleRect != null)
-					VisibleRect = (Func<Rect>)Delegate.CreateDelegate(typeof(Func<Rect>), piVisibleRect.GetGetMethod());
+                {
+                    var get = piVisibleRect.GetGetMethod(true);
+					VisibleRect = (Func<Rect>)Delegate.CreateDelegate(typeof(Func<Rect>), get);
+                }
 			}
 			
 			var miFocusTextInControl = typeof(EditorGUI).GetMethod("FocusTextInControl", BindingFlags.Static | BindingFlags.Public);
