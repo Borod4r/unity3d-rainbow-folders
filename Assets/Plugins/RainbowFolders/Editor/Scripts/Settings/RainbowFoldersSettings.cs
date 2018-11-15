@@ -85,7 +85,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
                         var folderName = Path.GetFileName(folderPath);
                         if (allowRecursive && folder.IsRecursive)
                         {
-                            if (folderPath.Contains(string.Format("/{0}/", folder.Key))) return folder;
+                            if (folderPath.Contains(string.Format("/{0}", folder.Key))) return folder;
                         }
                         else
                         {
