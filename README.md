@@ -30,6 +30,11 @@ When downloading from the Asset Store then Download Manager will automate this p
 
 Once the Importing dialog appears, just click the Import button.
 
+## Installation through Unity-Package-Manager (2019.2+)
+ * MenuItem - Window - Package Manager
+ * Add package from git url
+ * paste https://github.com/Team-on/unity3d-rainbow-folders.git#master
+
 ## Folder location
 
 The package will be imported into the `Assets/Plugins/RainbowFolders` folder by default. Most users prefer to keep it here, but you can freely move it wherever you want.  Just go to **Edit → Preferences → Rainbow Folders** and update the folder location:
