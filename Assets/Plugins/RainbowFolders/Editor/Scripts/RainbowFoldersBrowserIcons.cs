@@ -20,7 +20,13 @@ using Borodar.RainbowFolders.Editor.Settings;
 using UnityEditor;
 using UnityEditor.VersionControl;
 using UnityEngine;
+
+#if UNITY_2020_1_OR_NEWER
+using ProjectWindowItemCallback = System.Action<string, UnityEngine.Rect, System.Action>;
+#else 
 using ProjectWindowItemCallback = UnityEditor.EditorApplication.ProjectWindowItemCallback;
+#endif
+
 
 namespace Borodar.RainbowFolders.Editor
 {
@@ -136,9 +142,9 @@ namespace Borodar.RainbowFolders.Editor
                 if (!(ex is NullReferenceException) && !(ex is ArgumentNullException)) throw;
                 _isVcsEnabled = () => false;
 
-                #if RAINBOW_FOLDERS_DEVEL
+#if RAINBOW_FOLDERS_DEVEL
                     Debug.LogException(ex);
-                #endif
+#endif
             }
         }
 
@@ -160,9 +166,9 @@ namespace Borodar.RainbowFolders.Editor
                 if (!(ex is NullReferenceException) && !(ex is ArgumentNullException)) throw;
                 _isCollabEnabled = () => false;
 
-                #if RAINBOW_FOLDERS_DEVEL
+#if RAINBOW_FOLDERS_DEVEL
                     Debug.LogException(ex);
-                #endif
+#endif
             }
         }
 
@@ -198,12 +204,12 @@ namespace Borodar.RainbowFolders.Editor
             else
             {
                 // unity shifted small icons a bit in 5.5
-                #if UNITY_5_5
+#if UNITY_5_5
                     if (isSmall) rect = new Rect(rect.x + 3, rect.y, rect.width, rect.height);
-                #elif UNITY_5_6_OR_NEWER
+#elif UNITY_5_6_OR_NEWER
                     if (isSmall && !IsTreeView(rect))
                         rect = new Rect(rect.x + 3, rect.y, rect.width, rect.height);
-                #endif
+#endif
             }
 
             if (_isCollabEnabled())
@@ -211,13 +217,22 @@ namespace Borodar.RainbowFolders.Editor
                 var background = RainbowFoldersEditorUtility.GetCollabBackground(isSmall, EditorGUIUtility.isProSkin);
                 GUI.DrawTexture(rect, background);
                 GUI.DrawTexture(rect, texture);
+
+#if UNITY_2020_1_OR_NEWER
+                _drawCollabOverlay(guid, rect, null);
+#else 
                 _drawCollabOverlay(guid, rect);
+#endif
             }
             else if (_isVcsEnabled())
             {
                 var iconRect = (!isSmall) ? rect : new Rect(rect.x + 7, rect.y, rect.width, rect.height);
                 GUI.DrawTexture(iconRect, texture);
-                _drawVcsOverlay(guid, rect);
+#if UNITY_2020_1_OR_NEWER
+                _drawCollabOverlay(guid, rect, null);
+#else 
+                _drawCollabOverlay(guid, rect);
+#endif
             }
             else
             {
