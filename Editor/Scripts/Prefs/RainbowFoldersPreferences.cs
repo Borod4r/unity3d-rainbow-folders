@@ -28,18 +28,12 @@ namespace Borodar.RainbowFolders.Editor
         private const EventModifiers MOD_KEY_DEFAULT = EventModifiers.Alt;
         private const string MOD_KEY_HINT = "Modifier key that is used to show configuration dialogue when clicking on a folder icon.";
 
-        private static readonly EditorPrefsString HOME_FOLDER_PREF;
         private static readonly EditorPrefsModifierKey MODIFIER_KEY_PREF ;
 
-        public static string HomeFolder;
         public static EventModifiers ModifierKey;
 
         static RainbowFoldersPreferences()
         {
-            var homeLabel = new GUIContent("Folder Location", HOME_FOLDER_HINT);
-            HOME_FOLDER_PREF = new EditorPrefsString(HOME_FOLDER_PREF_KEY + ProjectName, homeLabel, HOME_FOLDER_DEFAULT);
-            HomeFolder = HOME_FOLDER_PREF.Value;
-
             var modifierLabel = new GUIContent("Modifier Key", MOD_KEY_HINT);
             MODIFIER_KEY_PREF = new EditorPrefsModifierKey(MOD_KEY_PREF_KEY + ProjectName, modifierLabel, MOD_KEY_DEFAULT);
             ModifierKey = MODIFIER_KEY_PREF.Value;
@@ -52,10 +46,6 @@ namespace Borodar.RainbowFolders.Editor
         [PreferenceItem("Rainbow Folders")]
         public static void EditorPreferences()
         {
-            EditorGUILayout.Separator();
-            HOME_FOLDER_PREF.Draw();
-            HomeFolder = HOME_FOLDER_PREF.Value;
-
             EditorGUILayout.Separator();
             MODIFIER_KEY_PREF.Draw();
             ModifierKey = MODIFIER_KEY_PREF.Value;

@@ -88,7 +88,7 @@ namespace Borodar.RainbowFolders.Editor
 
         public static T LoadSetting<T>(string relativePath) where T : UnityEngine.Object
         {
-            var assetPath = Path.Combine(RainbowFoldersPreferences.HomeFolder, relativePath);
+            var assetPath = Path.Combine("Assets/", relativePath);
             var asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);
 
             if (!asset) {
@@ -103,6 +103,15 @@ namespace Borodar.RainbowFolders.Editor
                     newData.Folders = new System.Collections.Generic.List<Settings.RainbowFolder>(originalData.Folders.Count);
                     for(int i = 0; i < originalData.Folders.Count; ++i) {
                         newData.Folders.Add(new Settings.RainbowFolder(originalData.Folders[i]));
+                    }
+
+                    string[] dirs = assetPath.Split('/');
+                    string allPath = dirs[0];
+                    for(int i = 1; i < dirs.Length - 1; ++i) {
+						if (!AssetDatabase.IsValidFolder(allPath + "/" + dirs[i])) {
+                            AssetDatabase.CreateFolder(allPath, dirs[i]);
+                        }
+                        allPath = allPath + "/" + dirs[i];
                     }
 
                     AssetDatabase.CreateAsset(newData, assetPath);
