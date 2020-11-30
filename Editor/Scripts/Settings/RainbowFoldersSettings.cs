@@ -47,7 +47,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
                     #if RAINBOW_FOLDERS_DEVEL
                         _instance = AssetDatabase.LoadAssetAtPath<RainbowFoldersSettings>(DEVEL_PATH);
                     #else
-                        _instance = RainbowFoldersEditorUtility.LoadFromAsset<RainbowFoldersSettings>(RELATIVE_PATH);
+                        _instance = RainbowFoldersEditorUtility.LoadSetting<RainbowFoldersSettings>(RELATIVE_PATH);
                     #endif
 
                 return _instance;

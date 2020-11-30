@@ -86,11 +86,43 @@ namespace Borodar.RainbowFolders.Editor
             Selection.activeObject = asset;
         }
 
-        public static T LoadFromAsset<T>(string relativePath) where T : UnityEngine.Object
+        public static T LoadSetting<T>(string relativePath) where T : UnityEngine.Object
         {
             var assetPath = Path.Combine(RainbowFoldersPreferences.HomeFolder, relativePath);
-            var asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);            
-            if (!asset) Debug.LogError(string.Format(LOAD_ASSET_ERROR_MSG, assetPath));
+            var asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+
+            if (!asset) {
+                string name = typeof(T).Name;
+                string guid = AssetDatabase.FindAssets($"{name}")[0];
+                string originalAssetPath = AssetDatabase.GUIDToAssetPath(guid);
+                asset = AssetDatabase.LoadAssetAtPath<T>(originalAssetPath);
+
+                if (name == "RainbowFoldersSettings") {
+                    Settings.RainbowFoldersSettings originalData = asset as Settings.RainbowFoldersSettings;
+                    Settings.RainbowFoldersSettings newData = ScriptableObject.CreateInstance(typeof(T)) as Settings.RainbowFoldersSettings;
+                    newData.Folders = new System.Collections.Generic.List<Settings.RainbowFolder>(originalData.Folders.Count);
+                    for(int i = 0; i < originalData.Folders.Count; ++i) {
+                        newData.Folders.Add(new Settings.RainbowFolder(originalData.Folders[i]));
+                    }
+
+                    AssetDatabase.CreateAsset(newData, assetPath);
+                    AssetDatabase.SaveAssets();
+                    asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+                }
+            }
+
+            return asset;
+        }
+
+        public static T LoadFromPackages<T>(string relativePath) where T : UnityEngine.Object
+        {
+            var assetPath = Path.Combine("Packages/com.teamon.rainbowfolders/", relativePath);
+            var asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+
+            if (!asset) {
+                return null;
+            }
+
             return asset;
         }
 
@@ -176,7 +208,7 @@ namespace Borodar.RainbowFolders.Editor
         private static Texture2D GetTexture(ref Texture2D texture, string fileName)
         {
             if (texture == null)
-                texture = LoadFromAsset<Texture2D>("Editor/Textures/" + fileName);
+                texture = LoadFromPackages<Texture2D>("Editor/Textures/" + fileName);
 
             return texture;
         }

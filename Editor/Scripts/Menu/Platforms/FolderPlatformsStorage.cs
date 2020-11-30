@@ -38,7 +38,7 @@ namespace Borodar.RainbowFolders.Editor
             get
             {
                 if (_instance == null)
-                    _instance = EditorUtility.LoadFromAsset<FolderPlatformsStorage>(RELATIVE_PATH);
+                    _instance = EditorUtility.LoadSetting<FolderPlatformsStorage>(RELATIVE_PATH);
 
                 return _instance;
             }
