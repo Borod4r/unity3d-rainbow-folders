@@ -1,0 +1,37 @@
+{
+  "name": "com.teamon.rainbowfolders",
+  "version": "1.0.0",
+  
+  "displayName": "Rainbow Folders",
+  "description": "This asset allows you to set custom icons for any folder in unity project browser",
+  
+  "unity": "2018.1",
+  "unityRelease": "0b1",
+  
+  "type": "tool",
+  "keywords": [
+    "attribute",
+    "project",
+    "editor"
+  ],
+  
+  
+  "author": {
+    "name": "Unity",
+    "email": "unity@example.com",
+    "url": "https://www.unity3d.com"
+  },
+  
+  "samples": [
+  	{
+  		"displayName": "Demo scenes recursive",
+  		"description": "Test scenes recursive",
+  		"path": "Samples~/Devel"
+  	},
+	{
+  		"displayName": "Demo scenes original",
+  		"description": "Test scenes all types",
+  		"path": "Samples~/OriginalExample"
+  	}
+	]
+}
