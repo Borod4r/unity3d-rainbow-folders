@@ -22,7 +22,7 @@ namespace Borodar.RainbowFolders.Editor
 {
     public class FolderColorsStorage : ScriptableObject
     {
-        private const string RELATIVE_PATH = "Editor/Data/FolderColorsStorage.asset";
+        private const string RELATIVE_PATH = "Editor/Setting/FolderColorsStorage.asset";
 
         public List<FolderColor> ColorFolderIcons;
 

@@ -22,7 +22,7 @@ namespace Borodar.RainbowFolders.Editor
 {
     public class FolderTagsStorage : ScriptableObject
     {
-        private const string RELATIVE_PATH = "Editor/Data/FolderTagsStorage.asset";
+        private const string RELATIVE_PATH = "Editor/Setting/FolderTagsStorage.asset";
 
         public List<FolderTag> ColorFolderTags;
 

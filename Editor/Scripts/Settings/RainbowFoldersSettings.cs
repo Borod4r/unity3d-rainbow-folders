@@ -27,7 +27,7 @@ namespace Borodar.RainbowFolders.Editor.Settings
     [HelpURL(AssetInfo.HELP_URL)]
     public class RainbowFoldersSettings : ScriptableObject
     {
-        private const string RELATIVE_PATH = "Editor/Data/RainbowFoldersSettings.asset";
+        private const string RELATIVE_PATH = "Editor/Setting/RainbowFoldersSettings.asset";
         private const string DEVEL_PATH = "Assets/Devel/Editor/Data/RainbowFoldersSettings.asset";
 
         public List<RainbowFolder> Folders;
