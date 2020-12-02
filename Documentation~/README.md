@@ -4,17 +4,8 @@ This project is discontinued and deprecated. Unfortunately, our benefit from the
 
 Meanwhile, development continues and new versions of the Rainbow Folders are now available exclusively on the [Asset Store](http://u3d.as/mor)
 
+
 Now back to original README content…
-
-# License
-
-All our code in this repo is covered under Apache 2.0 license:
-
-https://www.apache.org/licenses/LICENSE-2.0
-
-All our icons, images and other artwork is covered under Creative Commons Attribution-NonCommercial 4.0 International licesnse:
-
-https://creativecommons.org/licenses/by-nc/4.0/
 
 # Unity3D Rainbow Folders
 
@@ -38,11 +29,6 @@ When downloading from the Asset Store then Download Manager will automate this p
 ![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/02.png)
 
 Once the Importing dialog appears, just click the Import button.
-
-## Installation through Unity-Package-Manager (2019.2+)
- * MenuItem - Window - Package Manager
- * Add package from git url
- * paste https://github.com/Team-on/unity3d-rainbow-folders.git#master
 
 ## Folder location
 
