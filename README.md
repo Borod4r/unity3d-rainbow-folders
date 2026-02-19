@@ -1,8 +1,12 @@
-# Discontinued
+# Deprecated
 
-This project is discontinued and deprecated. Unfortunately, our benefit from the open source project was too low to justify the extra effort to keep it alive.
+This repository is no longer maintained and this version of the asset is deprecated.
 
-Meanwhile, development continues and new versions of the Rainbow Folders are now available exclusively on the [Asset Store](http://u3d.as/mor)
+Active development continues in **Rainbow Folders 2**. The new version includes fixes for recent Unity releasesand remains completely free and open-source. 
+
+Please visit the new repository for the latest source code, updates, and `.unitypackage` releases:
+
+[**Rainbow Folders 2 on GitHub**](https://github.com/Borod4r/Rainbow-Folders-2)
 
 Now back to original README content…
 
