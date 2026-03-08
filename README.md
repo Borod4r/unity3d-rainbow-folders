@@ -29,9 +29,9 @@ Have you ever thought about highlighting often used project folders? This simple
 
 With "Rainbow Folders" you can set custom icon for any folder in unity project browser:
 
-![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/01.png)
-![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/02.png)
-![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/03.png)
+![Browser window example](https://borodar.com/stuff/rainbowfolders/images/v05/01.png)
+![Browser window example](https://borodar.com/stuff/rainbowfolders/images/v05/02.png)
+![Browser window example](https://borodar.com/stuff/rainbowfolders/images/v05/03.png)
 
 ## Installing
 
@@ -39,7 +39,7 @@ Rainbow Folders is a standard Unity extension and should be installed like any o
 
 When downloading from the Asset Store then Download Manager will automate this process.
 
-![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/02.png)
+![Browser window example](https://borodar.com/stuff/rainbowfolders/images/v07/02.png)
 
 Once the Importing dialog appears, just click the Import button.
 
@@ -47,17 +47,17 @@ Once the Importing dialog appears, just click the Import button.
 
 The package will be imported into the `Assets/Plugins/RainbowFolders` folder by default. Most users prefer to keep it here, but you can freely move it wherever you want.  Just go to **Edit → Preferences → Rainbow Folders** and update the folder location:
 
-![Browser window example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/03.png) 
+![Browser window example](https://borodar.com/stuff/rainbowfolders/images/v07/03.png) 
 
 ## Configuring folder icons
 
 To apply custom icon for some folder in your project view, just hold the **Modifier key** and click on any folder icon in Unity project browser. By default, it’s the **Alt key**, but you can change it in **Preferences**.
 
-![Alt-click example](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/04.png)
+![Alt-click example](https://borodar.com/stuff/rainbowfolders/images/v05/04.png)
 
 Configuration dialogue will appear, and you'll be able to assign icons to the corresponding folder.
 
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/05.png)
+![Configuration dialog](https://borodar.com/stuff/rainbowfolders/images/v07/05.png)
 
 What you need to configure for each folder item, are these fields:
 
@@ -75,30 +75,30 @@ Your changes will be applied next time when the project browser will retrieve th
 
 You can choose icons from few dozen of presets. Simply click on the star button in configuration dialog, select one of them from the drop-down menu and apply changes.
 
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/07.png)
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/08.png)
+![Configuration dialog](https://borodar.com/stuff/rainbowfolders/images/v07/07.png)
+![Configuration dialog](https://borodar.com/stuff/rainbowfolders/images/v07/08.png)
 
 ### Revert to default
 
 To reset the folder icon to the default one, just **Alt-click** on it, then press the red cross button in configuration dialogue and apply changes.
 
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/06.png)
+![Configuration dialog](https://borodar.com/stuff/rainbowfolders/images/v07/06.png)
 
 ### Multi-editing
 
 You can also edit multiple folders at once, just select them all and **Alt-click** at one of their icons.
 
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/09.png)
+![Configuration dialog](https://borodar.com/stuff/rainbowfolders/images/v05/09.png)
 
 ### Configs List
 
 To view all existing assignments, click on the gear button in the configuration dialog, then take a look at the Inspector.
 
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/10.png)
+![Configuration dialog](https://borodar.com/stuff/rainbowfolders/images/v07/10.png)
 
 There is reorderable list with all defined "folder" configurations. You can modify existing items, remove them using "-" button or add new ones by clicking "+" button below.
 
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v07/11.png)
+![Configuration dialog](https://borodar.com/stuff/rainbowfolders/images/v07/11.png)
 
 If there is more than one config for the same folder (including recursive assignments), then **latest (lowest) item** in the list will be applied.
 
@@ -106,7 +106,7 @@ If there is more than one config for the same folder (including recursive assign
 
 All the above functionality is also available via the context menu.
 
-![Configuration dialog](https://raw.githubusercontent.com/PhannGor/phanngor.github.io/master/stuff/rainbowfolders/images/v05/14.png)
+![Configuration dialog](https://borodar.com/stuff/rainbowfolders/images/v05/14.png)
 
 **Right-click** on any folder in project view and select **Rainbow Folders → Apply Custom** to open configuration dialogue.
 
